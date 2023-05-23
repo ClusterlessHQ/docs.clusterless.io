@@ -1,0 +1,10 @@
+.gradle/
+*.iml
+*.ipr
+*.iws
+.idea/
+build/
+out/
+.DS_Store
+/node_modules/
+/public/
