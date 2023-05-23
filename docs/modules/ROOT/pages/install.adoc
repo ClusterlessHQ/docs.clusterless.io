@@ -3,3 +3,40 @@
 == CLI
 
 The `cls` can be installed in the following ways:
+
+=== Prerequisites
+
+_If you already have Node and npm, skip to the AWS CDK install._
+
+Install [nvm](https://github.com/nvm-sh/nvm):
+
+> curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+Install node/npm:
+
+> nvm install --lts
+
+Install the AWS CDK:
+
+> npm install -g aws-cdk@2.80.0
+
+after install, make sure to bootstrap your account and region:
+
+https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html#bootstrapping-howto
+
+> cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ...
+
+Install Java 11 via [sdkman](https://sdkman.io):
+
+> sdk install java 22.3.r11-grl
+
+=== Installing Clusterless
+
+The Clusterless CLI app `cls` is downloadable from GitHub releases:
+
+- https://github.com/ClusterlessHQ/clusterless/releases
+
+The `bin` folder will have:
+
+- `cls` - the root CLI interface
+- `cls-aws` - the AWS interface only used as an escape hatch and testing
