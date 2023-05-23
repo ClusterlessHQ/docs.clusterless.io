@@ -1,0 +1,5 @@
+= Install
+
+== CLI
+
+The `cls` can be installed in the following ways:

@@ -1,0 +1,17 @@
+site:
+  title: Clusterless Docs
+  start_page: guide::index.adoc
+
+content:
+  sources:
+  # - url: https://github.com/ClusterlessHQ/docs.clusterless.io.git
+    # branches: wip-1.0
+    # start_path: docs
+  - url: .
+    branches: HEAD
+    start_path: docs
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
