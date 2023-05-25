@@ -60,7 +60,13 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="install.html">Install</a>
+    <a class="nav-link" href="clusterless-roles.html">How Clusterless Can Help</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="clusterless-design.html">How Clusterless Works</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="install-quickstart.html">Install and Run Clusterless Quickstart</a>
   </li>
 </ul>
   </li>
@@ -104,7 +110,86 @@
 <article class="doc">
 <h1 class="page">Clusterless</h1>
 <div class="paragraph">
-<p>Clusterless is a cloud data processing deployment tool.</p>
+<p>Clusterless is a tool for deploying scalable and secure data-processing workloads for continuously arriving data, across
+clouds.</p>
+</div>
+<div class="paragraph">
+<p>By standardizing the metadata as new data arrives, workloads can be implemented behind a consistent interface, and can
+be easily deployed to listen for upstream availability events and fire new events to downstream listeners.</p>
+</div>
+<div class="paragraph">
+<p>Not only can heterogeneous workloads can be chained together via events, they can be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>back-filled - a new workload (or version) can run against historical data</p>
+</li>
+<li>
+<p>replayed - a fixed workload can re-run over a range of data to correct for an error in place</p>
+</li>
+<li>
+<p>checked for gaps - missing data can be accounted for by walking the upstream dependencies</p>
+</li>
+<li>
+<p>enabled/disabled - trivially pause or restart event listening</p>
+</li>
+<li>
+<p>versioned - new versions of workloads can be deployed without interfering with existing production pipelines</p>
+</li>
+<li>
+<p>tested - either locally before deployment, or using our [scenario tool](clusterless-scenario/README.md), as part of a
+full pipeline</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Where workloads:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>reformat data (say from text to parquet)</p>
+</li>
+<li>
+<p>repartition data for improved accessibility and performance (group the data by new partition keys)</p>
+</li>
+<li>
+<p>perform feature extraction via custom code</p>
+</li>
+<li>
+<p>execute training and validation (via custom Python or simply calling SageMaker)</p>
+</li>
+<li>
+<p>enforce GDPR (privacy) compliance (via identity tokenization and retention)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>And can be implemented as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Docker images (Python, Java, Node, etc)</p>
+</li>
+<li>
+<p>Serverless functions (Python, Java, Node, etc)</p>
+</li>
+<li>
+<p>Native services (AWS SageMaker, AWS Athena, AWS Glue, etc)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Where the intent isn&#8217;t to have functional parity across substrates, but to ease secure and reliable interoperability
+between them.</p>
+</div>
+<div class="paragraph">
+<p>By leveraging native pay-as-you-go primitives, no runtimes or dedicated services need to be managed.</p>
+</div>
+<div class="paragraph">
+<p>Zero data arriving means zero costs (other than storage for historical data).</p>
 </div>
 </article>
   </div>

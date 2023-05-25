@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>How Clusterless Works :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/guide/wip-1.0/clusterless-design.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<script defer data-domain="docs.clusterless.com" src="https://plausible.io/js/script.js"></script>
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.clusterless.io">Clusterless Docs</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="guide" data-version="wip-1.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Clusterless</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="clusterless-roles.html">How Clusterless Can Help</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="clusterless-design.html">How Clusterless Works</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="install-quickstart.html">Install and Run Clusterless Quickstart</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Clusterless</span>
+    <span class="version">wip-1.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">Clusterless</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">wip-1.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Clusterless</a></li>
+    <li><a href="clusterless-design.html">How Clusterless Works</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/ROOT/pages/clusterless-design.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">How Clusterless Works</h1>
+<div class="sect1">
+<h2 id="_declarative_model"><a class="anchor" href="#_declarative_model"></a>Declarative Model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Clusterless relies on a JSON based project declaration so that it knows what and where to deploy the application stack.</p>
+</div>
+<div class="paragraph">
+<p>A project has one or more placements, and zero or more datasets, resources, boundaries, and arcs.</p>
+</div>
+<div class="paragraph">
+<p>A placement describes where the project should be deployed, the coordinates are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>provider - the name of the target cloud provider (e.g. <code>aws</code>)</p>
+</li>
+<li>
+<p>account - the account id</p>
+</li>
+<li>
+<p>region - the region in which to make the deployment (e.g. <code>us-east-2</code>)</p>
+</li>
+<li>
+<p>stage - optionally, the prefix namespace to deploy within an account (e.g. <code>PROD</code> or <code>TEST</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A dataset is a named and versioned collection of data objects reachable by URIs.</p>
+</div>
+<div class="paragraph">
+<p>Resources are things that should be provisioned for use, like an AWS S3 bucket.</p>
+</div>
+<div class="paragraph">
+<p>Boundaries are Clusterless provided capabilities that integrate and make available data as a dataset from outside
+sources to arcs that work with that data.</p>
+</div>
+<div class="paragraph">
+<p>Arcs manage custom or standard workloads that consume and produce data. They listen for changes in upstream datasets and
+publish events when updating the datasets they contribute to. Arcs are named and versioned.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cloud_blueprints"><a class="anchor" href="#_cloud_blueprints"></a>Cloud Blueprints</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Clusterless, when given a project declaration, constructs blueprint of the data stack for the given cloud provider and
+deploys it by translating it to the model the underlying deployment tool relies on.</p>
+</div>
+<div class="paragraph">
+<p>In the case of AWS, the <a href="https://aws.amazon.com/cdk/">AWS CDK</a> is used under the hood to generate AWS Cloudformation
+files, which in turn are pushed to Cloudformation for deployment. Because of this, the AWS CDK must be installed prior
+to using the <code>cls</code> command line tool.</p>
+</div>
+<div class="paragraph">
+<p>Clusterless relies on native primitives in the target cloud to provide its capabilities. But sometimes custom services
+need to be deployed to fill in the gaps. For example, the built in <code>s3CopyArc</code>, when declared and deployed, pushes AWS
+Lambda code to AWS and configures it to listen for events from upstream datasets.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_metadata"><a class="anchor" href="#_metadata"></a>Metadata</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Clusterless standardizes storage and format of a few different metadata types.</p>
+</div>
+<div class="paragraph">
+<p>All the metadata managed by Clusterless in a given provider is stored in a common location, using a consistent naming
+scheme. In AWS, metadata is stored in AWS S3 buckets. This allows both machines and people to look at the data by simply
+browsing a bucket.</p>
+</div>
+<div class="paragraph">
+<p>Datasets have a name and version, but also have a location and a state. Within that location, there are chunks of data
+that all arrived within a common interval (5 or 15 minute periods). And this chunk of data may be complete, partial,
+empty, or removed. This data is kept in a manifest file and there is one manifest file for every chunk of data.</p>
+</div>
+<div class="paragraph">
+<p>Arcs have a name and version, but also have a state. An arc starts when a new chunk of data arrives, and completes
+when it is done processing. But it&#8217;s more complicated, thus arcs have the states running, complete, partial, or missing.</p>
+</div>
+<div class="paragraph">
+<p>Details about the state models can be read in the ADR <a href="https://github.com/ClusterlessHQ/clusterless/blob/wip-1.0/docs/adr/0003-arc-state-and-data-metadata.md">arc-state-and-data-metadata</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_monotonic_ticks_of_the_clock"><a class="anchor" href="#_monotonic_ticks_of_the_clock"></a>Monotonic Ticks of the Clock</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Data becomes available in chunks, and these chunks are timeboxed within an arrival interval.</p>
+</div>
+<div class="paragraph">
+<p>On the simple side, a new object may be uploaded every hour or so to an S3 bucket. If the intervals maintained are an
+hour in duration, one file would arrive every hour, or hourly. And the chunks would be labeled <code>2023-01-01-03</code> for
+January 1, 3am, in 2023.</p>
+</div>
+<div class="paragraph">
+<p>On the complex side, files could be made available at a rate of hundreds every minute. A reasonable interval to maintain
+chunks would be 5 minutes, or in twelfths. So a twelfth of an hour in a day could have thousands of files to be
+processed. Such a label could take the form <code>20230101PT5M050</code>.</p>
+</div>
+<div class="paragraph">
+<p>Labeling intervals is important. It marks the time of arrival, or the time of observation by the ingress boundary.</p>
+</div>
+<div class="paragraph">
+<p>For heavy load systems, or properly chosen interval durations, there shouldn&#8217;t be any intervals missing that can&#8217;t be
+accounted for. This provides a means to audit a given dataset. This is accomplished by using the label value as either a
+partition value in the storage key of the data (e.g. <code>/lot=20230101PT5M050/data.json</code>), or as a component of the object
+name (e.g. <code>data-20230101PT5M050-1684984366.json</code> ).</p>
+</div>
+<div class="paragraph">
+<p>Details about intervals supported by Clusterless can be read in the ADR
+<a href="https://github.com/ClusterlessHQ/clusterless/blob/wip-1.0/docs/adr/0004-machine-and-human-friendly-interval-ids.md">machine-and-human-friendly-interval-ids</a>.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

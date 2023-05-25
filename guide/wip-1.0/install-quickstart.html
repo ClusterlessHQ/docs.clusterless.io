@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Install :: Clusterless Docs</title>
-    <link rel="canonical" href="https://docs.clusterless.io/guide/wip-1.0/install.html">
+    <title>Install and Run Clusterless Quickstart :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/guide/wip-1.0/install-quickstart.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../_/css/site.css">
 <script defer data-domain="docs.clusterless.com" src="https://plausible.io/js/script.js"></script>
@@ -59,8 +59,14 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="clusterless-roles.html">How Clusterless Can Help</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="clusterless-design.html">How Clusterless Works</a>
+  </li>
   <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="install.html">Install</a>
+    <a class="nav-link" href="install-quickstart.html">Install and Run Clusterless Quickstart</a>
   </li>
 </ul>
   </li>
@@ -93,31 +99,32 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Clusterless</a></li>
-    <li><a href="install.html">Install</a></li>
+    <li><a href="install-quickstart.html">Install and Run Clusterless Quickstart</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/ROOT/pages/install.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/ROOT/pages/install-quickstart.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Install</h1>
-<div class="sect1">
-<h2 id="_cli"><a class="anchor" href="#_cli"></a>CLI</h2>
+<h1 class="page">Install and Run Clusterless Quickstart</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>cls</code> can be installed in the following ways:</p>
+<p>The <code>cls</code> CLI tool can be installed in the following ways:</p>
 </div>
-<div class="sect2">
-<h3 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><em>If you already have Node and npm, skip to the AWS CDK install.</em></p>
 </div>
-<div class="paragraph">
-<p>Install [nvm](<a href="https://github.com/nvm-sh/nvm" class="bare">https://github.com/nvm-sh/nvm</a>):</p>
-</div>
+<div class="sect2">
+<h3 id="_install_nvm"><a class="anchor" href="#_install_nvm"></a>Install <a href="https://github.com/nvm-sh/nvm">nvm</a>:</h3>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
@@ -135,8 +142,18 @@
 </div>
 </blockquote>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_install_the_aws_cdk"><a class="anchor" href="#_install_the_aws_cdk"></a>Install the AWS CDK:</h3>
 <div class="paragraph">
-<p>Install the AWS CDK:</p>
+<p>See the guid on the AWS site:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html" class="bare">https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html</a></p>
+</li>
+</ul>
 </div>
 <div class="quoteblock">
 <blockquote>
@@ -148,8 +165,12 @@
 <div class="paragraph">
 <p>after install, make sure to bootstrap your account and region:</p>
 </div>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p><a href="https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html#bootstrapping-howto" class="bare">https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html#bootstrapping-howto</a></p>
+</li>
+</ul>
 </div>
 <div class="quoteblock">
 <blockquote>
@@ -158,9 +179,9 @@
 </div>
 </blockquote>
 </div>
-<div class="paragraph">
-<p>Install Java 11 via [sdkman](<a href="https://sdkman.io" class="bare">https://sdkman.io</a>):</p>
 </div>
+<div class="sect2">
+<h3 id="_install_java_11_via_sdkmanhttpssdkman_io"><a class="anchor" href="#_install_java_11_via_sdkmanhttpssdkman_io"></a>Install Java 11 via [sdkman](<a href="https://sdkman.io" class="bare">https://sdkman.io</a>):</h3>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
@@ -169,8 +190,11 @@
 </blockquote>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_installing_clusterless"><a class="anchor" href="#_installing_clusterless"></a>Installing Clusterless</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_clusterless"><a class="anchor" href="#_installing_clusterless"></a>Installing Clusterless</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The Clusterless CLI app <code>cls</code> is downloadable from GitHub releases:</p>
 </div>
@@ -180,6 +204,9 @@
 <p><a href="https://github.com/ClusterlessHQ/clusterless/releases" class="bare">https://github.com/ClusterlessHQ/clusterless/releases</a></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Download and unzip. Add the <code>bin</code> folder to your <code>PATH</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>bin</code> folder will have:</p>
@@ -193,7 +220,6 @@
 <p><code>cls-aws</code> - the AWS interface only used as an escape hatch and testing</p>
 </li>
 </ul>
-</div>
 </div>
 </div>
 </div>
