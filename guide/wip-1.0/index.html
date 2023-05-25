@@ -135,13 +135,13 @@ and availability of upstream data.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_common_pipeline_scenarios"><a class="anchor" href="#_common_pipeline_scenarios"></a>Common Pipeline Scenarios</h2>
+<h2 id="_a_common_pipeline_scenario"><a class="anchor" href="#_a_common_pipeline_scenario"></a>A Common Pipeline Scenario</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Different stakeholder have different needs from any given dataset.</p>
+<p>Different stakeholders have different needs from any given dataset.</p>
 </div>
 <div class="paragraph">
-<p>Log data for example can be used by developers and SRE to seek out the root causes to system issues affecting
+<p>Log data, for example, can be used by developers and SRE to seek out the root causes to system issues affecting
 availability.</p>
 </div>
 <div class="paragraph">
@@ -158,22 +158,27 @@ as data arrives, it should be organized, formatted, and exposed to the systems s
 And the data accessible by a nightly report in Superset or Tableau backed by AWS Athena or AWS Redshift.</p>
 </div>
 <div class="paragraph">
-<p>Developers and SRE may need the logs heavily filtered do relevant log types and organized by logged event data,
-hostname, and possibly the pid of the running process.</p>
+<p>Developers and SRE may need the logs heavily filtered to relevant log types and organized by logged event date, region
+or datacenter, and hostnames. Support for spinning up an Elasticsearch cluster with current operational data for the
+given cohort and time range could then be optimized against the current incident.</p>
 </div>
 <div class="paragraph">
-<p>Both these scenarios start with the same dataset, but as the needs and requirement branch, the data pipeline branches to
-support them. More importantly, the data developers supporting the given stakeholders can work independently within
-their pipeline branch.</p>
+<p>Both these paths start with the same dataset, but as the needs and requirement branch, the data pipeline branches to
+support them. More importantly, the data-developers supporting a stakeholder can work independently within their own
+pipeline branch.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_capabilities"><a class="anchor" href="#_capabilities"></a>Capabilities</h2>
+<h2 id="_pipeline_capabilities"><a class="anchor" href="#_pipeline_capabilities"></a>Pipeline Capabilities</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Above simply enabling data processing applications and workloads to subscribe to data availability events, workloads
-can be:</p>
+<p>Clusterless provides a framework for deploying and running data processing workloads that only execute when data becomes
+available upstream (or optionally on a schedule). The framework is agnostic to how these workloads are implemented, but
+is strict about the metadata it maintains about the available data and the runtime state of any workload.</p>
+</div>
+<div class="paragraph">
+<p>Because of the metadata Clusterless maintains, workloads and their result datasets can be:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -197,7 +202,7 @@ features</p>
 <p>scoped - production, development, and testing pipelines can co-exist within a single account</p>
 </li>
 <li>
-<p>tested - workloads can be tested locally before deployment, or pipelines using our
+<p>tested - workloads locally, or data pipelines locally or in CI/CD pipelines using our
 <a href="https://github.com/ClusterlessHQ/clusterless/tree/wip-1.0/clusterless-scenario#readme">scenario runner</a></p>
 </li>
 </ul>
@@ -251,8 +256,8 @@ features</p>
 <h2 id="_multi_cloud"><a class="anchor" href="#_multi_cloud"></a>Multi-Cloud</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The intent of Clusterless isn&#8217;t to have functional parity across providers, but to ease secure and reliable interoperability
-between them.</p>
+<p>The intent of Clusterless isn&#8217;t to have functional parity across providers, but to ease secure and reliable
+interoperability between them.</p>
 </div>
 </div>
 </div>
