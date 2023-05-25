@@ -15,11 +15,11 @@ By leveraging native pay-as-you-go primitives, no runtimes or dedicated services
 
 Zero data arriving means zero costs (other than storage for historical data).
 
-== Common Pipeline Scenarios
+== A Common Pipeline Scenario
 
-Different stakeholder have different needs from any given dataset.
+Different stakeholders have different needs from any given dataset.
 
-Log data for example can be used by developers and SRE to seek out the root causes to system issues affecting
+Log data, for example, can be used by developers and SRE to seek out the root causes to system issues affecting
 availability.
 
 Product owners may be focused on customer retention, especially for different cohorts of customers and users. Consider a
@@ -32,17 +32,21 @@ as data arrives, it should be organized, formatted, and exposed to the systems s
 Product owners may want the log data broken down by application, release version, and date of the logged event by month.
 And the data accessible by a nightly report in Superset or Tableau backed by AWS Athena or AWS Redshift.
 
-Developers and SRE may need the logs heavily filtered do relevant log types and organized by logged event data,
-hostname, and possibly the pid of the running process.
+Developers and SRE may need the logs heavily filtered to relevant log types and organized by logged event date, region
+or datacenter, and hostnames. Support for spinning up an Elasticsearch cluster with current operational data for the
+given cohort and time range could then be optimized against the current incident.
 
-Both these scenarios start with the same dataset, but as the needs and requirement branch, the data pipeline branches to
-support them. More importantly, the data developers supporting the given stakeholders can work independently within
-their pipeline branch.
+Both these paths start with the same dataset, but as the needs and requirement branch, the data pipeline branches to
+support them. More importantly, the data-developers supporting a stakeholder can work independently within their own
+pipeline branch.
 
-== Capabilities
+== Pipeline Capabilities
 
-Above simply enabling data processing applications and workloads to subscribe to data availability events, workloads
-can be:
+Clusterless provides a framework for deploying and running data processing workloads that only execute when data becomes
+available upstream (or optionally on a schedule). The framework is agnostic to how these workloads are implemented, but
+is strict about the metadata it maintains about the available data and the runtime state of any workload.
+
+Because of the metadata Clusterless maintains, workloads and their result datasets can be:
 
 - back-filled - a new workload (or version) can run against historical data
 - replayed - a fixed workload can re-run over a range of data to correct for an error in place
@@ -51,7 +55,7 @@ can be:
 - versioned - new versions of workloads can be deployed that introduce incompatibilities or rely on new upstream
   features
 - scoped - production, development, and testing pipelines can co-exist within a single account
-- tested - workloads can be tested locally before deployment, or pipelines using our
+- tested - workloads locally, or data pipelines locally or in CI/CD pipelines using our
   https://github.com/ClusterlessHQ/clusterless/tree/wip-1.0/clusterless-scenario#readme[scenario runner]
 
 == Heterogeneous Reusable Workloads
@@ -72,5 +76,5 @@ Workloads can be:
 
 == Multi-Cloud
 
-The intent of Clusterless isn't to have functional parity across providers, but to ease secure and reliable interoperability
-between them.
+The intent of Clusterless isn't to have functional parity across providers, but to ease secure and reliable
+interoperability between them.
