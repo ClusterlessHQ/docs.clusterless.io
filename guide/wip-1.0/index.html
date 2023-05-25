@@ -109,16 +109,71 @@
 </aside>
 <article class="doc">
 <h1 class="page">Clusterless</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
 <p>Clusterless is a tool for deploying scalable and secure data-processing workloads for continuously arriving data, across
 clouds.</p>
 </div>
 <div class="paragraph">
-<p>By standardizing the metadata as new data arrives, workloads can be implemented behind a consistent interface, and can
-be easily deployed to listen for upstream availability events and fire new events to downstream listeners.</p>
+<p>With Clusterless, heterogeneous workloads can be chained together by simply subscribing to upstream data availability
+events.</p>
 </div>
 <div class="paragraph">
-<p>Not only can heterogeneous workloads can be chained together via events, they can be:</p>
+<p>This allows developers and teams to work relatively independently when building and updating data pipelines.</p>
+</div>
+<div class="paragraph">
+<p>And because of the rich standardized metadata Clusterless maintains, stakeholders can quickly understand the reliability
+and availability of upstream data.</p>
+</div>
+<div class="paragraph">
+<p>By leveraging native pay-as-you-go primitives, no runtimes or dedicated services need to be managed.</p>
+</div>
+<div class="paragraph">
+<p>Zero data arriving means zero costs (other than storage for historical data).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common_pipeline_scenarios"><a class="anchor" href="#_common_pipeline_scenarios"></a>Common Pipeline Scenarios</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Different stakeholder have different needs from any given dataset.</p>
+</div>
+<div class="paragraph">
+<p>Log data for example can be used by developers and SRE to seek out the root causes to system issues affecting
+availability.</p>
+</div>
+<div class="paragraph">
+<p>Product owners may be focused on customer retention, especially for different cohorts of customers and users. Consider a
+band of customers at risk for non-renewal of a subscription service who frequently complain about performance or
+frequent errors.</p>
+</div>
+<div class="paragraph">
+<p>Because of these stakeholders different needs, they will need to access the data differently. To meet these requirements
+as data arrives, it should be organized, formatted, and exposed to the systems suitable for the different purposes.</p>
+</div>
+<div class="paragraph">
+<p>Product owners may want the log data broken down by application, release version, and date of the logged event by month.
+And the data accessible by a nightly report in Superset or Tableau backed by AWS Athena or AWS Redshift.</p>
+</div>
+<div class="paragraph">
+<p>Developers and SRE may need the logs heavily filtered do relevant log types and organized by logged event data,
+hostname, and possibly the pid of the running process.</p>
+</div>
+<div class="paragraph">
+<p>Both these scenarios start with the same dataset, but as the needs and requirement branch, the data pipeline branches to
+support them. More importantly, the data developers supporting the given stakeholders can work independently within
+their pipeline branch.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_capabilities"><a class="anchor" href="#_capabilities"></a>Capabilities</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Above simply enabling data processing applications and workloads to subscribe to data availability events, workloads
+can be:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -129,27 +184,36 @@ be easily deployed to listen for upstream availability events and fire new event
 <p>replayed - a fixed workload can re-run over a range of data to correct for an error in place</p>
 </li>
 <li>
-<p>checked for gaps - missing data can be accounted for by walking the upstream dependencies</p>
+<p>gap reporting - missing data can be accounted for by walking the upstream dependencies</p>
 </li>
 <li>
 <p>enabled/disabled - trivially pause or restart event listening</p>
 </li>
 <li>
-<p>versioned - new versions of workloads can be deployed without interfering with existing production pipelines</p>
+<p>versioned - new versions of workloads can be deployed that introduce incompatibilities or rely on new upstream
+features</p>
 </li>
 <li>
-<p>tested - either locally before deployment, or using our [scenario tool](clusterless-scenario/README.md), as part of a
-full pipeline</p>
+<p>scoped - production, development, and testing pipelines can co-exist within a single account</p>
+</li>
+<li>
+<p>tested - workloads can be tested locally before deployment, or pipelines using our
+<a href="https://github.com/ClusterlessHQ/clusterless/tree/wip-1.0/clusterless-scenario#readme">scenario runner</a></p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_heterogeneous_reusable_workloads"><a class="anchor" href="#_heterogeneous_reusable_workloads"></a>Heterogeneous Reusable Workloads</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Where workloads:</p>
+<p>Workloads managed by Clusterless can be used to:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>reformat data (say from text to parquet)</p>
+<p>reformat data (from text to parquet)</p>
 </li>
 <li>
 <p>repartition data for improved accessibility and performance (group the data by new partition keys)</p>
@@ -158,15 +222,15 @@ full pipeline</p>
 <p>perform feature extraction via custom code</p>
 </li>
 <li>
-<p>execute training and validation (via custom Python or simply calling SageMaker)</p>
+<p>execute training and validation</p>
 </li>
 <li>
-<p>enforce GDPR (privacy) compliance (via identity tokenization and retention)</p>
+<p>enforce GDPR (privacy) compliance (via identity tokenization and data retention policies)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>And can be implemented as:</p>
+<p>Workloads can be:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -181,15 +245,16 @@ full pipeline</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_multi_cloud"><a class="anchor" href="#_multi_cloud"></a>Multi-Cloud</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Where the intent isn&#8217;t to have functional parity across substrates, but to ease secure and reliable interoperability
+<p>The intent of Clusterless isn&#8217;t to have functional parity across providers, but to ease secure and reliable interoperability
 between them.</p>
 </div>
-<div class="paragraph">
-<p>By leveraging native pay-as-you-go primitives, no runtimes or dedicated services need to be managed.</p>
 </div>
-<div class="paragraph">
-<p>Zero data arriving means zero costs (other than storage for historical data).</p>
 </div>
 </article>
   </div>

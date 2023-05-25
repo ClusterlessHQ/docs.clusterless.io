@@ -113,13 +113,13 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Clusterless was designed to aid Data Engineers, Data Scientists, and Data/ML Ops personnel create data oriented
-applications that require minimal attention after deployment. And to allow teams to collaborate without strict coupling
-of their data processes.</p>
+<p>Clusterless was designed to aid Data Engineers, Data Scientists, and Data/ML Ops personnel create data and deploy
+oriented applications and pipelines. Pipelines that require minimal attention after deployment. And allow teams to
+collaborate without strict coupling of their data processes.</p>
 </div>
 <div class="paragraph">
-<p>Regardless of the role, Clusterless can help by allowing developers to focus on the code first, data pipelines second,
-and the infrastructure last.</p>
+<p>Regardless of the role, Clusterless can help developers focus on the code first, data pipelines second, and the
+infrastructure last.</p>
 </div>
 </div>
 </div>
@@ -135,6 +135,10 @@ for when idle.</p>
 given cloud.</p>
 </div>
 <div class="paragraph">
+<p>Because it relies on cloud provided serverless infrastructure, during heavy loads, overall utilization is held constant
+regardless of demand. Security best practices are always updated and can be applied to existing deployments.</p>
+</div>
+<div class="paragraph">
 <p>Clusterless relies on a JSON based declarative language to describe what to deploy, and where to deploy it.</p>
 </div>
 <div class="paragraph">
@@ -142,14 +146,30 @@ given cloud.</p>
 capabilities required. Sometimes choices are offered or required based on expected load or similar concerns.</p>
 </div>
 <div class="paragraph">
-<p>This JSON declaration is typically part of the application code that Clusterless would deploy. And, in turn, deployments
-can be run through standard CI/CD pipelines.</p>
+<p>This JSON declaration is typically part of the application code that Clusterless would deploy. And, in turn,
+data-pipeline deployments can be run through standard CI/CD pipelines.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_pipelines_second"><a class="anchor" href="#_pipelines_second"></a>Pipelines Second</h2>
 <div class="sectionbody">
+<div class="literalblock">
+<div class="title">A Data Pipeline DAG</div>
+<div class="content">
+<pre>                _
+               ╱ ╲      .─────.
+           ╔═▶▕   ▏═══▶(|||||||)══════╗
+           ║   ╲ ╱      `─────'       ║
+ .─────.   ║    ▔                     ║
+(|||||||)══╣                          ▼
+ `─────'   ║    _                     _
+           ║   ╱ ╲      .─────.      ╱ ╲      .─────.
+           ╚═▶▕   ▏═══▶(|||||||)═══▶▕   ▏═══▶(|||||||)
+               ╲ ╱      `─────'      ╲ ╱      `─────'
+                ▔                     ▔</pre>
+</div>
+</div>
 <div class="paragraph">
 <p>A pipeline is a DAG (directed acyclic graph) of nodes and arcs (edges). It may start with one node (a dataset) and
 branch through arcs into new nodes (new datasets). These new nodes in turn may have dependent arcs.</p>
@@ -158,24 +178,51 @@ branch through arcs into new nodes (new datasets). These new nodes in turn may h
 <p>Nodes, or datasets, are typically continuously changing in size and periodically changing in schema or format.</p>
 </div>
 <div class="paragraph">
-<p>Arcs, or data processing applications, are continuously processing data as it arrives, periodically evolve as
-upstream data or requirement change, and may be provided services (e.g. AWS Glue and AWS Athena).</p>
+<p>Arcs, or data processing applications, are continuously processing data as it arrives, periodically evolve as upstream
+data or requirement change, and may be provided services (e.g. AWS Glue and AWS Athena).</p>
 </div>
 <div class="paragraph">
 <p>Nodes and arcs often have different owners and stakeholders.</p>
 </div>
 <div class="paragraph">
-<p>Subsequently, the overall pipeline is not static, but dynamic. New arcs and nodes are added and/or removed
-frequently.</p>
+<p>Subsequently, the overall pipeline is not static, but dynamic. New arcs and nodes are added and/or removed frequently.</p>
 </div>
 <div class="paragraph">
 <p>For developers, stakeholders, and teams to be successful in their roles, they cannot be required coordinate with each
 other for every change.</p>
 </div>
+<div class="literalblock">
+<div class="title">Pipelines are composed of projects</div>
+<div class="content">
+<pre>                             ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+                              Project A
+┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐│      _                │
+ Ingress Project                   ╱ ╲      .─────.
+│                           ││ ╔═▶▕   ▏═══▶(|||||||)═╬══════╗
+   ════▶╔ ═ ═ ╗                ║   ╲ ╱      `─────'         ║
+│          _                │└ ╬ ─ ─▔─ ─ ─ ─ ─ ─ ─ ─ ┘      ║
+        ║ ╱#╲ ║      .─────.   ║                            ║
+│  ════▶ ▕###▏ ════▶(|||||||│══╣                       ┌ ─ ─║─ ─ ─ ─ ─ ─ ─ ─
+        ║ ╲#╱ ║      `─────' ┌ ╬ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐      ▼               │
+│          ▔                │  ║    _                  │    _
+   ════▶╚ ═ ═ ╝              │ ║   ╱ ╲      .─────.  │     ╱ ╲      .─────. │
+│                           │  ╚═▶▕   ▏═══▶(|||||||)═══╬═▶▕   ▏═══▶(|||||||)
+ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │     ╲ ╱      `─────'  │     ╲ ╱      `─────' │
+                                    ▔                  │    ▔
+                             │Project B              │  Project C           │
+                              ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─</pre>
+</div>
+</div>
 <div class="paragraph">
-<p>Clusterless allows developers and teams to work as independently as possible. If a new arc needs to be deployed into the
-pipeline DAG, it only needs to subscribe to the events emitted by the nodes (datasets) that it is dependent on.
-Clusterless handles all event publishing and subscriptions.</p>
+<p>Clusterless allows developers and teams to work as independently as possible. The project is a single unit of
+deployment, but a project isn&#8217;t required to declare the overall pipeline, it may only declare part of the pipeline. That
+is, a data pipeline in production can be the sum of any number of projects managed by any number of developers and
+teams.</p>
+</div>
+<div class="paragraph">
+<p>If a new project arc needs to be deployed into the production pipeline DAG, it only needs to subscribe to the events
+emitted by the nodes (datasets) that it is dependent on, declared in other projects. Clusterless handles all event
+publishing and subscriptions.</p>
 </div>
 <div class="paragraph">
 <p>If an upstream dataset provider needs to make incompatible changes, the data processing arc can be deployed so that it
@@ -206,11 +253,11 @@ but all of these workloads read data and write data.</p>
 <div class="paragraph">
 <p>That is, where to read data from and where to write it to is managed outside the workload, passed to the workload as
 parameters at runtime. The only thing a workload has to return to the Clusterless framework is an accounting of what
-data it wrote.</p>
+data it wrote as a manifest, stored in a standardized location.</p>
 </div>
 <div class="paragraph">
-<p>This code can be anything a Docker container can run, or can be coupled to capabilities a given cloud provider might offer
-(e.g. AWS Lambda).</p>
+<p>This code can be anything a Docker container can run, or can be coupled to capabilities a given cloud provider might
+offer (e.g. AWS Lambda).</p>
 </div>
 </div>
 </div>
