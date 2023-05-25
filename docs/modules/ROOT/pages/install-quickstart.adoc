@@ -46,3 +46,8 @@ The `bin` folder will have:
 
 - `cls` - the root CLI interface
 - `cls-aws` - the AWS interface only used as an escape hatch and testing
+
+== Using Clusterless
+
+See the https://github.com/ClusterlessHQ/clusterless-aws-examples[clusterless-aws-examples] GitHub repo for a few
+example project that can be quickly deployed or used as a template for a new project.

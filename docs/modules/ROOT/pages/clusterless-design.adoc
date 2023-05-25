@@ -4,7 +4,8 @@
 
 == Declarative Model
 
-Clusterless relies on a JSON based project declaration so that it knows what and where to deploy the application stack.
+Clusterless relies on a JSON formatted project declaration so that it knows what and where to deploy the application
+stack.
 
 A project has one or more placements, and zero or more datasets, resources, boundaries, and arcs.
 

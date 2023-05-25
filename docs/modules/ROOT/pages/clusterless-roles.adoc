@@ -2,12 +2,12 @@
 :keywords:
 :navtitle: How Clusterless Can Help
 
-Clusterless was designed to aid Data Engineers, Data Scientists, and Data/ML Ops personnel create data oriented
-applications that require minimal attention after deployment. And to allow teams to collaborate without strict coupling
-of their data processes.
+Clusterless was designed to aid Data Engineers, Data Scientists, and Data/ML Ops personnel create data and deploy
+oriented applications and pipelines. Pipelines that require minimal attention after deployment. And allow teams to
+collaborate without strict coupling of their data processes.
 
-Regardless of the role, Clusterless can help by allowing developers to focus on the code first, data pipelines second,
-and the infrastructure last.
+Regardless of the role, Clusterless can help developers focus on the code first, data pipelines second, and the
+infrastructure last.
 
 == Infrastructure Last
 
@@ -17,35 +17,78 @@ for when idle.
 It is a command line tool for deploying data oriented stacks on a cloud provider using native primitives provided by the
 given cloud.
 
+Because it relies on cloud provided serverless infrastructure, during heavy loads, overall utilization is held constant
+regardless of demand. Security best practices are always updated and can be applied to existing deployments.
+
 Clusterless relies on a JSON based declarative language to describe what to deploy, and where to deploy it.
 
 Because it's declarative, what infrastructure is used at configuration is a function of the cloud provider and the
 capabilities required. Sometimes choices are offered or required based on expected load or similar concerns.
 
-This JSON declaration is typically part of the application code that Clusterless would deploy. And, in turn, deployments
-can be run through standard CI/CD pipelines.
+This JSON declaration is typically part of the application code that Clusterless would deploy. And, in turn,
+data-pipeline deployments can be run through standard CI/CD pipelines.
 
 == Pipelines Second
+
+.A Data Pipeline DAG
+....
+                _
+               ╱ ╲      .─────.
+           ╔═▶▕   ▏═══▶(|||||||)══════╗
+           ║   ╲ ╱      `─────'       ║
+ .─────.   ║    ▔                     ║
+(|||||||)══╣                          ▼
+ `─────'   ║    _                     _
+           ║   ╱ ╲      .─────.      ╱ ╲      .─────.
+           ╚═▶▕   ▏═══▶(|||||||)═══▶▕   ▏═══▶(|||||||)
+               ╲ ╱      `─────'      ╲ ╱      `─────'
+                ▔                     ▔
+....
 
 A pipeline is a DAG (directed acyclic graph) of nodes and arcs (edges). It may start with one node (a dataset) and
 branch through arcs into new nodes (new datasets). These new nodes in turn may have dependent arcs.
 
 Nodes, or datasets, are typically continuously changing in size and periodically changing in schema or format.
 
-Arcs, or data processing applications, are continuously processing data as it arrives, periodically evolve as
-upstream data or requirement change, and may be provided services (e.g. AWS Glue and AWS Athena).
+Arcs, or data processing applications, are continuously processing data as it arrives, periodically evolve as upstream
+data or requirement change, and may be provided services (e.g. AWS Glue and AWS Athena).
 
 Nodes and arcs often have different owners and stakeholders.
 
-Subsequently, the overall pipeline is not static, but dynamic. New arcs and nodes are added and/or removed
-frequently.
+Subsequently, the overall pipeline is not static, but dynamic. New arcs and nodes are added and/or removed frequently.
 
 For developers, stakeholders, and teams to be successful in their roles, they cannot be required coordinate with each
 other for every change.
 
-Clusterless allows developers and teams to work as independently as possible. If a new arc needs to be deployed into the
-pipeline DAG, it only needs to subscribe to the events emitted by the nodes (datasets) that it is dependent on.
-Clusterless handles all event publishing and subscriptions.
+.Pipelines are composed of projects
+....
+                             ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+                              Project A
+┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐│      _                │
+ Ingress Project                   ╱ ╲      .─────.
+│                           ││ ╔═▶▕   ▏═══▶(|||||||)═╬══════╗
+   ════▶╔ ═ ═ ╗                ║   ╲ ╱      `─────'         ║
+│          _                │└ ╬ ─ ─▔─ ─ ─ ─ ─ ─ ─ ─ ┘      ║
+        ║ ╱#╲ ║      .─────.   ║                            ║
+│  ════▶ ▕###▏ ════▶(|||||||│══╣                       ┌ ─ ─║─ ─ ─ ─ ─ ─ ─ ─
+        ║ ╲#╱ ║      `─────' ┌ ╬ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐      ▼               │
+│          ▔                │  ║    _                  │    _
+   ════▶╚ ═ ═ ╝              │ ║   ╱ ╲      .─────.  │     ╱ ╲      .─────. │
+│                           │  ╚═▶▕   ▏═══▶(|||||||)═══╬═▶▕   ▏═══▶(|||||||)
+ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │     ╲ ╱      `─────'  │     ╲ ╱      `─────' │
+                                    ▔                  │    ▔
+                             │Project B              │  Project C           │
+                              ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+....
+
+Clusterless allows developers and teams to work as independently as possible. The project is a single unit of
+deployment, but a project isn't required to declare the overall pipeline, it may only declare part of the pipeline. That
+is, a data pipeline in production can be the sum of any number of projects managed by any number of developers and
+teams.
+
+If a new project arc needs to be deployed into the production pipeline DAG, it only needs to subscribe to the events
+emitted by the nodes (datasets) that it is dependent on, declared in other projects. Clusterless handles all event
+publishing and subscriptions.
 
 If an upstream dataset provider needs to make incompatible changes, the data processing arc can be deployed so that it
 emits a new dataset under a new version. If needed, the new arc can be back-filled, so that the new dataset has
@@ -67,8 +110,7 @@ Clusterless standardizes the contract these workloads code against.
 
 That is, where to read data from and where to write it to is managed outside the workload, passed to the workload as
 parameters at runtime. The only thing a workload has to return to the Clusterless framework is an accounting of what
-data it wrote.
+data it wrote as a manifest, stored in a standardized location.
 
-This code can be anything a Docker container can run, or can be coupled to capabilities a given cloud provider might offer
-(e.g. AWS Lambda).
-
+This code can be anything a Docker container can run, or can be coupled to capabilities a given cloud provider might
+offer (e.g. AWS Lambda).
