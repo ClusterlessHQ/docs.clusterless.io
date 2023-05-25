@@ -1,0 +1,78 @@
+= How Clusterless Works
+:keywords:
+:navtitle: How Clusterless Works
+
+== Declarative Model
+
+Clusterless relies on a JSON based project declaration so that it knows what and where to deploy the application stack.
+
+A project has one or more placements, and zero or more datasets, resources, boundaries, and arcs.
+
+A placement describes where the project should be deployed, the coordinates are:
+
+- provider - the name of the target cloud provider (e.g. `aws`)
+- account - the account id
+- region - the region in which to make the deployment (e.g. `us-east-2`)
+- stage - optionally, the prefix namespace to deploy within an account (e.g. `PROD` or `TEST` )
+
+A dataset is a named and versioned collection of data objects reachable by URIs.
+
+Resources are things that should be provisioned for use, like an AWS S3 bucket.
+
+Boundaries are Clusterless provided capabilities that integrate and make available data as a dataset from outside
+sources to arcs that work with that data.
+
+Arcs manage custom or standard workloads that consume and produce data. They listen for changes in upstream datasets and
+publish events when updating the datasets they contribute to. Arcs are named and versioned.
+
+== Cloud Blueprints
+
+Clusterless, when given a project declaration, constructs blueprint of the data stack for the given cloud provider and
+deploys it by translating it to the model the underlying deployment tool relies on.
+
+In the case of AWS, the https://aws.amazon.com/cdk/[AWS CDK] is used under the hood to generate AWS Cloudformation
+files, which in turn are pushed to Cloudformation for deployment. Because of this, the AWS CDK must be installed prior
+to using the `cls` command line tool.
+
+Clusterless relies on native primitives in the target cloud to provide its capabilities. But sometimes custom services
+need to be deployed to fill in the gaps. For example, the built in `s3CopyArc`, when declared and deployed, pushes AWS
+Lambda code to AWS and configures it to listen for events from upstream datasets.
+
+== Metadata
+
+Clusterless standardizes storage and format of a few different metadata types.
+
+All the metadata managed by Clusterless in a given provider is stored in a common location, using a consistent naming
+scheme. In AWS, metadata is stored in AWS S3 buckets. This allows both machines and people to look at the data by simply
+browsing a bucket.
+
+Datasets have a name and version, but also have a location and a state. Within that location, there are chunks of data
+that all arrived within a common interval (5 or 15 minute periods). And this chunk of data may be complete, partial,
+empty, or removed. This data is kept in a manifest file and there is one manifest file for every chunk of data.
+
+Arcs have a name and version, but also have a state. An arc starts when a new chunk of data arrives, and completes
+when it is done processing. But it's more complicated, thus arcs have the states running, complete, partial, or missing.
+
+Details about the state models can be read in the ADR https://github.com/ClusterlessHQ/clusterless/blob/wip-1.0/docs/adr/0003-arc-state-and-data-metadata.md[arc-state-and-data-metadata].
+
+== Monotonic Ticks of the Clock
+
+Data becomes available in chunks, and these chunks are timeboxed within an arrival interval.
+
+On the simple side, a new object may be uploaded every hour or so to an S3 bucket. If the intervals maintained are an
+hour in duration, one file would arrive every hour, or hourly. And the chunks would be labeled `2023-01-01-03` for
+January 1, 3am, in 2023.
+
+On the complex side, files could be made available at a rate of hundreds every minute. A reasonable interval to maintain
+chunks would be 5 minutes, or in twelfths. So a twelfth of an hour in a day could have thousands of files to be
+processed. Such a label could take the form `20230101PT5M050`.
+
+Labeling intervals is important. It marks the time of arrival, or the time of observation by the ingress boundary.
+
+For heavy load systems, or properly chosen interval durations, there shouldn't be any intervals missing that can't be
+accounted for. This provides a means to audit a given dataset. This is accomplished by using the label value as either a
+partition value in the storage key of the data (e.g. `/lot=20230101PT5M050/data.json`), or as a component of the object
+name (e.g. `data-20230101PT5M050-1684984366.json` ).
+
+Details about intervals supported by Clusterless can be read in the ADR
+https://github.com/ClusterlessHQ/clusterless/blob/wip-1.0/docs/adr/0004-machine-and-human-friendly-interval-ids.md[machine-and-human-friendly-interval-ids].
