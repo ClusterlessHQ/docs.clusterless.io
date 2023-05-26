@@ -70,6 +70,45 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Clusterless Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts/provider.html">Providers</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts/project.html">Projects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts/placement.html">Placements</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts/dataset.html">Datasets</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts/lot.html">Lots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts/workload.html">Workloads</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts/arc.html">Arcs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts/resource.html">Resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts/boundary.html">Boundaries</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts/barrier.html">Barriers</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts/dag.html">Pipeline DAG</a>
+  </li>
+</ul>
+  </li>
 </ul>
   </nav>
 </div>
@@ -113,12 +152,15 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Clusterless was designed to aid Data Engineers, Data Scientists, and Data/ML Ops personnel create data and deploy
-oriented applications and pipelines. Pipelines that require minimal attention after deployment. And allow teams to
-collaborate without strict coupling of their data processes.</p>
+<p>Clusterless was designed to aid Data Engineer, Data Scientist, and Data/ML Ops roles.</p>
 </div>
 <div class="paragraph">
-<p>Regardless of the role, Clusterless can help developers focus on the code first, data pipelines second, and the
+<p>The Clusterless framework simplifies the creation and deployment of cloud based data oriented applications and
+pipelines. Pipelines that require minimal attention after deployment. And allow teams to collaborate without strict
+coupling of their data processes.</p>
+</div>
+<div class="paragraph">
+<p>Clusterless allows any data oriented role to focus on the data and code first, data pipelines second, and the
 infrastructure last.</p>
 </div>
 </div>
@@ -128,11 +170,11 @@ infrastructure last.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Clusterless is not a server or an application that runs on a remote host. There is nothing to reboot, monitor, or pay
-for when idle.</p>
+for when idle. No license keys or subscriptions.</p>
 </div>
 <div class="paragraph">
-<p>It is a command line tool for deploying data oriented stacks on a cloud provider using native primitives provided by the
-given cloud.</p>
+<p>It is an open-source command line tool for deploying data oriented stacks on a cloud provider using native primitives
+provided by the given cloud.</p>
 </div>
 <div class="paragraph">
 <p>Because it relies on cloud provided serverless infrastructure, during heavy loads, overall utilization is held constant
@@ -146,7 +188,7 @@ regardless of demand. Security best practices are always updated and can be appl
 capabilities required. Sometimes choices are offered or required based on expected load or similar concerns.</p>
 </div>
 <div class="paragraph">
-<p>This JSON declaration is typically part of the application code that Clusterless would deploy. And, in turn,
+<p>This JSON declaration is typically a part of the application code that Clusterless would deploy. And, in turn,
 data-pipeline deployments can be run through standard CI/CD pipelines.</p>
 </div>
 </div>
@@ -171,21 +213,22 @@ data-pipeline deployments can be run through standard CI/CD pipelines.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>A pipeline is a DAG (directed acyclic graph) of nodes and arcs (edges). It may start with one node (a dataset) and
-branch through arcs into new nodes (new datasets). These new nodes in turn may have dependent arcs.</p>
+<p>A pipeline is a DAG (directed acyclic graph) of nodes and workloads (edges). It may start with one node (a dataset) and
+branch through arcs into new nodes (new datasets). These new nodes in turn may have dependent workloads.</p>
 </div>
 <div class="paragraph">
 <p>Nodes, or datasets, are typically continuously changing in size and periodically changing in schema or format.</p>
 </div>
 <div class="paragraph">
-<p>Arcs, or data processing applications, are continuously processing data as it arrives, periodically evolve as upstream
-data or requirement change, and may be provided services (e.g. AWS Glue and AWS Athena).</p>
+<p>Workloads, or data processing applications, are continuously processing data as it arrives, periodically evolve as
+upstream data or requirement change, and may be cloud provided services (e.g. AWS Glue and AWS Athena).</p>
 </div>
 <div class="paragraph">
-<p>Nodes and arcs often have different owners and stakeholders.</p>
+<p>Nodes and workloads often have different owners and stakeholders.</p>
 </div>
 <div class="paragraph">
-<p>Subsequently, the overall pipeline is not static, but dynamic. New arcs and nodes are added and/or removed frequently.</p>
+<p>Subsequently, the overall pipeline is not static, but dynamic. New workloads and datasets are added and/or removed
+frequently.</p>
 </div>
 <div class="paragraph">
 <p>For developers, stakeholders, and teams to be successful in their roles, they cannot be required coordinate with each

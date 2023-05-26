@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lot :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/guide/wip-1.0/concepts/lot.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<script defer data-domain="docs.clusterless.com" src="https://plausible.io/js/script.js"></script>
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.clusterless.io">Clusterless Docs</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="guide" data-version="wip-1.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Clusterless</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../clusterless-roles.html">How Clusterless Can Help</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../clusterless-design.html">How Clusterless Works</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install-quickstart.html">Install and Run Clusterless Quickstart</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Clusterless Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="provider.html">Providers</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="project.html">Projects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="placement.html">Placements</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="dataset.html">Datasets</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="lot.html">Lots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="workload.html">Workloads</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="arc.html">Arcs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="resource.html">Resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="boundary.html">Boundaries</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="barrier.html">Barriers</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="dag.html">Pipeline DAG</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Clusterless</span>
+    <span class="version">wip-1.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Clusterless</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">wip-1.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Clusterless</a></li>
+    <li>Clusterless Concepts</li>
+    <li><a href="lot.html">Lots</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/concepts/pages/lot.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Lot</h1>
+<div class="paragraph">
+<p>Clusterless introduces the concept of a <a href="#"><code>lot</code></a>, simply a batch of data objects that all arrived within
+the same interval of time.</p>
+</div>
+<div class="paragraph">
+<p>The <code>lot</code> id value is used to maintain auditability through the system by either partitioning data by lots and/or
+embedding the lot id value in the file name.</p>
+</div>
+<div class="paragraph">
+<p>A lot id is named in a uniform way. Expected to be monotonic. And should be a concise representation of a time
+unit (a 5 or 10 minute interval) that is both human-readable and machine friendly against simple algorithms, e.g.
+splitting and sorting.</p>
+</div>
+<div class="paragraph">
+<p>An example would be <code>20221013PT5M000</code>, representing the 5-minute interval starting at midnight on October, 13, 2022.</p>
+</div>
+<div class="paragraph">
+<p>A lot id will represent the wall clock time data was observed and the objects collected, it does not represent the time
+range within the data, or when the object was created.</p>
+</div>
+<div class="paragraph">
+<p>For example, an object (csv file) may have 100 records between 23:59 and 00:01. But the file was written in 00:02, yet
+the event was not seen until 00:03. If the lots are configured as 5 minute intervals, this file will be recorded in a
+manifest with the given lot id of <code>20221013PT5M000.</code></p>
+</div>
+<div class="paragraph">
+<p>See the ADR on
+<a href="https://github.com/ClusterlessHQ/clusterless/blob/wip-1.0/docs/adr/0004-machine-and-human-friendly-interval-ids.md">machine-and-human-friendly-interval-ids</a>.</p>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
