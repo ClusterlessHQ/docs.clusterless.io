@@ -10,6 +10,7 @@ content:
     - url: https://github.com/ClusterlessHQ/docs.clusterless.io.git
       branches: wip-1.0
       start_path: docs
+      edit_url: '{web_url}/edit/wip-1.0/{path}'
 
 ui:
   bundle:
