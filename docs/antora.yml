@@ -3,3 +3,4 @@ title: Clusterless
 version: wip-1.0
 nav:
   - modules/ROOT/nav-start.adoc
+  - modules/concepts/nav.adoc

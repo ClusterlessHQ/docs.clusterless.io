@@ -1,0 +1,12 @@
+.Clusterless Concepts
+* xref:provider.adoc[Providers]
+* xref:project.adoc[Projects]
+* xref:placement.adoc[Placements]
+* xref:dataset.adoc[Datasets]
+* xref:lot.adoc[Lots]
+* xref:workload.adoc[Workloads]
+* xref:arc.adoc[Arcs]
+* xref:resource.adoc[Resources]
+* xref:boundary.adoc[Boundaries]
+* xref:barrier.adoc[Barriers]
+* xref:dag.adoc[Pipeline DAG]

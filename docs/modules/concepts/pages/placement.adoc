@@ -1,0 +1,8 @@
+= Placement
+
+A placement describes where the project should be deployed, the coordinates are:
+
+- xref:provider.adoc[provider] - the name of the target cloud provider (e.g. `aws`)
+- account - the account id
+- region - the region in which to make the deployment (e.g. `us-east-2`)
+- stage - optionally, the prefix namespace to deploy within an account (e.g. `PROD` or `TEST` )

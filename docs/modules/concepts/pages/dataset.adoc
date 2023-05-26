@@ -1,0 +1,38 @@
+= Dataset
+
+.Dataset
+....
+ .─────.
+(|||||||)
+ `─────'
+....
+
+A Dataset is a collection of data objects (files or blobs) and associated metadata objects. And are identified by a name
+and a version. These values are used when publishing or subscribing to availability events, and for internal naming of
+metadata resources.
+
+Data objects are the actual data, either consumed or produced, externally or by arc workloads within the framework.
+
+Typically, data objects are organized by partitions, like `year=2023/host=abc-001`. Frequently partitions are not named,
+`2023/abc-001`, but the data is still organized for use.
+
+Datasets are also organized using a xref:lot.adoc[lot identifier].
+
+The metadata objects are manifest files that list the locations of objects arrived within a given `lot` interval.
+
+If a hundred files arrived in an S3 bucket between 0:0:0 (inclusive) and 0:5:00 (exclusive), the manifest could be
+labeled as having lot id `20230101PT5M000`.
+
+Manifest files have state. They may be complete, partial, empty, or removed.
+
+The empty state is important. A workload may not produce any data, and this outcome may be important to downstream
+listeners.
+
+When a workload fails and writes partial data, this data needs to be clean up or leveraged in a new retry attempt for
+the workload. Marking a manifest as being removed confirms duplicate data isn't interleaved in the dataset and provides
+some accounting for the failures.
+
+See the ADR
+https://github.com/ClusterlessHQ/clusterless/blob/wip-1.0/docs/adr/0003-arc-state-and-data-metadata.md[arc-state-and-data-metadata]
+for more details on manifest state.
+

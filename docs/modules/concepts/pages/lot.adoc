@@ -1,0 +1,24 @@
+= Lot
+
+Clusterless introduces the concept of a xref:lot.adoc[`lot`], simply a batch of data objects that all arrived within
+the same interval of time.
+
+The `lot` id value is used to maintain auditability through the system by either partitioning data by lots and/or
+embedding the lot id value in the file name.
+
+A lot id is named in a uniform way. Expected to be monotonic. And should be a concise representation of a time
+unit (a 5 or 10 minute interval) that is both human-readable and machine friendly against simple algorithms, e.g.
+splitting and sorting.
+
+An example would be `20221013PT5M000`, representing the 5-minute interval starting at midnight on October, 13, 2022.
+
+A lot id will represent the wall clock time data was observed and the objects collected, it does not represent the time
+range within the data, or when the object was created.
+
+For example, an object (csv file) may have 100 records between 23:59 and 00:01. But the file was written in 00:02, yet
+the event was not seen until 00:03. If the lots are configured as 5 minute intervals, this file will be recorded in a
+manifest with the given lot id of `20221013PT5M000.`
+
+See the ADR on
+https://github.com/ClusterlessHQ/clusterless/blob/wip-1.0/docs/adr/0004-machine-and-human-friendly-interval-ids.md[machine-and-human-friendly-interval-ids].
+

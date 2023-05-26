@@ -1,0 +1,24 @@
+= Workload
+
+....
+      _
+     ╱ ╲
+═══▶▕   ▏═══▶
+     ╲ ╱
+      ▔
+....
+
+The actual process to be executed.
+
+The workload can be a simple Lambda function, Docker via AWS Batch (or Batch array), or any other service like AWS
+Sagemaker (for training and validation), AWS Glue (for catalog maintenance) and AWS Athena (for chaining CTAS/INSERT
+INTO queries instead of chaining custom processing).
+
+When a new xref:lot.adoc[lot] of data arrives in a xref:dataset.adoc[dataset], an xref:arc.adoc[arc] is notified, which
+in turns starts a workload running against the newly arrived data.
+
+A workload is declared by the appropriate module in the xref:project.adoc[project] file.
+
+To run a custom Docker image, declare the arc as having the type `aws:core:batchExecArc`.
+
+This will run the referenced Docker image within the AWS Batch service.

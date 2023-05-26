@@ -1,0 +1,49 @@
+= Pipeline DAG
+
+.Pipeline DAG
+....
+               _
+ .─────.      ╱ ╲      .─────.
+(|||||||)═══▶▕   ▏═══▶(|||||||)══════╗
+ `─────'      ╲ ╱      `─────'       ║
+               ▔                     ║
+                                     ▼
+               _                     _
+ .─────.      ╱ ╲      .─────.      ╱ ╲      .─────.
+(|||||||)═══▶▕   ▏═══▶(|||||||)═══▶▕   ▏═══▶(|||||||)
+ `─────'      ╲ ╱      `─────'      ╲ ╱      `─────'
+               ▔                     ▔
+....
+
+A Pipeline DAG is simply a series of chained processes that in turn produce datasets. The chaining is by subscribing to
+a source dataset and listening for new arrivals.
+
+....
+                             ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+                              Project A
+┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐│      _                │
+ Ingress Project                   ╱ ╲      .─────.
+│                           ││ ╔═▶▕   ▏═══▶(|||||||)═╬══════╗
+   ════▶╔ ═ ═ ╗                ║   ╲ ╱      `─────'         ║
+│          _                │└ ╬ ─ ─▔─ ─ ─ ─ ─ ─ ─ ─ ┘      ║
+        ║ ╱#╲ ║      .─────.   ║                            ║
+│  ════▶ ▕###▏ ════▶(|||||||│══╣                       ┌ ─ ─║─ ─ ─ ─ ─ ─ ─ ─
+        ║ ╲#╱ ║      `─────' ┌ ╬ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐      ▼               │
+│          ▔                │  ║    _                  │    _
+   ════▶╚ ═ ═ ╝              │ ║   ╱ ╲      .─────.  │     ╱ ╲      .─────. │
+│                           │  ╚═▶▕   ▏═══▶(|||||||)═══╬═▶▕   ▏═══▶(|||||||)
+ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │     ╲ ╱      `─────'  │     ╲ ╱      `─────' │
+                                    ▔                  │    ▔
+                             │Project B              │  Project C           │
+                              ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+....
+
+A pipeline DAG is not static and declared up front.
+
+It is dynamic and organic. It grows and changes over time with only limited coordination between stakeholders.
+
+Clusterless enabled developers and stakeholder to build and maintain complex pipelines, not because complexity is a goal
+but the result of multiple stakeholder requirements and expectations.
+
+By leveraging project and dataset versioning, and support for multiple concurrent scoped (staging) environments, risks
+of complexity can be mitigated and managed.

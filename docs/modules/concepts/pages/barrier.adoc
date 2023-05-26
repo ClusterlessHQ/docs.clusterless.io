@@ -1,0 +1,22 @@
+= Barrier
+
+....
+         -
+═══╗    ╱+╲      .─────.
+   ╠══▶++++-═══▶(|||||||)
+═══╝    ╲+╱      `─────'
+         ▔
+....
+
+Barriers listen for multiple events from different datasets and fires a downstream event when arrival conditions are
+met.
+
+In order to join one or more datasets, data partitioned on equivalent keys must be available, the join keys.
+
+A join barrier waits until data arrives for a given partition in each declared dataset, when all the sets have satisfied
+the join condition, an event is published describing the participants in the join.
+
+It is up to the processing node to complete the join.
+
+A join barrier is described by a join expression, every time the expression is satisfied by an arriving event, a new
+event is published.

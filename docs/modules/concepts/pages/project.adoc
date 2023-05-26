@@ -1,0 +1,95 @@
+= Project
+
+A project is one or more xref:placement.adoc[placements], and zero or more xref:dataset.adoc[datasets],
+xref:resource.adoc[resources], xref:boundary.adoc[boundaries], xref:barrier.adoc[barriers], and xref:arc.adoc[arcs].
+
+Projects are declared in a JSON formatted file.
+
+.Simple Project File
+[source,jsonnet]
+----
+{
+  project: {
+    name: 'S3Python',
+    version: '20230101-00',
+  },
+  placement: {
+    stage: 'PROD',
+    provider: 'aws',
+    account: '123456789012',
+    region: 'us-west-2',
+  },
+  resources: [
+    {
+      type: 'aws:core:s3Bucket', // <1>
+      name: 'bucket',
+      bucketName: 'prod-clusterless-simple-python-copy-123456789012-us-west-2',
+    },
+    {
+      type: 'aws:core:computeEnvironment', // <2>
+      name: 'simple',
+      computeEnvironmentName: 'simpleComputeEnvironment'
+    },
+  ],
+  boundaries: [
+    {
+      type: 'aws:core:s3PutListenerBoundary', // <3>
+      name: 'IngressListener',
+      dataset: {
+        name: 'ingress-python-example-source',
+        version: '20230101',
+        pathURI: 's3://prod-clusterless-simple-python-copy-123456789012-us-west-2/ingress/',
+      },
+      lotUnit: unit,
+    },
+  ],
+  arcs: [
+    {
+      type: 'aws:core:batchExecArc', // <4>
+      name: 'pythonCopy',
+      sources: {
+        main: { // <5>
+          name: 'ingress-python-example-source',
+          version: '20230101',
+          pathURI: 's3://prod-clusterless-simple-python-copy-123456789012-us-west-2/ingress/',
+        },
+      },
+      sinks: {
+        main: { // <6>
+          name: 'ingress-python-example-copy',
+          version: '20230101',
+          pathURI: 's3://prod-clusterless-simple-python-copy-123456789012-us-west-2/copy/',
+        },
+      },
+      workload: {
+        computeEnvironmentRef: 'simple', // <7>
+        imagePath: 'app',
+        environment: {},
+        command: [
+          'python3',
+          'copyS3.py',
+          '$.arcNotifyEvent.lot',
+          '$.arcNotifyEvent.manifest',
+        ],
+      },
+    },
+  ],
+}
+----
+<1> An AWS S3 bucket will be created
+<2> an AWS Batch compute environment will be defined with the name 'simple'
+<3> An S3 listener boundary will be deployed
+<4> Declares an Arc
+<5> that listens for new data from the dataset named 'ingress-python-example-source'
+<6> and publishes events for a new dataset named 'ingress-python-example-copy'
+<7> the arc runs a docker image in the 'app' directory of the current source tree using the 'simple' compute environment
+
+Project files should reside in the code repo of the resources being developed and deployed into the
+xref:dag.adoc[pipeline DAG]. This allows a CI/CD system to perform any deployment updates when new code is pushed.
+
+Project files are simple JSON. For large complex projects it can be cumbersome to maintain the names of things and
+references between resources. It is recommended to use a third party tool, like https://jsonnet.org[Jsonnet], to
+generate the JSON project files during deployment.
+
+For applications leveraging https://gradle.com[Gradle], there is a
+https://plugins.gradle.org/search?term=jsonnet[Jsonnet plugin].

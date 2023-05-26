@@ -1,0 +1,39 @@
+= Arc
+
+....
+╔════════════════════════════════╗
+║Arc                             ║
+║            ┌────────┐          ║
+║┌──────────┐│Workload│          ║
+║│ Dataset  │└────────┘          ║
+║└──────────┘    _               ║
+║  .─────.      ╱ ╲      .─────. ║
+║ (|||||||)═══▶▕   ▏═══▶(|||||||)║
+║  `─────'      ╲ ╱      `─────' ║
+║                ▔               ║
+╚════════════════════════════════╝
+....
+
+If xref:dataset.adoc[datasets] are nodes in a graph, joined by a xref:workload.adoc[workload], then an arc is the source
+dataset, the workload, and the sink dataset.
+
+An arc listens for availability events and executes its declared workload against the newly arrived data or metadata.
+
+Developers can create the code deployed as a workload in an arc, or use native Clusterless components available for
+a given provider.
+
+Arcs have state. They are running or complete. Or they may have finished in some intermediate state.
+
+Arc state is important for identifying whether a workload completed successfully or only partially completed, or
+attempted to run but likely failed or was aborted.
+
+Partially completed workloads for a given lot of data should be retried. Depending on the workload type, the partial data
+should be removed before re-running the process, or the process should use that information to skip performing reduntant
+work (e.g. on the retry, only copy the files that didn't copy on the previous attempt).
+
+This is an important quality of the Clusterless framework and allows simpler maintenance and recovery from errors and
+outages or even preemption of resources (spot priced resources).
+
+See the ADR
+https://github.com/ClusterlessHQ/clusterless/blob/wip-1.0/docs/adr/0003-arc-state-and-data-metadata.md[arc-state-and-data-metadata]
+for more details on arc state.

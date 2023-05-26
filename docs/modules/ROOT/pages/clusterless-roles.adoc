@@ -2,20 +2,22 @@
 :keywords:
 :navtitle: How Clusterless Can Help
 
-Clusterless was designed to aid Data Engineers, Data Scientists, and Data/ML Ops personnel create data and deploy
-oriented applications and pipelines. Pipelines that require minimal attention after deployment. And allow teams to
-collaborate without strict coupling of their data processes.
+Clusterless was designed to aid Data Engineer, Data Scientist, and Data/ML Ops roles.
 
-Regardless of the role, Clusterless can help developers focus on the code first, data pipelines second, and the
+The Clusterless framework simplifies the creation and deployment of cloud based data oriented applications and
+pipelines. Pipelines that require minimal attention after deployment. And allow teams to collaborate without strict
+coupling of their data processes.
+
+Clusterless allows any data oriented role to focus on the data and code first, data pipelines second, and the
 infrastructure last.
 
 == Infrastructure Last
 
 Clusterless is not a server or an application that runs on a remote host. There is nothing to reboot, monitor, or pay
-for when idle.
+for when idle. No license keys or subscriptions.
 
-It is a command line tool for deploying data oriented stacks on a cloud provider using native primitives provided by the
-given cloud.
+It is an open-source command line tool for deploying data oriented stacks on a cloud provider using native primitives
+provided by the given cloud.
 
 Because it relies on cloud provided serverless infrastructure, during heavy loads, overall utilization is held constant
 regardless of demand. Security best practices are always updated and can be applied to existing deployments.
@@ -25,7 +27,7 @@ Clusterless relies on a JSON based declarative language to describe what to depl
 Because it's declarative, what infrastructure is used at configuration is a function of the cloud provider and the
 capabilities required. Sometimes choices are offered or required based on expected load or similar concerns.
 
-This JSON declaration is typically part of the application code that Clusterless would deploy. And, in turn,
+This JSON declaration is typically a part of the application code that Clusterless would deploy. And, in turn,
 data-pipeline deployments can be run through standard CI/CD pipelines.
 
 == Pipelines Second
@@ -45,17 +47,18 @@ data-pipeline deployments can be run through standard CI/CD pipelines.
                 ▔                     ▔
 ....
 
-A pipeline is a DAG (directed acyclic graph) of nodes and arcs (edges). It may start with one node (a dataset) and
-branch through arcs into new nodes (new datasets). These new nodes in turn may have dependent arcs.
+A pipeline is a DAG (directed acyclic graph) of nodes and workloads (edges). It may start with one node (a dataset) and
+branch through arcs into new nodes (new datasets). These new nodes in turn may have dependent workloads.
 
 Nodes, or datasets, are typically continuously changing in size and periodically changing in schema or format.
 
-Arcs, or data processing applications, are continuously processing data as it arrives, periodically evolve as upstream
-data or requirement change, and may be provided services (e.g. AWS Glue and AWS Athena).
+Workloads, or data processing applications, are continuously processing data as it arrives, periodically evolve as
+upstream data or requirement change, and may be cloud provided services (e.g. AWS Glue and AWS Athena).
 
-Nodes and arcs often have different owners and stakeholders.
+Nodes and workloads often have different owners and stakeholders.
 
-Subsequently, the overall pipeline is not static, but dynamic. New arcs and nodes are added and/or removed frequently.
+Subsequently, the overall pipeline is not static, but dynamic. New workloads and datasets are added and/or removed
+frequently.
 
 For developers, stakeholders, and teams to be successful in their roles, they cannot be required coordinate with each
 other for every change.

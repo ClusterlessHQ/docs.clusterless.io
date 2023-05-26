@@ -1,0 +1,8 @@
+= Resource
+
+Resources are shared static AWS resources like an AWS S3 bucket, Athena Database, or compute configuration.
+
+Resources are within a given project, but can be shared across projects.
+
+That is a project to manage the common shared resources can be independently managed from the project or projects that
+rely on those resources (shared S3 buckets or compute resources).

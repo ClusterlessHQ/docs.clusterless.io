@@ -1,0 +1,12 @@
+= Provider
+
+A provider may be Amazon Web Services (AWS), or Google Cloud, Oracle Cloud, or k8s.
+
+Currently only AWS is supported.
+
+Providers are declared in the xref:placement.adoc section of a xref:project.adoc declaration.
+
+Clusterless only intends to provide and manage capabilities a given provider supports, and to ease operability between
+providers.
+
+There is no intent to offer feature parity across providers.

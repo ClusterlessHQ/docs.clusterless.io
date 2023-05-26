@@ -1,0 +1,23 @@
+= Boundary
+
+Boundaries are the integration interfaces that adapt incoming or outgoing data to the Clusterless framework.
+
+There are Ingress and Egress Boundaries.
+
+.Ingress Boundary
+....
+════▶╔ ═ ═ ╗
+        _
+     ║ ╱#╲ ║     .─────.
+════▶ ▕###▏ ═══▶(|||||||)════▶
+     ║ ╲#╱ ║     `─────'
+        ▔
+════▶╚ ═ ═ ╝
+....
+
+An ingress boundary accepts data from an external source, creates appropriate metadata for the incoming set of
+data objects, and fires events to downstream listeners.
+
+An egress boundary listens to events and adapts the data or metadata for use by an external system.
+
+
