@@ -1,5 +1,8 @@
 = Clusterless
 
+CAUTION: You are reading a *DRAFT* of the Clusterless documentation. Features documented here may not be currently
+available and available features may not be properly documented, or documented at all.
+
 Clusterless is a tool for deploying scalable and secure data-processing workloads for continuously arriving data, across
 clouds.
 
