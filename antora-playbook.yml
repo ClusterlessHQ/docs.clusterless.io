@@ -1,3 +1,6 @@
+runtime:
+  cache_dir: ./.cache/antora
+
 site:
   title: Clusterless Docs
   url: https://docs.clusterless.io
@@ -11,9 +14,16 @@ content:
       branches: wip-1.0
       start_path: docs
       edit_url: '{web_url}/edit/wip-1.0/{path}'
+    - url: https://github.com/ClusterlessHQ/clusterless.git
+      branches: wip-1.0
+#      start_path: .
 
 ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
   supplemental_files: ./supplemental-ui
+
+antora:
+  extensions:
+  - '@antora/collector-extension'

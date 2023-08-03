@@ -1,6 +1,7 @@
 name: guide
-title: Clusterless
-version: wip-1.0
+title: Clusterless User Guide
+version: 1.0-wip
 nav:
   - modules/ROOT/nav-start.adoc
   - modules/concepts/nav.adoc
+  - modules/ROOT/nav-end.adoc
