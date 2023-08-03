@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Component :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/reference/1.0-wip/components/aws-core-s3-put-listener-boundary.html">
+    <meta name="generator" content="Antora 3.1.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<script defer data-domain="docs.clusterless.com" src="https://plausible.io/js/script.js"></script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.clusterless.io">Clusterless Docs</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Project</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/ClusterlessHQ/">Repositories</a>
+            <a class="navbar-item" href="https://github.com/ClusterlessHQ/clusterless/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/orgs/ClusterlessHQ/discussions">Discussions</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://chris.wensel.net">Support</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="https://github.com/ClusterlessHQ/clusterless/releases">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="reference" data-version="1.0-wip">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Clusterless Reference</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Clusterless Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aws-core-batch-exec-arc.html">aws:core:batchExecArc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aws-core-compute-environment.html">aws:core:computeEnvironment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aws-core-event-bus.html">aws:core:eventBus</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aws-core-s3-bucket.html">aws:core:s3Bucket</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aws-core-s3-copy-arc.html">aws:core:s3CopyArc</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="aws-core-s3-put-listener-boundary.html">aws:core:s3PutListenerBoundary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Clusterless Reference</span>
+    <span class="version">1.0-wip</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Clusterless Reference</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1.0-wip</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../guide/1.0-wip/index.html">Clusterless User Guide</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../guide/1.0-wip/index.html">1.0-wip</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../guide/1.0-wip/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Clusterless Reference</a></li>
+    <li>Clusterless Components</li>
+    <li><a href="aws-core-s3-put-listener-boundary.html">aws:core:s3PutListenerBoundary</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Component</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Type: <code>aws:core:s3PutListenerBoundary</code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>Synopsis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A boundary that listens for S3 Put events and publishes an availability event for the dataset.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>....
+This boundary listens for put events against the specified bucket and key prefix.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If events arrive frequently in an interval, change the eventArrival to "frequent", this will
+cause the boundary to emit an availability event after the end of every interval regardless of
+available put events. If no put events are found, the dataset manifest status for the lot interval
+will be set to "empty".</p>
+</div>
+<div class="paragraph">
+<p>lotUnit: Fourths|Sixth|Twelfths|etc
+    the interval of a lot, see documentation for supported intervals</p>
+</div>
+<div class="paragraph">
+<p>eventArrival: infrequent|frequent
+    expected frequency of event arrivals
+    infrequent is once per interval and frequent more than once per interval</p>
+</div>
+<div class="paragraph">
+<p>infrequent.lotSource: objectModifiedTime|eventTime
+    objectModifiedTime will use the last modified time of the object
+    eventTime will use the time the event was received by the listener</p>
+</div>
+<div class="paragraph">
+<p>infrequent.enableEventBridge: true|false
+    true will enable event bridge on the bucket
+    if the bucket was not declared with eventBridgeNotification enabled, it must be set here</p>
+</div>
+<div class="paragraph">
+<p>frequent.queueFetchWaitSec: seconds
+    The duration (in seconds) for which the call waits for a message to arrive in the queue
+    before returning. If a message is available, the call returns sooner than WaitTimeSeconds.
+    If no messages are available and the wait time expires, the call returns successfully with an
+    empty list of messages.
+    It is recommended to leave this value at zero (0).</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>    ....
+== Template:</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "type" : "aws:core:s3PutListenerBoundary",
+  "exclude" : false,
+  "name" : null,
+  "dataset" : {
+    "name" : null,
+    "version" : null,
+    "pathURI" : null
+  },
+  "lotUnit" : null,
+  "eventArrival" : "infrequent",
+  "runtimeProps" : {
+    "memorySizeMB" : 1024,
+    "retryAttempts" : 3,
+    "timeoutMin" : 15,
+    "architecture" : "ARM_64"
+  },
+  "infrequent" : {
+    "lotSource" : "objectModifiedTime",
+    "enableEventBridge" : false
+  },
+  "frequent" : {
+    "queueFetchWaitSec" : 0
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

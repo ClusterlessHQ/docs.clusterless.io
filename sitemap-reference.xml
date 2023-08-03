@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://docs.clusterless.io/reference/1.0-wip/components/aws-core-batch-exec-arc.html</loc>
+<lastmod>2023-08-03T22:46:18.686Z</lastmod>
+</url>
+<url>
+<loc>https://docs.clusterless.io/reference/1.0-wip/components/aws-core-compute-environment.html</loc>
+<lastmod>2023-08-03T22:46:18.686Z</lastmod>
+</url>
+<url>
+<loc>https://docs.clusterless.io/reference/1.0-wip/components/aws-core-event-bus.html</loc>
+<lastmod>2023-08-03T22:46:18.686Z</lastmod>
+</url>
+<url>
+<loc>https://docs.clusterless.io/reference/1.0-wip/components/aws-core-s3-bucket.html</loc>
+<lastmod>2023-08-03T22:46:18.686Z</lastmod>
+</url>
+<url>
+<loc>https://docs.clusterless.io/reference/1.0-wip/components/aws-core-s3-copy-arc.html</loc>
+<lastmod>2023-08-03T22:46:18.686Z</lastmod>
+</url>
+<url>
+<loc>https://docs.clusterless.io/reference/1.0-wip/components/aws-core-s3-put-listener-boundary.html</loc>
+<lastmod>2023-08-03T22:46:18.686Z</lastmod>
+</url>
+<url>
+<loc>https://docs.clusterless.io/reference/1.0-wip/index.html</loc>
+<lastmod>2023-08-03T22:46:18.686Z</lastmod>
+</url>
+</urlset>

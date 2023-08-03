@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Lot :: Clusterless Docs</title>
-    <link rel="canonical" href="https://docs.clusterless.io/guide/wip-1.0/concepts/lot.html">
-    <meta name="generator" content="Antora 3.1.3">
+    <title>Provider :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/guide/1.0-wip/concepts/provider.html">
+    <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <script defer data-domain="docs.clusterless.com" src="https://plausible.io/js/script.js"></script>
-    <script>var uiRootPath = '../../../_'</script>
   </head>
   <body class="article">
 <header class="header">
@@ -48,12 +47,12 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="guide" data-version="wip-1.0">
+<div class="nav-container" data-component="guide" data-version="1.0-wip">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../index.html">Clusterless</a></h3>
+    <h3 class="title"><a href="../index.html">Clusterless User Guide</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
@@ -72,7 +71,7 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Clusterless Concepts</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="provider.html">Providers</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -84,7 +83,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="dataset.html">Datasets</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="lot.html">Lots</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -107,20 +106,41 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../reference/1.0-wip/index.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../reference/1.0-wip/index.html#components">Components</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
 </ul>
   </nav>
 </div>
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
-    <span class="title">Clusterless</span>
-    <span class="version">wip-1.0</span>
+    <span class="title">Clusterless User Guide</span>
+    <span class="version">1.0-wip</span>
   </div>
   <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../reference/1.0-wip/index.html">Clusterless Reference</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../reference/1.0-wip/index.html">1.0-wip</a>
+        </li>
+      </ul>
+    </li>
     <li class="component is-current">
-      <a class="title" href="../index.html">Clusterless</a>
+      <a class="title" href="../index.html">Clusterless User Guide</a>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../index.html">wip-1.0</a>
+          <a href="../index.html">1.0-wip</a>
         </li>
       </ul>
     </li>
@@ -135,47 +155,34 @@
   <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../index.html">Clusterless</a></li>
+    <li><a href="../index.html">Clusterless User Guide</a></li>
     <li>Clusterless Concepts</li>
-    <li><a href="lot.html">Lots</a></li>
+    <li><a href="provider.html">Providers</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/concepts/pages/lot.adoc">Edit this Page</a></div>
-  </div>
+<div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/concepts/pages/provider.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Lot</h1>
+<h1 class="page">Provider</h1>
 <div class="paragraph">
-<p>Clusterless introduces the concept of a <a href="#"><code>lot</code></a>, simply a batch of data objects that all arrived within
-the same interval of time.</p>
+<p>A provider may be Amazon Web Services (AWS), or Google Cloud, Oracle Cloud, or k8s.</p>
 </div>
 <div class="paragraph">
-<p>The <code>lot</code> id value is used to maintain auditability through the system by either partitioning data by lots and/or
-embedding the lot id value in the file name.</p>
+<p>Currently only AWS is supported.</p>
 </div>
 <div class="paragraph">
-<p>A lot id is named in a uniform way. Expected to be monotonic. And should be a concise representation of a time
-unit (a 5 or 10 minute interval) that is both human-readable and machine friendly against simple algorithms, e.g.
-splitting and sorting.</p>
+<p>Providers are declared in the xref:placement.adoc section of a xref:project.adoc declaration.</p>
 </div>
 <div class="paragraph">
-<p>An example would be <code>20221013PT5M000</code>, representing the 5-minute interval starting at midnight on October, 13, 2022.</p>
+<p>Clusterless only intends to provide and manage capabilities a given provider supports, and to ease operability between
+providers.</p>
 </div>
 <div class="paragraph">
-<p>A lot id will represent the wall clock time data was observed and the objects collected, it does not represent the time
-range within the data, or when the object was created.</p>
-</div>
-<div class="paragraph">
-<p>For example, an object (csv file) may have 100 records between 23:59 and 00:01. But the file was written in 00:02, yet
-the event was not seen until 00:03. If the lots are configured as 5 minute intervals, this file will be recorded in a
-manifest with the given lot id of <code>20221013PT5M000.</code></p>
-</div>
-<div class="paragraph">
-<p>See the ADR on
-<a href="https://github.com/ClusterlessHQ/clusterless/blob/wip-1.0/docs/adr/0004-machine-and-human-friendly-interval-ids.md">machine-and-human-friendly-interval-ids</a>.</p>
+<p>There is no intent to offer feature parity across providers.</p>
 </div>
 </article>
   </div>

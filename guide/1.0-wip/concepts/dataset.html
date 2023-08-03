@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Placement :: Clusterless Docs</title>
-    <link rel="canonical" href="https://docs.clusterless.io/guide/wip-1.0/concepts/placement.html">
-    <meta name="generator" content="Antora 3.1.3">
+    <title>Dataset :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/guide/1.0-wip/concepts/dataset.html">
+    <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <script defer data-domain="docs.clusterless.com" src="https://plausible.io/js/script.js"></script>
-    <script>var uiRootPath = '../../../_'</script>
   </head>
   <body class="article">
 <header class="header">
@@ -48,12 +47,12 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="guide" data-version="wip-1.0">
+<div class="nav-container" data-component="guide" data-version="1.0-wip">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../index.html">Clusterless</a></h3>
+    <h3 class="title"><a href="../index.html">Clusterless User Guide</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
@@ -78,10 +77,10 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="project.html">Projects</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="placement.html">Placements</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="dataset.html">Datasets</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -107,20 +106,41 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../reference/1.0-wip/index.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../reference/1.0-wip/index.html#components">Components</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
 </ul>
   </nav>
 </div>
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
-    <span class="title">Clusterless</span>
-    <span class="version">wip-1.0</span>
+    <span class="title">Clusterless User Guide</span>
+    <span class="version">1.0-wip</span>
   </div>
   <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../reference/1.0-wip/index.html">Clusterless Reference</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../reference/1.0-wip/index.html">1.0-wip</a>
+        </li>
+      </ul>
+    </li>
     <li class="component is-current">
-      <a class="title" href="../index.html">Clusterless</a>
+      <a class="title" href="../index.html">Clusterless User Guide</a>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../index.html">wip-1.0</a>
+          <a href="../index.html">1.0-wip</a>
         </li>
       </ul>
     </li>
@@ -135,37 +155,65 @@
   <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../index.html">Clusterless</a></li>
+    <li><a href="../index.html">Clusterless User Guide</a></li>
     <li>Clusterless Concepts</li>
-    <li><a href="placement.html">Placements</a></li>
+    <li><a href="dataset.html">Datasets</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/concepts/pages/placement.adoc">Edit this Page</a></div>
-  </div>
+<div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/concepts/pages/dataset.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Placement</h1>
-<div class="paragraph">
-<p>A placement describes where the project should be deployed, the coordinates are:</p>
+<h1 class="page">Dataset</h1>
+<div class="literalblock">
+<div class="title">Dataset</div>
+<div class="content">
+<pre> .─────.
+(|||||||)
+ `─────'</pre>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="provider.html" class="xref page">provider</a> - the name of the target cloud provider (e.g. <code>aws</code>)</p>
-</li>
-<li>
-<p>account - the account id</p>
-</li>
-<li>
-<p>region - the region in which to make the deployment (e.g. <code>us-east-2</code>)</p>
-</li>
-<li>
-<p>stage - optionally, the prefix namespace to deploy within an account (e.g. <code>PROD</code> or <code>TEST</code> )</p>
-</li>
-</ul>
+</div>
+<div class="paragraph">
+<p>A Dataset is a collection of data objects (files or blobs) and associated metadata objects. And are identified by a name
+and a version. These values are used when publishing or subscribing to availability events, and for internal naming of
+metadata resources.</p>
+</div>
+<div class="paragraph">
+<p>Data objects are the actual data, either consumed or produced, externally or by arc workloads within the framework.</p>
+</div>
+<div class="paragraph">
+<p>Typically, data objects are organized by partitions, like <code>year=2023/host=abc-001</code>. Frequently partitions are not named,
+<code>2023/abc-001</code>, but the data is still organized for use.</p>
+</div>
+<div class="paragraph">
+<p>Datasets are also organized using a <a href="lot.html" class="xref page">lot identifier</a>.</p>
+</div>
+<div class="paragraph">
+<p>The metadata objects are manifest files that list the locations of objects arrived within a given <code>lot</code> interval.</p>
+</div>
+<div class="paragraph">
+<p>If a hundred files arrived in an S3 bucket between 0:0:0 (inclusive) and 0:5:00 (exclusive), the manifest could be
+labeled as having lot id <code>20230101PT5M000</code>.</p>
+</div>
+<div class="paragraph">
+<p>Manifest files have state. They may be complete, partial, empty, or removed.</p>
+</div>
+<div class="paragraph">
+<p>The empty state is important. A workload may not produce any data, and this outcome may be important to downstream
+listeners.</p>
+</div>
+<div class="paragraph">
+<p>When a workload fails and writes partial data, this data needs to be clean up or leveraged in a new retry attempt for
+the workload. Marking a manifest as being removed confirms duplicate data isn&#8217;t interleaved in the dataset and provides
+some accounting for the failures.</p>
+</div>
+<div class="paragraph">
+<p>See the ADR
+<a href="https://github.com/ClusterlessHQ/clusterless/blob/wip-1.0/docs/adr/0003-arc-state-and-data-metadata.md">arc-state-and-data-metadata</a>
+for more details on manifest state.</p>
 </div>
 </article>
   </div>

@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Workload :: Clusterless Docs</title>
-    <link rel="canonical" href="https://docs.clusterless.io/guide/wip-1.0/concepts/workload.html">
-    <meta name="generator" content="Antora 3.1.3">
+    <title>Component :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/reference/1.0-wip/components/aws-core-s3-copy-arc.html">
+    <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <script defer data-domain="docs.clusterless.com" src="https://plausible.io/js/script.js"></script>
-    <script>var uiRootPath = '../../../_'</script>
   </head>
   <body class="article">
 <header class="header">
@@ -48,62 +47,34 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="guide" data-version="wip-1.0">
+<div class="nav-container" data-component="reference" data-version="1.0-wip">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../index.html">Clusterless</a></h3>
+    <h3 class="title"><a href="../index.html">Clusterless Reference</a></h3>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../clusterless-roles.html">How Clusterless Can Help</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../clusterless-design.html">How Clusterless Works</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../install-quickstart.html">Install and Run Clusterless Quickstart</a>
-  </li>
-</ul>
-  </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Clusterless Concepts</span>
+    <span class="nav-text">Clusterless Components</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="provider.html">Providers</a>
+    <a class="nav-link" href="aws-core-batch-exec-arc.html">aws:core:batchExecArc</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="project.html">Projects</a>
+    <a class="nav-link" href="aws-core-compute-environment.html">aws:core:computeEnvironment</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="placement.html">Placements</a>
+    <a class="nav-link" href="aws-core-event-bus.html">aws:core:eventBus</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="dataset.html">Datasets</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="lot.html">Lots</a>
+    <a class="nav-link" href="aws-core-s3-bucket.html">aws:core:s3Bucket</a>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="workload.html">Workloads</a>
+    <a class="nav-link" href="aws-core-s3-copy-arc.html">aws:core:s3CopyArc</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="arc.html">Arcs</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="resource.html">Resources</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="boundary.html">Boundaries</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="barrier.html">Barriers</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="dag.html">Pipeline DAG</a>
+    <a class="nav-link" href="aws-core-s3-put-listener-boundary.html">aws:core:s3PutListenerBoundary</a>
   </li>
 </ul>
   </li>
@@ -112,15 +83,23 @@
 </div>
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
-    <span class="title">Clusterless</span>
-    <span class="version">wip-1.0</span>
+    <span class="title">Clusterless Reference</span>
+    <span class="version">1.0-wip</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../index.html">Clusterless</a>
+      <a class="title" href="../index.html">Clusterless Reference</a>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../index.html">wip-1.0</a>
+          <a href="../index.html">1.0-wip</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../guide/1.0-wip/index.html">Clusterless User Guide</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../guide/1.0-wip/index.html">1.0-wip</a>
         </li>
       </ul>
     </li>
@@ -132,51 +111,73 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link"></a>
+  <a href="../../../guide/1.0-wip/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../index.html">Clusterless</a></li>
-    <li>Clusterless Concepts</li>
-    <li><a href="workload.html">Workloads</a></li>
+    <li><a href="../index.html">Clusterless Reference</a></li>
+    <li>Clusterless Components</li>
+    <li><a href="aws-core-s3-copy-arc.html">aws:core:s3CopyArc</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/concepts/pages/workload.adoc">Edit this Page</a></div>
-  </div>
+</div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Workload</h1>
+<h1 class="page">Component</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Type: <code>aws:core:s3CopyArc</code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>Synopsis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The AWS S3 Copy Arc component copies data from one S3 bucket to another S3 bucket.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
+<div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>      _
-     ╱ ╲
-═══▶▕   ▏═══▶
-     ╲ ╱
-      ▔</pre>
+<pre>....
+All data in the source manifest will be copied to the specified dataset.</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The actual process to be executed.</p>
+<p>workloadProps.failArcOnPartialPercent: The percentage of files that can fail before the Arc fails. Default is 0.0.
+    &#8230;&#8203;.
+== Template:</p>
 </div>
-<div class="paragraph">
-<p>The workload can be a simple Lambda function, Docker via AWS Batch (or Batch array), or any other service like AWS
-Sagemaker (for training and validation), AWS Glue (for catalog maintenance) and AWS Athena (for chaining CTAS/INSERT
-INTO queries instead of chaining custom processing).</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "type" : "aws:core:s3CopyArc",
+  "exclude" : false,
+  "name" : null,
+  "sources" : { },
+  "sinks" : { },
+  "workload" : {
+    "workloadProps" : {
+      "failArcOnPartialPercent" : 0.0
+    },
+    "runtimeProps" : {
+      "memorySizeMB" : 512,
+      "retryAttempts" : 3,
+      "timeoutMin" : 15,
+      "architecture" : "ARM_64"
+    }
+  }
+}</code></pre>
 </div>
-<div class="paragraph">
-<p>When a new <a href="lot.html" class="xref page">lot</a> of data arrives in a <a href="dataset.html" class="xref page">dataset</a>, an <a href="arc.html" class="xref page">arc</a> is notified, which
-in turns starts a workload running against the newly arrived data.</p>
 </div>
-<div class="paragraph">
-<p>A workload is declared by the appropriate module in the <a href="project.html" class="xref page">project</a> file.</p>
 </div>
-<div class="paragraph">
-<p>To run a custom Docker image, declare the arc as having the type <code>aws:core:batchExecArc</code>.</p>
-</div>
-<div class="paragraph">
-<p>This will run the referenced Docker image within the AWS Batch service.</p>
 </div>
 </article>
   </div>
