@@ -146,49 +146,41 @@
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>....
-This boundary listens for put events against the specified bucket and key prefix.</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If events arrive frequently in an interval, change the eventArrival to "frequent", this will
+<pre>This boundary listens for put events against the specified bucket and key prefix.
+
+If events arrive frequently in an interval, change the eventArrival to "frequent", this will
 cause the boundary to emit an availability event after the end of every interval regardless of
 available put events. If no put events are found, the dataset manifest status for the lot interval
-will be set to "empty".</p>
-</div>
-<div class="paragraph">
-<p>lotUnit: Fourths|Sixth|Twelfths|etc
-    the interval of a lot, see documentation for supported intervals</p>
-</div>
-<div class="paragraph">
-<p>eventArrival: infrequent|frequent
+will be set to "empty".
+
+lotUnit: Fourths|Sixth|Twelfths|etc
+    the interval of a lot, see documentation for supported intervals
+
+eventArrival: infrequent|frequent
     expected frequency of event arrivals
-    infrequent is once per interval and frequent more than once per interval</p>
-</div>
-<div class="paragraph">
-<p>infrequent.lotSource: objectModifiedTime|eventTime
+    infrequent is once per interval and frequent more than once per interval
+
+infrequent.lotSource: objectModifiedTime|eventTime
     objectModifiedTime will use the last modified time of the object
-    eventTime will use the time the event was received by the listener</p>
-</div>
-<div class="paragraph">
-<p>infrequent.enableEventBridge: true|false
+    eventTime will use the time the event was received by the listener
+
+infrequent.enableEventBridge: true|false
     true will enable event bridge on the bucket
-    if the bucket was not declared with eventBridgeNotification enabled, it must be set here</p>
-</div>
-<div class="paragraph">
-<p>frequent.queueFetchWaitSec: seconds
+    if the bucket was not declared with eventBridgeNotification enabled, it must be set here
+
+frequent.queueFetchWaitSec: seconds
     The duration (in seconds) for which the call waits for a message to arrive in the queue
     before returning. If a message is available, the call returns sooner than WaitTimeSeconds.
     If no messages are available and the wait time expires, the call returns successfully with an
     empty list of messages.
-    It is recommended to leave this value at zero (0).</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>    ....
-== Template:</pre>
+    It is recommended to leave this value at zero (0).</pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_template"><a class="anchor" href="#_template"></a>Template</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{

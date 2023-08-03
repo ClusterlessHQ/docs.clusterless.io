@@ -146,45 +146,37 @@
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>....
-A simple way to create a managed S3 buckets within a project.</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The bucket will be configured with the following:
+<pre>A simple way to create a managed S3 buckets within a project.
+
+The bucket will be configured with the following:
     .blockPublicAccess(BlockPublicAccess.BLOCK_ALL)
     .encryption(BucketEncryption.S3_MANAGED)
-    .enforceSsl(true)</p>
-</div>
-<div class="paragraph">
-<p>bucketName: a globally unique name
-    The unique name of the S3 bucket to create.</p>
-</div>
-<div class="paragraph">
-<p>versioned: true|false
-    Whether this bucket should have versioning turned on or not.</p>
-</div>
-<div class="paragraph">
-<p>enableEventBridge: true|false
+    .enforceSsl(true)
+
+bucketName: a globally unique name
+    The unique name of the S3 bucket to create.
+
+versioned: true|false
+    Whether this bucket should have versioning turned on or not.
+
+enableEventBridge: true|false
     Whether this bucket should send notifications to Amazon EventBridge or not.
-    As of CDK 2.64.0 a lambda is installed: <a href="https://github.com/aws/aws-cdk/issues/24086" class="bare">https://github.com/aws/aws-cdk/issues/24086</a></p>
-</div>
-<div class="paragraph">
-<p>removeOnDestroy: true|false
+    As of CDK 2.64.0 a lambda is installed: https://github.com/aws/aws-cdk/issues/24086
+
+removeOnDestroy: true|false
     Configured with the following:
         .removalPolicy(removeOnDestroy ? RemovalPolicy.DESTROY : RemovalPolicy.RETAIN)
-        .autoDeleteObjects(removeOnDestroy) // cdk adds a lambda if true</p>
-</div>
-<div class="paragraph">
-<p>tags: { key: value, &#8230;&#8203; }
-    Tags to apply to the bucket.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>    ....
-== Template:</pre>
+        .autoDeleteObjects(removeOnDestroy) // cdk adds a lambda if true
+
+tags: { key: value, ... }
+    Tags to apply to the bucket.</pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_template"><a class="anchor" href="#_template"></a>Template</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
