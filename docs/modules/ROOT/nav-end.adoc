@@ -1,3 +1,5 @@
 * xref:1.0-wip@reference:ROOT:index.adoc[Reference]
 ** xref:1.0-wip@reference:ROOT:index.adoc#commands[Commands]
+** xref:1.0-wip@reference:ROOT:index.adoc#providers[Providers]
 ** xref:1.0-wip@reference:ROOT:index.adoc#components[Components]
+** xref:1.0-wip@reference:ROOT:index.adoc#models[Models]
