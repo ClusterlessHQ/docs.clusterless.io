@@ -116,6 +116,9 @@
     <a class="nav-link" href="cls-show-help.html">cls-show-help(1)</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cls-show-model.html">cls-show-model(1)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="cls-show-provider.html">cls-show-provider(1)</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -147,6 +150,30 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../components/aws-core-s3-put-listener-boundary.html">aws:core:s3PutListenerBoundary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Models</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../models/deployable.html">Deployable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../models/project.html">Project</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../models/placement.html">Placement</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../models/arc.html">Arc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../models/source-dataset.html">SourceDataset</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../models/sink-dataset.html">SinkDataset</a>
   </li>
 </ul>
   </li>
@@ -202,7 +229,7 @@
 <h2 id="_name"><a class="anchor" href="#_name"></a>Name</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>cls-show-component -</p>
+<p>cls-show-component - show available components</p>
 </div>
 </div>
 </div>
@@ -211,14 +238,16 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>cls show component</strong> [<strong>-v</strong>] [<strong>-P</strong>=<em>&lt;providerNames&gt;</em>]&#8230;&#8203; (<strong>--list</strong> | <strong>--describe-all</strong> |
-                   <strong>--model</strong>=<em>&lt;template&gt;</em> | <strong>--describe</strong>=<em>&lt;component&gt;</em>)</p>
+                   <strong>--model</strong>=<em>&lt;model&gt;</em> | <strong>--describe</strong>=<em>&lt;name&gt;</em>)</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>show available components</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -226,7 +255,7 @@
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>--describe</strong>=<em>&lt;component&gt;</em></dt>
+<dt class="hdlist1"><strong>--describe</strong>=<em>&lt;name&gt;</em></dt>
 <dt class="hdlist1"><strong>--describe-all</strong></dt>
 <dd>
 <p>print description of all elements</p>
@@ -235,7 +264,7 @@
 <dd>
 <p>list all names</p>
 </dd>
-<dt class="hdlist1"><strong>--model</strong>=<em>&lt;template&gt;</em></dt>
+<dt class="hdlist1"><strong>--model</strong>=<em>&lt;model&gt;</em></dt>
 <dd>
 <p>print the json template of element</p>
 </dd>

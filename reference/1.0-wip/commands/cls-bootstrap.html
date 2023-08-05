@@ -116,6 +116,9 @@
     <a class="nav-link" href="cls-show-help.html">cls-show-help(1)</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cls-show-model.html">cls-show-model(1)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="cls-show-provider.html">cls-show-provider(1)</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -147,6 +150,30 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../components/aws-core-s3-put-listener-boundary.html">aws:core:s3PutListenerBoundary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Models</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../models/deployable.html">Deployable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../models/project.html">Project</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../models/placement.html">Placement</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../models/arc.html">Arc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../models/source-dataset.html">SourceDataset</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../models/sink-dataset.html">SinkDataset</a>
   </li>
 </ul>
   </li>
@@ -210,8 +237,8 @@
 <h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>Synopsis</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>cls bootstrap</strong> [<strong>-v</strong>] [<strong>--destroy</strong>] [<strong>--dry-run</strong>] [<strong>--approve</strong>[=<em>&lt;approve&gt;</em>]] [<strong>--stage</strong>
-              [=<em>&lt;stage&gt;</em>]] [<strong>--account</strong>=<em>&lt;account&gt;</em>] [<strong>--region</strong>=<em>&lt;region&gt;</em>]
+<p><strong>cls bootstrap</strong> [<strong>-v</strong>] [<strong>--destroy</strong>] [<strong>--dry-run</strong>] [<strong>--retry</strong>] [<strong>--approve</strong>[=<em>&lt;approve&gt;</em>]]
+              [<strong>--stage</strong>[=<em>&lt;stage&gt;</em>]] [<strong>--account</strong>=<em>&lt;account&gt;</em>] [<strong>--region</strong>=<em>&lt;region&gt;</em>]
               [<strong>-P</strong>=<em>&lt;providerNames&gt;</em>]&#8230;&#8203; [COMMAND]</p>
 </div>
 </div>
@@ -252,6 +279,10 @@
 <dt class="hdlist1"><strong>--region</strong>=<em>&lt;region&gt;</em></dt>
 <dd>
 <p>aws region</p>
+</dd>
+<dt class="hdlist1"><strong>--retry</strong></dt>
+<dd>
+<p>retry the destroy operation</p>
 </dd>
 <dt class="hdlist1"><strong>--stage</strong>[=<em>&lt;stage&gt;</em>]</dt>
 <dd>
