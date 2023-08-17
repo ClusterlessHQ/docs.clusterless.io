@@ -143,6 +143,15 @@
     <a class="nav-link" href="../components/aws-core-event-bus.html">aws:core:eventBus</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../components/aws-core-glue-add-partitions-arc.html">aws:core:glueAddPartitionsArc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../components/aws-core-glue-database.html">aws:core:glueDatabase</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../components/aws-core-glue-table.html">aws:core:glueTable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../components/aws-core-s3-bucket.html">aws:core:s3Bucket</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -238,7 +247,9 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>cls diff</strong> [<strong>-v</strong>] [<strong>--dry-run</strong>] [<strong>--exclude-all-arcs</strong>[=<em>&lt;excludeAllArcs&gt;</em>]]
-         [<strong>--exclude-arc</strong>=<em>&lt;excludeArcNames&gt;</em>]&#8230;&#8203; [<strong>-p</strong>=<em>&lt;projectFiles&gt;</em>]&#8230;&#8203;
+         [<strong>--exclude-all-tags</strong>[=<em>&lt;excludeAllTags&gt;</em>]]
+         [<strong>--exclude-arc</strong>=<em>&lt;excludeArcNames&gt;</em>]&#8230;&#8203;
+         [<strong>--only-resource</strong>=<em>&lt;onlyResourceNames&gt;</em>]&#8230;&#8203; [<strong>-p</strong>=<em>&lt;projectFiles&gt;</em>]&#8230;&#8203;
          [<strong>-P</strong>=<em>&lt;providerNames&gt;</em>]&#8230;&#8203; [COMMAND]</p>
 </div>
 </div>
@@ -264,9 +275,17 @@
 <dd>
 <p>exclude all arcs from the deployment, only deploy resources and boundaries</p>
 </dd>
+<dt class="hdlist1"><strong>--exclude-all-tags</strong>[=<em>&lt;excludeAllTags&gt;</em>]</dt>
+<dd>
+<p>exclude all tags from the deployment</p>
+</dd>
 <dt class="hdlist1"><strong>--exclude-arc</strong>=<em>&lt;excludeArcNames&gt;</em></dt>
 <dd>
 <p>exclude the named arc from the deployment</p>
+</dd>
+<dt class="hdlist1"><strong>--only-resource</strong>=<em>&lt;onlyResourceNames&gt;</em></dt>
+<dd>
+<p>only deploy the named resource</p>
 </dd>
 <dt class="hdlist1"><strong>-p</strong>, <strong>--project</strong>=<em>&lt;projectFiles&gt;</em></dt>
 <dd>
