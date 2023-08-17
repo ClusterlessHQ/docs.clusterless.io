@@ -18,11 +18,11 @@ Install node/npm:
 
 === Install the AWS CDK:
 
-See the guid on the AWS site:
+See the guide on the AWS site to install the latest version:
 
 - https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html
 
-> npm install -g aws-cdk@2.80.0
+> npm install -g aws-cdk@2.90.0
 
 after install, make sure to bootstrap your account and region:
 
@@ -30,9 +30,9 @@ after install, make sure to bootstrap your account and region:
 
 > cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ...
 
-=== Install Java 11 via https://sdkman.io[sdkman]:
+=== Install Java 17 via https://sdkman.io[sdkman]:
 
-> sdk install java 22.3.r11-grl
+> sdk install java 17.0.8-graalce
 
 == Installing Clusterless
 
