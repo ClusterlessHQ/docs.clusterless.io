@@ -220,7 +220,7 @@
 <h2 id="_name"><a class="anchor" href="#_name"></a>Name</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>cls-local - support for executing workloads locally</p>
+<p>cls-local - Support for executing workloads locally in a terminal.</p>
 </div>
 </div>
 </div>
@@ -241,7 +241,7 @@
 <h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>support for executing workloads locally</p>
+<p>Support for executing workloads locally in a terminal.</p>
 </div>
 </div>
 </div>
@@ -252,61 +252,57 @@
 <dl>
 <dt class="hdlist1"><strong>-a</strong>, <strong>--arc</strong>=<em>&lt;arc&gt;</em></dt>
 <dd>
-<p>the arc name to execute</p>
+<p>The arc name to execute.</p>
 </dd>
 <dt class="hdlist1"><strong>--dry-run</strong></dt>
 <dd>
-<p>do not execute underlying cdk binary</p>
+<p>Do not execute underlying cdk binary.</p>
 </dd>
 <dt class="hdlist1"><strong>--exclude-all-arcs</strong>[=<em>&lt;excludeAllArcs&gt;</em>]</dt>
 <dd>
-<p>exclude all arcs from the deployment, only deploy resources and boundaries</p>
+<p>Exclude all arcs from the deployment, only deploy resources and boundaries.</p>
 </dd>
 <dt class="hdlist1"><strong>--exclude-all-tags</strong>[=<em>&lt;excludeAllTags&gt;</em>]</dt>
 <dd>
-<p>exclude all tags from the deployment</p>
+<p>Exclude all tags from the deployment.</p>
 </dd>
 <dt class="hdlist1"><strong>--exclude-arc</strong>=<em>&lt;excludeArcNames&gt;</em></dt>
 <dd>
-<p>exclude the named arc from the deployment</p>
+<p>Exclude the named arc from the deployment.</p>
 </dd>
 <dt class="hdlist1"><strong>-l</strong>, <strong>--lot</strong>=<em>&lt;lotId&gt;</em></dt>
 <dd>
-<p>the lot id of the manifest to source</p>
+<p>The lot id of the manifest to source.</p>
 </dd>
 <dt class="hdlist1"><strong>--only-resource</strong>=<em>&lt;onlyResourceNames&gt;</em></dt>
 <dd>
-<p>only deploy the named resource</p>
+<p>Only deploy the named resource.</p>
 </dd>
 <dt class="hdlist1"><strong>--output</strong>=<em>&lt;format&gt;</em></dt>
 <dd>
-<p>print results using given format</p>
-<div class="literalblock">
-<div class="content">
-<pre>Values: table, json, csv, tsv</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Default: table</pre>
-</div>
+<p>Print results using given format.</p>
+<div class="paragraph">
+<p>Values: table, json, csv, tsv (default: table)</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-p</strong>, <strong>--project</strong>=<em>&lt;projectFiles&gt;</em></dt>
 <dd>
-<p>the files that declare the project to be deployed, or <code>-</code> to read from stdin</p>
+<p>The files that declare the project to be deployed, or <code>-</code> to read from stdin.</p>
 </dd>
 <dt class="hdlist1"><strong>-P</strong>, <strong>--providers</strong>=<em>&lt;providerNames&gt;</em></dt>
 <dd>
-<p>provider substrates to target</p>
+<p>Provider substrates to target.</p>
 </dd>
 <dt class="hdlist1"><strong>-r</strong>, <strong>--role</strong>=<em>&lt;role&gt;</em></dt>
 <dd>
-<p>the dataset role to execute against</p>
+<p>The dataset role to execute against.</p>
 </dd>
 <dt class="hdlist1"><strong>-s</strong>, <strong>--manifest-state</strong>=<em>&lt;manifestState&gt;</em></dt>
 <dd>
-<p>manifest state</p>
+<p>Manifest state.</p>
+<div class="paragraph">
+<p>Values: complete, partial, empty, removed (default: complete)</p>
+</div>
 </dd>
 <dt class="hdlist1"><strong>-v</strong>, <strong>--verbose</strong></dt>
 <dd>

@@ -220,7 +220,7 @@
 <h2 id="_name"><a class="anchor" href="#_name"></a>Name</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>cls-bootstrap - initialize a cloud provider placement</p>
+<p>cls-bootstrap - Initialize a cloud provider placement.</p>
 </div>
 </div>
 </div>
@@ -238,7 +238,7 @@
 <h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>initialize a cloud provider placement</p>
+<p>Initialize a cloud provider placement.</p>
 </div>
 </div>
 </div>
@@ -249,49 +249,45 @@
 <dl>
 <dt class="hdlist1"><strong>--account</strong>=<em>&lt;account&gt;</em></dt>
 <dd>
-<p>aws account</p>
+<p>AWS account.</p>
 </dd>
 <dt class="hdlist1"><strong>--approve</strong>[=<em>&lt;approve&gt;</em>]</dt>
 <dd>
-<p>approve changes to be deployed</p>
+<p>Approve changes to be deployed.</p>
 </dd>
 <dt class="hdlist1"><strong>--destroy</strong></dt>
 <dd>
-<p>remove the bootstrap for the given placement</p>
+<p>Remove the bootstrap for the given placement.</p>
 </dd>
 <dt class="hdlist1"><strong>--dry-run</strong></dt>
 <dd>
-<p>do not execute underlying cdk binary</p>
+<p>Do not execute underlying cdk binary.</p>
 </dd>
 <dt class="hdlist1"><strong>--output</strong>=<em>&lt;format&gt;</em></dt>
 <dd>
-<p>print results using given format</p>
-<div class="literalblock">
-<div class="content">
-<pre>Values: table, json, csv, tsv</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Default: table</pre>
-</div>
+<p>Print results using given format.</p>
+<div class="paragraph">
+<p>Values: table, json, csv, tsv (default: table)</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-P</strong>, <strong>--providers</strong>=<em>&lt;providerNames&gt;</em></dt>
 <dd>
-<p>provider substrates to target</p>
+<p>Provider substrates to target.</p>
 </dd>
 <dt class="hdlist1"><strong>--region</strong>=<em>&lt;region&gt;</em></dt>
 <dd>
-<p>aws region</p>
+<p>AWS region.</p>
 </dd>
 <dt class="hdlist1"><strong>--retry</strong></dt>
 <dd>
-<p>retry the destroy operation</p>
+<p>Retry the destroy operation.</p>
 </dd>
 <dt class="hdlist1"><strong>--stage</strong>[=<em>&lt;stage&gt;</em>]</dt>
 <dd>
-<p>optional stage prefix to use within the cloud placement</p>
+<p>Optional stage prefix to use within the cloud placement.</p>
+<div class="paragraph">
+<p>For example: <code>dev</code>, <code>prod</code>, or <code>test</code>.</p>
+</div>
 </dd>
 <dt class="hdlist1"><strong>-v</strong>, <strong>--verbose</strong></dt>
 <dd>

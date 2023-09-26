@@ -228,9 +228,9 @@
 <h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>Synopsis</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>cls projects</strong> [<strong>-v</strong>] [<strong>--dry-run</strong>] [<strong>--stage</strong>[=<em>&lt;stage&gt;</em>]] [<strong>--account</strong>=<em>&lt;account&gt;</em>]
-             [<strong>--output</strong>=<em>&lt;format&gt;</em>] [<strong>--profile</strong>=<em>&lt;profile&gt;</em>] [<strong>--region</strong>=<em>&lt;region&gt;</em>]
-             [<strong>-P</strong>=<em>&lt;providerNames&gt;</em>]&#8230;&#8203; [COMMAND]</p>
+<p><strong>cls projects</strong> [<strong>-v</strong>] [<strong>--stage</strong>[=<em>&lt;stage&gt;</em>]] [<strong>--account</strong>=<em>&lt;account&gt;</em>] [<strong>--output</strong>=<em>&lt;format&gt;</em>]
+             [<strong>--profile</strong>=<em>&lt;profile&gt;</em>] [<strong>--region</strong>=<em>&lt;region&gt;</em>] [<strong>-P</strong>=<em>&lt;providerNames&gt;</em>]&#8230;&#8203;
+             [COMMAND]</p>
 </div>
 </div>
 </div>
@@ -249,41 +249,30 @@
 <dl>
 <dt class="hdlist1"><strong>--account</strong>=<em>&lt;account&gt;</em></dt>
 <dd>
-<p>filter by account</p>
-</dd>
-<dt class="hdlist1"><strong>--dry-run</strong></dt>
-<dd>
-<p>do not execute underlying cdk binary</p>
+<p>Filter results by account.</p>
 </dd>
 <dt class="hdlist1"><strong>--output</strong>=<em>&lt;format&gt;</em></dt>
 <dd>
-<p>print results using given format</p>
-<div class="literalblock">
-<div class="content">
-<pre>Values: table, json, csv, tsv</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Default: table</pre>
-</div>
+<p>Print results using given format.</p>
+<div class="paragraph">
+<p>Values: table, json, csv, tsv (default: table)</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>-P</strong>, <strong>--providers</strong>=<em>&lt;providerNames&gt;</em></dt>
 <dd>
-<p>provider substrates to target</p>
+<p>Provider substrates to target.</p>
 </dd>
 <dt class="hdlist1"><strong>--profile</strong>=<em>&lt;profile&gt;</em></dt>
 <dd>
-<p>aws profile</p>
+<p>AWS profile.</p>
 </dd>
 <dt class="hdlist1"><strong>--region</strong>=<em>&lt;region&gt;</em></dt>
 <dd>
-<p>filter by region</p>
+<p>Filter results by region.</p>
 </dd>
 <dt class="hdlist1"><strong>--stage</strong>[=<em>&lt;stage&gt;</em>]</dt>
 <dd>
-<p>filter by stage</p>
+<p>Filter results by stage.</p>
 </dd>
 <dt class="hdlist1"><strong>-v</strong>, <strong>--verbose</strong></dt>
 <dd>
