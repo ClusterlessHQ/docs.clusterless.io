@@ -21,7 +21,7 @@ include::1.0-wip@reference:models:example$deployable.adoc[]
 
 Next we add a new resource to the `resources` declaration.
 
-The S3 bucket resource is named xref:reference:components:aws-core-s3-bucket.adoc[aws:core:s3Bucket].
+The S3 bucket resource component `type` is xref:reference:components:aws-core-s3-bucket.adoc[aws:core:s3Bucket].
 
 To get the JSON model for this resource, call:
 
