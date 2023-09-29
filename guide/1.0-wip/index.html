@@ -211,8 +211,11 @@ available and available features may not be properly documented, or documented a
 arriving data, across clouds.</p>
 </div>
 <div class="paragraph">
-<p>With Clusterless, heterogeneous workloads can be chained together by simply subscribing to upstream data availability
-events.</p>
+<p>That is, as new data arrives (in a bucket, for example), process it with a (custom python, java, etc.) workload. Then
+hand the results to another workload by publishing an event.</p>
+</div>
+<div class="paragraph">
+<p>Where any developer or team can subscribe their workload to any upstream availability event.</p>
 </div>
 <div class="paragraph">
 <p>This allows developers and teams to work relatively independently when building and updating data pipelines.</p>
@@ -222,10 +225,12 @@ events.</p>
 and availability of a given data pipeline.</p>
 </div>
 <div class="paragraph">
-<p>By leveraging native pay-as-you-go primitives, no runtimes or dedicated services need to be managed.</p>
+<p>By leveraging native pay-as-you-go primitives, no runtimes or dedicated services need to be managed. That is, every line
+of code managing or processing your data is part of this open source project, provided by you or your team, or is
+provided by your cloud provider. No third-party hosted runtimes required.</p>
 </div>
 <div class="paragraph">
-<p>Zero data arriving means zero costs (other than storage for historical data).</p>
+<p>Subsequently, zero data arriving means zero costs (other than storage for historical data).</p>
 </div>
 </div>
 </div>
