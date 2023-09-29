@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Arc :: Clusterless Docs</title>
-    <link rel="canonical" href="https://docs.clusterless.io/guide/1.0-wip/concepts/arc.html">
+    <title>Create an AWS S3 Bucket :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/guide/1.0-wip/howtos/s3-bucket-resource.html">
     <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <script defer data-domain="docs.clusterless.io" src="https://plausible.io/js/script.js"></script>
@@ -75,37 +75,37 @@
     <span class="nav-text">Clusterless Concepts</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="provider.html">Providers</a>
+    <a class="nav-link" href="../concepts/provider.html">Providers</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="project.html">Projects</a>
+    <a class="nav-link" href="../concepts/project.html">Projects</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="placement.html">Placements</a>
+    <a class="nav-link" href="../concepts/placement.html">Placements</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="dataset.html">Datasets</a>
+    <a class="nav-link" href="../concepts/dataset.html">Datasets</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="lot.html">Lots</a>
+    <a class="nav-link" href="../concepts/lot.html">Lots</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="workload.html">Workloads</a>
-  </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="arc.html">Arcs</a>
+    <a class="nav-link" href="../concepts/workload.html">Workloads</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="resource.html">Resources</a>
+    <a class="nav-link" href="../concepts/arc.html">Arcs</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="boundary.html">Boundaries</a>
+    <a class="nav-link" href="../concepts/resource.html">Resources</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="barrier.html">Barriers</a>
+    <a class="nav-link" href="../concepts/boundary.html">Boundaries</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="dag.html">Pipeline DAG</a>
+    <a class="nav-link" href="../concepts/barrier.html">Barriers</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/dag.html">Pipeline DAG</a>
   </li>
 </ul>
   </li>
@@ -114,10 +114,10 @@
     <span class="nav-text">Clusterless How-tos</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/index.html">Intro</a>
+    <a class="nav-link" href="index.html">Intro</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/s3-bucket-resource.html">Create an AWS S3 Bucket</a>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="s3-bucket-resource.html">Create an AWS S3 Bucket</a>
   </li>
 </ul>
   </li>
@@ -180,32 +180,23 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Clusterless User Guide</a></li>
-    <li>Clusterless Concepts</li>
-    <li><a href="arc.html">Arcs</a></li>
+    <li>Clusterless How-tos</li>
+    <li><a href="s3-bucket-resource.html">Create an AWS S3 Bucket</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/concepts/pages/arc.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/howtos/pages/s3-bucket-resource.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Arc</h1>
-<div class="literalblock">
-<div class="content">
-<pre>╔════════════════════════════════╗
-║Arc                             ║
-║            ┌────────┐          ║
-║┌──────────┐│Workload│          ║
-║│ Dataset  │└────────┘          ║
-║└──────────┘    _               ║
-║  .─────.      ╱ ╲      .─────. ║
-║ (|||||||)═══▶▕   ▏═══▶(|||||||)║
-║  `─────'      ╲ ╱      `─────' ║
-║                ▔               ║
-╚════════════════════════════════╝</pre>
+<h1 class="page">Create an AWS S3 Bucket</h1>
+<div class="paragraph">
+<p>The simplest project that can be deployed with clusterless is one that manages an AWS S3 bucket.</p>
 </div>
+<div class="paragraph">
+<p>In this example, we will create and destroy a bucket.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -214,44 +205,169 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
+<div class="title">Prerequisites</div>
 <div class="paragraph">
-<p>Learn more about provided <a href="../../../reference/1.0-wip/index.html#components" class="xref page">Components</a>.</p>
+<p>It is assumed the <a href="../install-quickstart.html" class="xref page">cls</a> cli tool is installed. And that the current cloud placement has been <a href="../install-quickstart.html#bootstrapping" class="xref page">bootstrapped</a>.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>If <a href="dataset.html" class="xref page">datasets</a> are nodes in a graph, joined by a <a href="workload.html" class="xref page">workload</a>, then an arc is the source
-dataset, the workload, and the sink dataset.</p>
+<p>To initialize a new <a href="../concepts/project.html" class="xref page">project</a>, in a new directory call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls show model --model deployable &gt; project.json</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">project.json</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "project" : {
+    "name" : null,
+    "version" : null
+  },
+  "placement" : {
+    "provider" : null,
+    "stage" : null,
+    "account" : null,
+    "region" : null
+  },
+  "resources" : [ ],
+  "boundaries" : [ ],
+  "barriers" : [ ],
+  "arcs" : [ ]
+}</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>An arc listens for availability events and executes its declared workload against the newly arrived data or metadata.</p>
+<p>Next we add a new resource to the <code>resources</code> declaration.</p>
 </div>
 <div class="paragraph">
-<p>Developers can create the code deployed as a workload in an arc, or use native Clusterless components available for
-a given provider.</p>
+<p>The S3 bucket resource is named <a href="../../../reference/1.0-wip/components/aws-core-s3-bucket.html" class="xref page">aws:core:s3Bucket</a>.</p>
 </div>
 <div class="paragraph">
-<p>Arcs have state. They are running or complete. Or they may have finished in some intermediate state.</p>
+<p>To get the JSON model for this resource, call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls show component --model aws:core:s3Bucket</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "type" : "aws:core:s3Bucket",
+  "exclude" : false,
+  "name" : null,
+  "bucketName" : null,
+  "versioned" : false,
+  "enableEventBridge" : true,
+  "removeOnDestroy" : false,
+  "tags" : { }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<code>cls show &#8230;&#8203; | pbcopy</code> can be used on OSX to copy output to the clipboard.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Arc state is important for identifying whether a workload completed successfully or only partially completed, or
-attempted to run but likely failed or was aborted.</p>
+<p>Paste the results into the <code>resources</code> json property.</p>
+</div>
+<div class="listingblock">
+<div class="title">project.json</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "resources": [
+    {
+      "type" : "aws:core:s3Bucket",
+      "exclude" : false,
+      "name" : null,
+      "bucketName" : null,
+      "versioned" : false,
+      "enableEventBridge" : true,
+      "removeOnDestroy" : false,
+      "tags" : { }
+    }
+  ]
+}</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Partially completed workloads for a given lot of data should be retried. Depending on the workload type, the partial data
-should be removed before re-running the process, or the process should use that information to skip performing reduntant
-work (e.g. on the retry, only copy the files that didn&#8217;t copy on the previous attempt).</p>
+<p>The only values required are resource <code>name</code> and the <code>bucketName</code>. Ensure the <code>bucketName</code> is globally unique to prevent
+a deployment failure. Optionally, set <code>removeOnDestroy</code> to <code>true</code>, this will delete the bucket (and its contents) when
+we <code>destroy</code> the project.</p>
 </div>
 <div class="paragraph">
-<p>This is an important quality of the Clusterless framework and allows simpler maintenance and recovery from errors and
-outages or even preemption of resources (spot priced resources).</p>
+<p>To verify the project is valid, call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls verify -p project.json</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>See the ADR
-<a href="https://github.com/ClusterlessHQ/clusterless/blob/wip-1.0/docs/adr/0003-arc-state-and-data-metadata.md">arc-state-and-data-metadata</a>
-for more details on arc state.</p>
+<p>Finally, to deploy the project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls deploy -p project.json</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If an error states you need to bootstrap the region, call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls bootstrap</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="../install-quickstart.html#bootstrapping" class="xref page">Learn more.</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Call the following <code>aws</code> cli command, if you have it installed, to confirm the bucket was created.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ aws s3 ls</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Otherwise, log into the AWS Console.</p>
+</div>
+<div class="paragraph">
+<p>Finally, destroy the project.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls destroy -p project.json</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The bucket should be removed if <code>removeOnDestroy</code> was set to true.</p>
 </div>
 </article>
   </div>

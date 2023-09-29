@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Arc :: Clusterless Docs</title>
-    <link rel="canonical" href="https://docs.clusterless.io/guide/1.0-wip/concepts/arc.html">
+    <title>Intro :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/guide/1.0-wip/howtos/index.html">
     <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <script defer data-domain="docs.clusterless.io" src="https://plausible.io/js/script.js"></script>
@@ -75,37 +75,37 @@
     <span class="nav-text">Clusterless Concepts</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="provider.html">Providers</a>
+    <a class="nav-link" href="../concepts/provider.html">Providers</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="project.html">Projects</a>
+    <a class="nav-link" href="../concepts/project.html">Projects</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="placement.html">Placements</a>
+    <a class="nav-link" href="../concepts/placement.html">Placements</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="dataset.html">Datasets</a>
+    <a class="nav-link" href="../concepts/dataset.html">Datasets</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="lot.html">Lots</a>
+    <a class="nav-link" href="../concepts/lot.html">Lots</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="workload.html">Workloads</a>
-  </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="arc.html">Arcs</a>
+    <a class="nav-link" href="../concepts/workload.html">Workloads</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="resource.html">Resources</a>
+    <a class="nav-link" href="../concepts/arc.html">Arcs</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="boundary.html">Boundaries</a>
+    <a class="nav-link" href="../concepts/resource.html">Resources</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="barrier.html">Barriers</a>
+    <a class="nav-link" href="../concepts/boundary.html">Boundaries</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="dag.html">Pipeline DAG</a>
+    <a class="nav-link" href="../concepts/barrier.html">Barriers</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/dag.html">Pipeline DAG</a>
   </li>
 </ul>
   </li>
@@ -113,11 +113,11 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Clusterless How-tos</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/index.html">Intro</a>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="index.html">Intro</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/s3-bucket-resource.html">Create an AWS S3 Bucket</a>
+    <a class="nav-link" href="s3-bucket-resource.html">Create an AWS S3 Bucket</a>
   </li>
 </ul>
   </li>
@@ -180,78 +180,40 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Clusterless User Guide</a></li>
-    <li>Clusterless Concepts</li>
-    <li><a href="arc.html">Arcs</a></li>
+    <li>Clusterless How-tos</li>
+    <li><a href="index.html">Intro</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/concepts/pages/arc.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/howtos/pages/index.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Arc</h1>
-<div class="literalblock">
-<div class="content">
-<pre>╔════════════════════════════════╗
-║Arc                             ║
-║            ┌────────┐          ║
-║┌──────────┐│Workload│          ║
-║│ Dataset  │└────────┘          ║
-║└──────────┘    _               ║
-║  .─────.      ╱ ╲      .─────. ║
-║ (|||||||)═══▶▕   ▏═══▶(|||||||)║
-║  `─────'      ╲ ╱      `─────' ║
-║                ▔               ║
-╚════════════════════════════════╝</pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
+<h1 class="page">Intro</h1>
 <div class="paragraph">
-<p>Learn more about provided <a href="../../../reference/1.0-wip/index.html#components" class="xref page">Components</a>.</p>
-</div>
-</td>
-</tr>
-</table>
+<p>This section is intended to provide answers to some common ‘how do I do that&#8230;&#8203;’ questions that often arise.</p>
 </div>
 <div class="paragraph">
-<p>If <a href="dataset.html" class="xref page">datasets</a> are nodes in a graph, joined by a <a href="workload.html" class="xref page">workload</a>, then an arc is the source
-dataset, the workload, and the sink dataset.</p>
+<p>Additionally, these sample repos provide working examples.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ClusterlessHQ/clusterless-aws-examples" class="bare">https://github.com/ClusterlessHQ/clusterless-aws-examples</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ClusterlessHQ/aws-s3-log-pipeline" class="bare">https://github.com/ClusterlessHQ/aws-s3-log-pipeline</a></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>An arc listens for availability events and executes its declared workload against the newly arrived data or metadata.</p>
+<p>If you have a specific problem that we do not cover here, you might want to check the
+<a href="https://github.com/orgs/ClusterlessHQ/discussions">discussion group</a> to see if someone has already provided an answer.</p>
 </div>
 <div class="paragraph">
-<p>Developers can create the code deployed as a workload in an arc, or use native Clusterless components available for
-a given provider.</p>
-</div>
-<div class="paragraph">
-<p>Arcs have state. They are running or complete. Or they may have finished in some intermediate state.</p>
-</div>
-<div class="paragraph">
-<p>Arc state is important for identifying whether a workload completed successfully or only partially completed, or
-attempted to run but likely failed or was aborted.</p>
-</div>
-<div class="paragraph">
-<p>Partially completed workloads for a given lot of data should be retried. Depending on the workload type, the partial data
-should be removed before re-running the process, or the process should use that information to skip performing reduntant
-work (e.g. on the retry, only copy the files that didn&#8217;t copy on the previous attempt).</p>
-</div>
-<div class="paragraph">
-<p>This is an important quality of the Clusterless framework and allows simpler maintenance and recovery from errors and
-outages or even preemption of resources (spot priced resources).</p>
-</div>
-<div class="paragraph">
-<p>See the ADR
-<a href="https://github.com/ClusterlessHQ/clusterless/blob/wip-1.0/docs/adr/0003-arc-state-and-data-metadata.md">arc-state-and-data-metadata</a>
-for more details on arc state.</p>
+<p>We are also more than happy to extend this section. If you want to add a ‘how-to’, send us a pull request.</p>
 </div>
 </article>
   </div>

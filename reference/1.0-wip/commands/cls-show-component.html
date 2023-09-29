@@ -97,6 +97,15 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="cls-show.html">cls-show(1)</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cls-show-arc.html">cls-show-arc(1)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cls-show-barrier.html">cls-show-barrier(1)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cls-show-boundary.html">cls-show-boundary(1)</a>
+  </li>
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="cls-show-component.html">cls-show-component(1)</a>
   </li>
@@ -105,6 +114,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="cls-show-provider.html">cls-show-provider(1)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cls-show-resource.html">cls-show-resource(1)</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="cls-verify.html">cls-verify(1)</a>
@@ -116,31 +128,52 @@
     <span class="nav-text">Components</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../components/aws-core-batch-exec-arc.html">aws:core:batchExecArc</a>
-  </li>
-  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Resources</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/aws-core-compute-environment.html">aws:core:computeEnvironment</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/aws-core-event-bus.html">aws:core:eventBus</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../components/aws-core-glue-add-partitions-arc.html">aws:core:glueAddPartitionsArc</a>
-  </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/aws-core-glue-database.html">aws:core:glueDatabase</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/aws-core-glue-table.html">aws:core:glueTable</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/aws-core-s3-bucket.html">aws:core:s3Bucket</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../components/aws-core-s3-copy-arc.html">aws:core:s3CopyArc</a>
+</ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Boundaries</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/aws-core-s3-put-listener-boundary.html">aws:core:s3PutListenerBoundary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Arcs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/aws-core-batch-exec-arc.html">aws:core:batchExecArc</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/aws-core-glue-add-partitions-arc.html">aws:core:glueAddPartitionsArc</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/aws-core-s3-copy-arc.html">aws:core:s3CopyArc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">Barriers</span>
   </li>
 </ul>
   </li>
@@ -220,7 +253,7 @@
 <h2 id="_name"><a class="anchor" href="#_name"></a>Name</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>cls-show-component - Show available components.</p>
+<p>cls-show-component - Show all available provider components (resources, barriers, boundaries, and arcs).</p>
 </div>
 </div>
 </div>
@@ -229,7 +262,8 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>cls show component</strong> [<strong>-v</strong>] [<strong>--output</strong>=<em>&lt;format&gt;</em>] [<strong>-P</strong>=<em>&lt;providerNames&gt;</em>]&#8230;&#8203; (<strong>--list</strong> |
-                   <strong>--describe-all</strong> | <strong>--model</strong>=<em>&lt;model&gt;</em> | <strong>--describe</strong>=<em>&lt;name&gt;</em>)</p>
+                   <strong>--model</strong>=<em>&lt;model&gt;</em> | <strong>--describe</strong>=<em>&lt;name&gt;</em> | <strong>--describe-all</strong> |
+                   <strong>--model-all</strong>)</p>
 </div>
 </div>
 </div>
@@ -237,7 +271,7 @@
 <h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Show available components.</p>
+<p>Show all available provider components (resources, barriers, boundaries, and arcs).</p>
 </div>
 </div>
 </div>
@@ -258,6 +292,10 @@
 <dt class="hdlist1"><strong>--model</strong>=<em>&lt;model&gt;</em></dt>
 <dd>
 <p>Print the json template of element.</p>
+</dd>
+<dt class="hdlist1"><strong>--model-all</strong></dt>
+<dd>
+<p>Print model of all elements.</p>
 </dd>
 <dt class="hdlist1"><strong>--output</strong>=<em>&lt;format&gt;</em></dt>
 <dd>

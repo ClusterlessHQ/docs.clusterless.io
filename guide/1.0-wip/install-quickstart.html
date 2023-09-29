@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Install and Run Clusterless Quickstart :: Clusterless Docs</title>
+    <title>Install and Bootstrap Quickstart :: Clusterless Docs</title>
     <link rel="canonical" href="https://docs.clusterless.io/guide/1.0-wip/install-quickstart.html">
     <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../_/css/site.css">
@@ -65,6 +65,9 @@
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="install-quickstart.html">Install and Run Clusterless Quickstart</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="support.html">Getting Help</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
@@ -103,6 +106,18 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="concepts/dag.html">Pipeline DAG</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Clusterless How-tos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="howtos/index.html">Intro</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="howtos/s3-bucket-resource.html">Create an AWS S3 Bucket</a>
   </li>
 </ul>
   </li>
@@ -175,7 +190,7 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Install and Run Clusterless Quickstart</h1>
+<h1 class="page">Install and Bootstrap Quickstart</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
@@ -191,22 +206,18 @@
 </div>
 <div class="sect2">
 <h3 id="_install_nvm"><a class="anchor" href="#_install_nvm"></a>Install <a href="https://github.com/nvm-sh/nvm">nvm</a>:</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>curl -o- <a href="https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh" class="bare">https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh</a> | bash</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash</code></pre>
 </div>
-</blockquote>
 </div>
 <div class="paragraph">
 <p>Install node/npm:</p>
 </div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>nvm install --lts</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ nvm install --lts</code></pre>
 </div>
-</blockquote>
 </div>
 </div>
 <div class="sect2">
@@ -221,12 +232,10 @@
 </li>
 </ul>
 </div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>npm install -g aws-cdk@2.90.0</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ npm install -g aws-cdk</code></pre>
 </div>
-</blockquote>
 </div>
 <div class="paragraph">
 <p>after install, make sure to bootstrap your account and region:</p>
@@ -238,22 +247,18 @@
 </li>
 </ul>
 </div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 &#8230;&#8203;</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ...</code></pre>
 </div>
-</blockquote>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_install_java_17_via_sdkman"><a class="anchor" href="#_install_java_17_via_sdkman"></a>Install Java 17 via <a href="https://sdkman.io">sdkman</a>:</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>sdk install java 17.0.8-graalce</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ sdk install java 17.0.8-graalce</code></pre>
 </div>
-</blockquote>
 </div>
 </div>
 </div>
@@ -290,11 +295,80 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="bootstrapping"><a class="anchor" href="#bootstrapping"></a>Bootstrapping a Cloud Placement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Clusterless must bootstrap a cloud provider account within a given region, called a placement.</p>
+</div>
+<div class="paragraph">
+<p>This is not the same as bootstrapping the AWS CDK (as outlined above).</p>
+</div>
+<div class="paragraph">
+<p>To perform a bootstrap, call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls bootstrap</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or with a specific AWS profile:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls bootstrap --profile [profile name]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will start an interactive session that asks for the necessary <a href="concepts/placement.html" class="xref page">placement</a> data:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>provider</p>
+</li>
+<li>
+<p>account id</p>
+</li>
+<li>
+<p>region</p>
+</li>
+<li>
+<p>optional stage (the prefix to use for all resources)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls bootstrap --providers aws --account [account] --region [region] --stage  [stage]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where stage may be left blank.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_using_clusterless"><a class="anchor" href="#_using_clusterless"></a>Using Clusterless</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See the <a href="https://github.com/ClusterlessHQ/clusterless-aws-examples">clusterless-aws-examples</a> GitHub repo for a few
-example project that can be quickly deployed or used as a template for a new project.</p>
+<p>Next visit <a href="howtos/index.html" class="xref page">Intro</a> to see guides on using clusterless.</p>
+</div>
+<div class="paragraph">
+<p>For working code, check out these repositories:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ClusterlessHQ/clusterless-aws-examples">clusterless-aws-examples</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ClusterlessHQ/aws-s3-log-pipeline">aws-s3-log-pipeline</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>

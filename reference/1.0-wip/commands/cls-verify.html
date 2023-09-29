@@ -98,6 +98,15 @@
     <a class="nav-link" href="cls-show.html">cls-show(1)</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cls-show-arc.html">cls-show-arc(1)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cls-show-barrier.html">cls-show-barrier(1)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cls-show-boundary.html">cls-show-boundary(1)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="cls-show-component.html">cls-show-component(1)</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -105,6 +114,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="cls-show-provider.html">cls-show-provider(1)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cls-show-resource.html">cls-show-resource(1)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="cls-verify.html">cls-verify(1)</a>
@@ -116,31 +128,52 @@
     <span class="nav-text">Components</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../components/aws-core-batch-exec-arc.html">aws:core:batchExecArc</a>
-  </li>
-  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Resources</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/aws-core-compute-environment.html">aws:core:computeEnvironment</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/aws-core-event-bus.html">aws:core:eventBus</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../components/aws-core-glue-add-partitions-arc.html">aws:core:glueAddPartitionsArc</a>
-  </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/aws-core-glue-database.html">aws:core:glueDatabase</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/aws-core-glue-table.html">aws:core:glueTable</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/aws-core-s3-bucket.html">aws:core:s3Bucket</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../components/aws-core-s3-copy-arc.html">aws:core:s3CopyArc</a>
+</ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Boundaries</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/aws-core-s3-put-listener-boundary.html">aws:core:s3PutListenerBoundary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Arcs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/aws-core-batch-exec-arc.html">aws:core:batchExecArc</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/aws-core-glue-add-partitions-arc.html">aws:core:glueAddPartitionsArc</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/aws-core-s3-copy-arc.html">aws:core:s3CopyArc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">Barriers</span>
   </li>
 </ul>
   </li>
@@ -230,7 +263,7 @@
 <div class="paragraph">
 <p><strong>cls verify</strong> [<strong>-v</strong>] [<strong>--dry-run</strong>] [<strong>--exclude-all-arcs</strong>[=<em>&lt;excludeAllArcs&gt;</em>]]
            [<strong>--exclude-all-tags</strong>[=<em>&lt;excludeAllTags&gt;</em>]] [<strong>--output</strong>=<em>&lt;format&gt;</em>]
-           [<strong>--exclude-arc</strong>=<em>&lt;excludeArcNames&gt;</em>]&#8230;&#8203;
+           [<strong>--profile</strong>=<em>&lt;profile&gt;</em>] [<strong>--exclude-arc</strong>=<em>&lt;excludeArcNames&gt;</em>]&#8230;&#8203;
            [<strong>--only-resource</strong>=<em>&lt;onlyResourceNames&gt;</em>]&#8230;&#8203; [<strong>-p</strong>=<em>&lt;projectFiles&gt;</em>]&#8230;&#8203;
            [<strong>-P</strong>=<em>&lt;providerNames&gt;</em>]&#8230;&#8203; [COMMAND]</p>
 </div>
@@ -284,6 +317,10 @@
 <dd>
 <p>Provider substrates to target.</p>
 </dd>
+<dt class="hdlist1"><strong>--profile</strong>=<em>&lt;profile&gt;</em></dt>
+<dd>
+<p>aws profile</p>
+</dd>
 <dt class="hdlist1"><strong>-v</strong>, <strong>--verbose</strong></dt>
 <dd>
 <p>Specify multiple -v options to increase verbosity.</p>
@@ -300,7 +337,7 @@
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><a href="#cls-verify-help.adoc" class="xref unresolved"><strong>help</strong></a></dt>
+<dt class="hdlist1"><a href="cls-verify-help.html" class="xref page"><strong>help</strong></a></dt>
 <dd>
 <p>Display help information about the specified command.</p>
 </dd>
