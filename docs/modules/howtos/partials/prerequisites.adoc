@@ -1,0 +1,5 @@
+[NOTE]
+.Prerequisites
+====
+It is assumed the xref:ROOT:install-quickstart.adoc[cls] cli tool is installed. And that the current cloud placement has been xref:ROOT:install-quickstart.adoc#bootstrapping[bootstrapped].
+====

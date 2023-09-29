@@ -14,6 +14,8 @@
 ╚════════════════════════════════╝
 ....
 
+include::partial$components.adoc[]
+
 If xref:dataset.adoc[datasets] are nodes in a graph, joined by a xref:workload.adoc[workload], then an arc is the source
 dataset, the workload, and the sink dataset.
 

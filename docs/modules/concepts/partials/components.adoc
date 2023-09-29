@@ -1,0 +1,4 @@
+[NOTE]
+====
+Learn more about provided xref:1.0-wip@reference:ROOT:index.adoc#components[Components].
+====

@@ -1,4 +1,4 @@
-= Install and Run Clusterless Quickstart
+= Install and Bootstrap Quickstart
 :keywords:
 :navtitle: Install and Run Clusterless Quickstart
 
@@ -10,11 +10,17 @@ _If you already have Node and npm, skip to the AWS CDK install._
 
 === Install https://github.com/nvm-sh/nvm[nvm]:
 
-> curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+[,console]
+----
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+----
 
 Install node/npm:
 
-> nvm install --lts
+[,console]
+----
+$ nvm install --lts
+----
 
 === Install the AWS CDK:
 
@@ -22,17 +28,26 @@ See the guide on the AWS site to install the latest version:
 
 - https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html
 
-> npm install -g aws-cdk@2.90.0
+[,console]
+----
+$ npm install -g aws-cdk
+----
 
 after install, make sure to bootstrap your account and region:
 
 - https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html#bootstrapping-howto
 
-> cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ...
+[,console]
+----
+$ cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ...
+----
 
 === Install Java 17 via https://sdkman.io[sdkman]:
 
-> sdk install java 17.0.8-graalce
+[,console]
+----
+$ sdk install java 17.0.8-graalce
+----
 
 == Installing Clusterless
 
@@ -47,7 +62,48 @@ The `bin` folder will have:
 - `cls` - the root CLI interface
 - `cls-aws` - the AWS interface only used as an escape hatch and testing
 
+[#bootstrapping,reftext=Bootstrapping]
+== Bootstrapping a Cloud Placement
+
+Clusterless must bootstrap a cloud provider account within a given region, called a placement.
+
+This is not the same as bootstrapping the AWS CDK (as outlined above).
+
+To perform a bootstrap, call:
+
+[,console]
+----
+$ cls bootstrap
+----
+
+Or with a specific AWS profile:
+
+[,console]
+----
+$ cls bootstrap --profile [profile name]
+----
+
+This will start an interactive session that asks for the necessary xref:concepts:placement.adoc[placement] data:
+
+- provider
+- account id
+- region
+- optional stage (the prefix to use for all resources)
+
+Alternatively, you can call:
+
+[,console]
+----
+$ cls bootstrap --providers aws --account [account] --region [region] --stage  [stage]
+----
+
+Where stage may be left blank.
+
 == Using Clusterless
 
-See the https://github.com/ClusterlessHQ/clusterless-aws-examples[clusterless-aws-examples] GitHub repo for a few
-example project that can be quickly deployed or used as a template for a new project.
+Next visit xref:guide:howtos:index.adoc[] to see guides on using clusterless.
+
+For working code, check out these repositories:
+
+- https://github.com/ClusterlessHQ/clusterless-aws-examples[clusterless-aws-examples]
+- https://github.com/ClusterlessHQ/aws-s3-log-pipeline[aws-s3-log-pipeline]

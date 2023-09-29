@@ -8,6 +8,8 @@
          ▔
 ....
 
+include::partial$components.adoc[]
+
 Barriers listen for multiple events from different datasets and fires a downstream event when arrival conditions are
 met.
 

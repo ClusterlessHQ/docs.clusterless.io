@@ -1,5 +1,7 @@
 = Boundary
 
+include::partial$components.adoc[]
+
 Boundaries are the integration interfaces that adapt incoming or outgoing data to the Clusterless framework.
 
 There are Ingress and Egress Boundaries.

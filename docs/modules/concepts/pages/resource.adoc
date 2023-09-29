@@ -1,5 +1,7 @@
 = Resource
 
+include::partial$components.adoc[]
+
 Resources are shared static AWS resources like an AWS S3 bucket, Athena Database, or compute configuration.
 
 Resources are within a given project, but can be shared across projects.

@@ -12,7 +12,7 @@ events.
 This allows developers and teams to work relatively independently when building and updating data pipelines.
 
 And because of the rich standardized metadata Clusterless maintains, stakeholders can quickly understand the reliability
-and availability of upstream data.
+and availability of a given data pipeline.
 
 By leveraging native pay-as-you-go primitives, no runtimes or dedicated services need to be managed.
 

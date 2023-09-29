@@ -1,0 +1,98 @@
+= Create an AWS S3 Bucket
+
+The simplest project that can be deployed with clusterless is one that manages an AWS S3 bucket.
+
+In this example, we will create and destroy a bucket.
+
+include::partial$prerequisites.adoc[]
+
+To initialize a new xref:concepts:project.adoc[project], in a new directory call:
+
+[,console]
+----
+$ cls show model --model deployable > project.json
+----
+
+[,json]
+.project.json
+----
+include::1.0-wip@reference:models:example$deployable.adoc[]
+----
+
+Next we add a new resource to the `resources` declaration.
+
+The S3 bucket resource is named xref:reference:components:aws-core-s3-bucket.adoc[aws:core:s3Bucket].
+
+To get the JSON model for this resource, call:
+
+[,console]
+----
+$ cls show component --model aws:core:s3Bucket
+----
+
+[,json]
+----
+include::1.0-wip@reference:components:example$aws-core-s3-bucket.adoc[]
+----
+
+TIP: `cls show ... | pbcopy` can be used on OSX to copy output to the clipboard.
+
+Paste the results into the `resources` json property.
+
+[,json]
+.project.json
+----
+{
+  "resources": [
+include::1.0-wip@reference:components:example$aws-core-s3-bucket.adoc[indent=4]
+  ]
+}
+----
+
+The only values required are resource `name` and the `bucketName`. Ensure the `bucketName` is globally unique to prevent
+a deployment failure. Optionally, set `removeOnDestroy` to `true`, this will delete the bucket (and its contents) when
+we `destroy` the project.
+
+To verify the project is valid, call:
+
+[,console]
+----
+$ cls verify -p project.json
+----
+
+Finally, to deploy the project:
+
+[,console]
+----
+$ cls deploy -p project.json
+----
+
+[IMPORTANT]
+====
+If an error states you need to bootstrap the region, call:
+
+[,console]
+----
+$ cls bootstrap
+----
+
+xref:ROOT:install-quickstart.adoc#bootstrapping[Learn more.]
+====
+
+Call the following `aws` cli command, if you have it installed, to confirm the bucket was created.
+
+[,console]
+----
+$ aws s3 ls
+----
+
+Otherwise, log into the AWS Console.
+
+Finally, destroy the project.
+
+[,console]
+----
+$ cls destroy -p project.json
+----
+
+The bucket should be removed if `removeOnDestroy` was set to true.
