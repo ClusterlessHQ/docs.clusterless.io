@@ -6,17 +6,21 @@ available and available features may not be properly documented, or documented a
 Clusterless is a tool for deploying decentralized, scalable, and secure data-processing workloads for continuously
 arriving data, across clouds.
 
-With Clusterless, heterogeneous workloads can be chained together by simply subscribing to upstream data availability
-events.
+That is, as new data arrives (in a bucket, for example), process it with a (custom python, java, etc.) workload. Then
+hand the results to another workload by publishing an event.
+
+Where any developer or team can subscribe their workload to any upstream availability event.
 
 This allows developers and teams to work relatively independently when building and updating data pipelines.
 
 And because of the rich standardized metadata Clusterless maintains, stakeholders can quickly understand the reliability
 and availability of a given data pipeline.
 
-By leveraging native pay-as-you-go primitives, no runtimes or dedicated services need to be managed.
+By leveraging native pay-as-you-go primitives, no runtimes or dedicated services need to be managed. That is, every line
+of code managing or processing your data is part of this open source project, provided by you or your team, or is
+provided by your cloud provider. No third-party hosted runtimes required.
 
-Zero data arriving means zero costs (other than storage for historical data).
+Subsequently, zero data arriving means zero costs (other than storage for historical data).
 
 == A Common Pipeline Scenario
 
