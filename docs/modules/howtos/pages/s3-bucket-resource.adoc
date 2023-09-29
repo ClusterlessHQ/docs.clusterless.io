@@ -1,8 +1,8 @@
-= Create an AWS S3 Bucket
+= Manage an AWS S3 Bucket
 
 The simplest project that can be deployed with clusterless is one that manages an AWS S3 bucket.
 
-In this example, we will create and destroy a bucket.
+In this example, we will create and destroy a bucket by declaring it in a project file.
 
 include::partial$prerequisites.adoc[]
 
