@@ -1,0 +1,5 @@
+[NOTE]
+.AWS CLI
+====
+Some tasks in this example require the AWS cli (command line interface) to be installed. It can be found here: https://aws.amazon.com/cli/
+====

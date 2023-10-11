@@ -5,19 +5,35 @@ The simplest project that can be deployed with clusterless is one that manages a
 In this example, we will create and destroy a bucket by declaring it in a project file.
 
 include::partial$prerequisites.adoc[]
+include::partial$aws-cli.adoc[]
 
 To initialize a new xref:concepts:project.adoc[project], in a new directory call:
 
 [,console]
 ----
-$ cls show model --model deployable > project.json
+$ cls show model --model deployable > project-bucket.json
 ----
 
 [,json]
-.project.json
+.project-bucket.json
 ----
 include::1.0-wip@reference:models:example$deployable.adoc[]
 ----
+
+A project declares what gets deployed and where it is deployed. A project has a `name` and `version`. The name should
+remain constant as the project changes between deployments. The version may change if you need to make incompatible
+changes and want to keep the previous version.
+
+The name and version will be used when naming cloud resources. Keep the name short, and we suggest using a simple date
+format for the version.
+
+The xref:guide:concepts:placement.adoc[`placement`] specifies where to make the deployment. In this guide, use `aws`
+as the `provider`.
+
+TIP: Find your account information by calling `aws sts get-caller-identity --profile <credential profile>`.
+
+`stage` is optional, but we suggest using `dev` for development, and `prod` for production when you are deploying into
+the same `account` and `region`.
 
 Next we add a new resource to the `resources` declaration.
 
@@ -27,44 +43,48 @@ To get the JSON model for this resource, call:
 
 [,console]
 ----
-$ cls show component --model aws:core:s3Bucket
+$ cls show component --model aws:core:s3Bucket --required
 ----
+
+NOTE: The `--required` flag causes only the required JSON properties to print.
 
 [,json]
 ----
-include::1.0-wip@reference:components:example$aws-core-s3-bucket.adoc[]
+include::1.0-wip@reference:components:example$aws-core-s3-bucket-required.adoc[]
 ----
 
 TIP: `cls show ... | pbcopy` can be used on OSX to copy output to the clipboard.
 
-Paste the results into the `resources` json property.
+Paste the results into the `resources` JSON property.
 
 [,json]
-.project.json
+.project-bucket.json
 ----
 {
   "resources": [
-include::1.0-wip@reference:components:example$aws-core-s3-bucket.adoc[indent=4]
+include::1.0-wip@reference:components:example$aws-core-s3-bucket-required.adoc[indent=4]
   ]
 }
 ----
 
-The only values required are resource `name` and the `bucketName`. Ensure the `bucketName` is globally unique to prevent
-a deployment failure. Optionally, set `removeOnDestroy` to `true`, this will delete the bucket (and its contents) when
-we `destroy` the project.
+Set the `name` and `bucketName` values. Ensure the `bucketName` is globally unique to prevent a deployment failure.
+
+Optionally, add and set `removeOnDestroy`
+(xref:1.0-wip@reference:components:page$aws-core-s3-bucket.adoc[full model]) to `true`, this will delete the
+bucket (and its contents) when we `destroy` the project.
 
 To verify the project is valid, call:
 
 [,console]
 ----
-$ cls verify -p project.json
+$ cls verify -p project-bucket.json
 ----
 
 Finally, to deploy the project:
 
 [,console]
 ----
-$ cls deploy -p project.json
+$ cls deploy -p project-bucket.json
 ----
 
 [IMPORTANT]
@@ -79,6 +99,14 @@ $ cls bootstrap
 xref:ROOT:install-quickstart.adoc#bootstrapping[Learn more.]
 ====
 
+The following commands will list all currently deployed placements and projects:
+
+[,console]
+----
+$ cls placements
+$ cls projects
+----
+
 Call the following `aws` cli command, if you have it installed, to confirm the bucket was created.
 
 [,console]
@@ -92,7 +120,7 @@ Finally, destroy the project.
 
 [,console]
 ----
-$ cls destroy -p project.json
+$ cls destroy -p project-bucket.json
 ----
 
 The bucket should be removed if `removeOnDestroy` was set to true.

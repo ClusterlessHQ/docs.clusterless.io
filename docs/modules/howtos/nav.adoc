@@ -1,3 +1,4 @@
 .Clusterless How-tos
 * xref:index.adoc[]
 * xref:s3-bucket-resource.adoc[]
+* xref:s3-copy-files.adoc[]
