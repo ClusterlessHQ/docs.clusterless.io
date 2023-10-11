@@ -119,6 +119,9 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/s3-bucket-resource.html">Manage an AWS S3 Bucket</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/s3-copy-files.html">Copy Files Between S3 Locations</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
@@ -193,20 +196,37 @@
 <article class="doc">
 <h1 class="page">Lot</h1>
 <div class="paragraph">
-<p>Clusterless introduces the concept of a <a href="#"><code>lot</code></a>, simply a batch of data objects that all arrived within
+<p>Clusterless introduces the concept of a <code>lot</code>, simply a batch of data objects that all arrived within
 the same interval of time.</p>
+</div>
+<div class="paragraph">
+<p>The currently supported intervals are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Twelfths</code> - 5 minute interval</p>
+</li>
+<li>
+<p><code>Sixths</code> - 10 minute interval</p>
+</li>
+<li>
+<p><code>Fourths</code> - 15 minute interval</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>The <code>lot</code> id value is used to maintain auditability through the system by either partitioning data by lots and/or
 embedding the lot id value in the file name.</p>
 </div>
 <div class="paragraph">
-<p>A lot id is named in a uniform way. Expected to be monotonic. And should be a concise representation of a time
+<p>A lot id is formatted in a uniform way. Expected to be monotonic. And should be a concise representation of a time
 unit (a 5 or 10 minute interval) that is both human-readable and machine friendly against simple algorithms, e.g.
 splitting and sorting.</p>
 </div>
 <div class="paragraph">
-<p>An example would be <code>20221013PT5M000</code>, representing the 5-minute interval starting at midnight on October, 13, 2022.</p>
+<p>An example lot would be <code>20221013PT5M000</code>, representing the 5-minute interval (<code>Twelfths</code>) starting at midnight on
+October, 13, 2022.</p>
 </div>
 <div class="paragraph">
 <p>A lot id will represent the wall clock time data was observed and the objects collected, it does not represent the time

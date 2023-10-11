@@ -119,6 +119,9 @@
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="s3-bucket-resource.html">Manage an AWS S3 Bucket</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="s3-copy-files.html">Copy Files Between S3 Locations</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
@@ -213,16 +216,31 @@
 </tr>
 </table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">AWS CLI</div>
+<div class="paragraph">
+<p>Some tasks in this example require the AWS cli (command line interface) to be installed. It can be found here: <a href="https://aws.amazon.com/cli/" class="bare">https://aws.amazon.com/cli/</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>To initialize a new <a href="../concepts/project.html" class="xref page">project</a>, in a new directory call:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls show model --model deployable &gt; project.json</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls show model --model deployable &gt; project-bucket.json</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">project.json</div>
+<div class="title">project-bucket.json</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
   "project" : {
@@ -243,6 +261,35 @@
 </div>
 </div>
 <div class="paragraph">
+<p>A project declares what gets deployed and where it is deployed. A project has a <code>name</code> and <code>version</code>. The name should
+remain constant as the project changes between deployments. The version may change if you need to make incompatible
+changes and want to keep the previous version.</p>
+</div>
+<div class="paragraph">
+<p>The name and version will be used when naming cloud resources. Keep the name short, and we suggest using a simple date
+format for the version.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="../concepts/placement.html" class="xref page"><code>placement</code></a> specifies where to make the deployment. In this guide, use <code>aws</code>
+as the <code>provider</code>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Find your account information by calling <code>aws sts get-caller-identity --profile &lt;credential profile&gt;</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>stage</code> is optional, but we suggest using <code>dev</code> for development, and <code>prod</code> for production when you are deploying into
+the same <code>account</code> and <code>region</code>.</p>
+</div>
+<div class="paragraph">
 <p>Next we add a new resource to the <code>resources</code> declaration.</p>
 </div>
 <div class="paragraph">
@@ -253,20 +300,27 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls show component --model aws:core:s3Bucket</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls show component --model aws:core:s3Bucket --required</code></pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>--required</code> flag causes only the required JSON properties to print.
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
   "type" : "aws:core:s3Bucket",
-  "exclude" : false,
   "name" : null,
-  "bucketName" : null,
-  "versioned" : false,
-  "enableEventBridge" : true,
-  "removeOnDestroy" : false,
-  "tags" : { }
+  "bucketName" : null
 }</code></pre>
 </div>
 </div>
@@ -283,38 +337,36 @@
 </table>
 </div>
 <div class="paragraph">
-<p>Paste the results into the <code>resources</code> json property.</p>
+<p>Paste the results into the <code>resources</code> JSON property.</p>
 </div>
 <div class="listingblock">
-<div class="title">project.json</div>
+<div class="title">project-bucket.json</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
   "resources": [
     {
       "type" : "aws:core:s3Bucket",
-      "exclude" : false,
       "name" : null,
-      "bucketName" : null,
-      "versioned" : false,
-      "enableEventBridge" : true,
-      "removeOnDestroy" : false,
-      "tags" : { }
+      "bucketName" : null
     }
   ]
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The only values required are resource <code>name</code> and the <code>bucketName</code>. Ensure the <code>bucketName</code> is globally unique to prevent
-a deployment failure. Optionally, set <code>removeOnDestroy</code> to <code>true</code>, this will delete the bucket (and its contents) when
-we <code>destroy</code> the project.</p>
+<p>Set the <code>name</code> and <code>bucketName</code> values. Ensure the <code>bucketName</code> is globally unique to prevent a deployment failure.</p>
+</div>
+<div class="paragraph">
+<p>Optionally, add and set <code>removeOnDestroy</code>
+(<a href="../../../reference/1.0-wip/components/aws-core-s3-bucket.html" class="xref page">full model</a>) to <code>true</code>, this will delete the
+bucket (and its contents) when we <code>destroy</code> the project.</p>
 </div>
 <div class="paragraph">
 <p>To verify the project is valid, call:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls verify -p project.json</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls verify -p project-bucket.json</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -322,7 +374,7 @@ we <code>destroy</code> the project.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls deploy -p project.json</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls deploy -p project-bucket.json</code></pre>
 </div>
 </div>
 <div class="admonitionblock important">
@@ -348,6 +400,15 @@ we <code>destroy</code> the project.</p>
 </table>
 </div>
 <div class="paragraph">
+<p>The following commands will list all currently deployed placements and projects:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls placements
+$ cls projects</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Call the following <code>aws</code> cli command, if you have it installed, to confirm the bucket was created.</p>
 </div>
 <div class="listingblock">
@@ -363,7 +424,7 @@ we <code>destroy</code> the project.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls destroy -p project.json</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls destroy -p project-bucket.json</code></pre>
 </div>
 </div>
 <div class="paragraph">
