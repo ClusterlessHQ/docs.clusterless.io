@@ -2,27 +2,41 @@
 :keywords:
 :navtitle: Install and Run Clusterless Quickstart
 
-The `cls` CLI tool can be installed in the following ways:
+Clusterless relies on the AWS CDK binary.
 
-== Prerequisites
+Both Clusterless and the CDK must be independently bootstrapped. Bootstrapping initializes a cloud provider account and
+region for use with the CDK and Clusterless.
 
-_If you already have Node and npm, skip to the AWS CDK install._
+The AWS CDK binary is a Node.js app, so Node.js must be installed.
 
-=== Install https://github.com/nvm-sh/nvm[nvm]:
+All three can be installed on macOS via Homebrew.
 
-[,console]
-----
-$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-----
+== Install via Homebrew
 
-Install node/npm:
+https://brew.sh[Homebrew] is the easiest way to install the AWS CDK and Clusterless on macOS:
 
 [,console]
 ----
-$ nvm install --lts
+$ brew install aws-cdk
+$ cdk --version
 ----
 
-=== Install the AWS CDK:
+Be sure to <<post-cdk-install,bootstrap the AWS CDK>>.
+
+[,console]
+----
+$ brew tap clusterlesshq/tap
+$ brew install clusterless
+$ cls --version
+----
+
+Be sure to <<bootstrapping,bootstrap a cloud placement>>.
+
+== Other Install
+
+=== AWS CDK
+
+If you don't have Node.js installed, you can install it via: https://nodejs.org/en/download.
 
 See the guide on the AWS site to install the latest version:
 
@@ -33,23 +47,7 @@ See the guide on the AWS site to install the latest version:
 $ npm install -g aws-cdk
 ----
 
-after install, make sure to bootstrap your account and region:
-
-- https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html#bootstrapping-howto
-
-[,console]
-----
-$ cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ...
-----
-
-=== Install Java 17 via https://sdkman.io[sdkman]:
-
-[,console]
-----
-$ sdk install java 17.0.8-graalce
-----
-
-== Installing Clusterless
+=== Installing Clusterless
 
 The Clusterless CLI app `cls` is downloadable from GitHub releases:
 
@@ -61,6 +59,18 @@ The `bin` folder will have:
 
 - `cls` - the root CLI interface
 - `cls-aws` - the AWS interface only used as an escape hatch and testing
+
+[#post-cdk-install,reftext=Post CDK Install]
+== Post CDK Install
+
+After installation, make sure to bootstrap your account and region:
+
+- https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html#bootstrapping-howto
+
+[,console]
+----
+$ cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ...
+----
 
 [#bootstrapping,reftext=Bootstrapping]
 == Bootstrapping a Cloud Placement
