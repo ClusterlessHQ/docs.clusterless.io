@@ -197,34 +197,55 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>cls</code> CLI tool can be installed in the following ways:</p>
+<p>Clusterless relies on the AWS CDK binary.</p>
+</div>
+<div class="paragraph">
+<p>Both Clusterless and the CDK must be independently bootstrapped. Bootstrapping initializes a cloud provider account and
+region for use with the CDK and Clusterless.</p>
+</div>
+<div class="paragraph">
+<p>The AWS CDK binary is a Node.js app, so Node.js must be installed.</p>
+</div>
+<div class="paragraph">
+<p>All three can be installed on macOS via Homebrew.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<h2 id="_install_via_homebrew"><a class="anchor" href="#_install_via_homebrew"></a>Install via Homebrew</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><em>If you already have Node and npm, skip to the AWS CDK install.</em></p>
+<p><a href="https://brew.sh">Homebrew</a> is the easiest way to install the AWS CDK and Clusterless on macOS:</p>
 </div>
-<div class="sect2">
-<h3 id="_install_nvm"><a class="anchor" href="#_install_nvm"></a>Install <a href="https://github.com/nvm-sh/nvm">nvm</a>:</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ brew install aws-cdk
+$ cdk --version</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Install node/npm:</p>
+<p>Be sure to <a href="#post-cdk-install">bootstrap the AWS CDK</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ nvm install --lts</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ brew tap clusterlesshq/tap
+$ brew install clusterless
+$ cls --version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Be sure to <a href="#bootstrapping">bootstrap a cloud placement</a>.</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_other_install"><a class="anchor" href="#_other_install"></a>Other Install</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_install_the_aws_cdk"><a class="anchor" href="#_install_the_aws_cdk"></a>Install the AWS CDK:</h3>
+<h3 id="_aws_cdk"><a class="anchor" href="#_aws_cdk"></a>AWS CDK</h3>
+<div class="paragraph">
+<p>If you don&#8217;t have Node.js installed, you can install it via: <a href="https://nodejs.org/en/download" class="bare">https://nodejs.org/en/download</a>.</p>
+</div>
 <div class="paragraph">
 <p>See the guide on the AWS site to install the latest version:</p>
 </div>
@@ -240,35 +261,9 @@
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ npm install -g aws-cdk</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>after install, make sure to bootstrap your account and region:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html#bootstrapping-howto" class="bare">https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html#bootstrapping-howto</a></p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ...</code></pre>
-</div>
-</div>
 </div>
 <div class="sect2">
-<h3 id="_install_java_17_via_sdkman"><a class="anchor" href="#_install_java_17_via_sdkman"></a>Install Java 17 via <a href="https://sdkman.io">sdkman</a>:</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ sdk install java 17.0.8-graalce</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_installing_clusterless"><a class="anchor" href="#_installing_clusterless"></a>Installing Clusterless</h2>
-<div class="sectionbody">
+<h3 id="_installing_clusterless"><a class="anchor" href="#_installing_clusterless"></a>Installing Clusterless</h3>
 <div class="paragraph">
 <p>The Clusterless CLI app <code>cls</code> is downloadable from GitHub releases:</p>
 </div>
@@ -294,6 +289,27 @@
 <p><code>cls-aws</code> - the AWS interface only used as an escape hatch and testing</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="post-cdk-install"><a class="anchor" href="#post-cdk-install"></a>Post CDK Install</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After installation, make sure to bootstrap your account and region:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html#bootstrapping-howto" class="bare">https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html#bootstrapping-howto</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ...</code></pre>
+</div>
 </div>
 </div>
 </div>
