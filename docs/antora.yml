@@ -4,5 +4,6 @@ version: 1.0-wip
 nav:
   - modules/ROOT/nav-start.adoc
   - modules/concepts/nav.adoc
+  - modules/guide/nav.adoc
   - modules/howtos/nav.adoc
   - modules/ROOT/nav-end.adoc

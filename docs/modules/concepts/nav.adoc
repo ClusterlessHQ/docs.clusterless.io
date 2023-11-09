@@ -1,4 +1,4 @@
-.Clusterless Concepts
+.Concepts
 * xref:provider.adoc[Providers]
 * xref:project.adoc[Projects]
 * xref:placement.adoc[Placements]

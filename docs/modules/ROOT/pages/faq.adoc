@@ -1,0 +1,38 @@
+= Frequently Asked Questions (FAQ)
+:keywords:
+:navtitle: Frequently Asked Questions (FAQ)
+
+== AWS General Questions
+
+=== What is the AWS CDK?
+
+Clusterless relies on the AWS CDK to create AWS Cloudformation templates. The AWS CDK is a software development
+framework for defining cloud infrastructure in code and provisioning it through AWS CloudFormation service. It offers a
+high-level object-oriented abstraction to define AWS resources.
+
+Unlike Hashicorp's Terraform, the AWS CDK does not store any state locally. Instead, it uses the AWS Cloudformation
+service to manage state and resources.
+
+=== What resources does Clusterless create in my AWS account?
+
+Depending on project configuration and the components used, Clusterless will create the following resources:
+
+- AWS S3 buckets to store all metadata.
+- AWS EventBridge queue and rules to trigger Lambda functions.
+- AWS Step Functions to orchestrate arc workloads.
+- AWS Lambda functions to handle API requests and run arc workloads.
+- AWS Fargate resources to run arc workloads.
+
+None of these resource incur any cost when not in use, except for the S3 buckets which will incur a small cost for
+storage when there are no active workloads.
+
+=== How do I delete an AWS resources created by Clusterless?
+
+The `cls destroy` command will remove the current project and all resources created (unless they are configured to be
+retained on destroy).
+
+Alternatively, you can use the AWS console to delete resources manually. The AWS resources created by Clusterless are
+deployed in CloudFormation stacks with names prefixed with the project name.
+
+
+

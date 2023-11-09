@@ -1,6 +1,6 @@
-= Install and Bootstrap Quickstart
+= Install and Run Quickstart
 :keywords:
-:navtitle: Install and Run Clusterless Quickstart
+:navtitle: Install and Run Quickstart
 
 Clusterless relies on the AWS CDK binary.
 

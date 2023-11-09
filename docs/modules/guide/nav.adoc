@@ -1,0 +1,2 @@
+.User Guide
+* xref:status.adoc[Viewing Status]
