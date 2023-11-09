@@ -276,8 +276,8 @@
 <p><strong>cls arcs status</strong> [<strong>-v</strong>] [<strong>--list</strong>] [<strong>--stage</strong>[=<em>&lt;stage&gt;</em>]] [<strong>--account</strong>=<em>&lt;account&gt;</em>]
                 [<strong>--output</strong>=<em>&lt;format&gt;</em>] [<strong>--profile</strong>=<em>&lt;profile&gt;</em>] [<strong>--region</strong>=<em>&lt;region&gt;</em>]
                 [<strong>--name</strong>=<em>&lt;names&gt;</em>]&#8230;&#8203; [<strong>-P</strong>=<em>&lt;providerNames&gt;</em>]&#8230;&#8203;
-                [<strong>--project</strong>=<em>&lt;projects&gt;</em>]&#8230;&#8203; ([<strong>--earliest</strong>=<em>&lt;earliest&gt;</em>]
-                [<strong>--latest</strong>=<em>&lt;latest&gt;</em>])</p>
+                [<strong>--project</strong>=<em>&lt;projects&gt;</em>]&#8230;&#8203; [[<strong>--earliest</strong>=<em>&lt;earliest&gt;</em>]
+                [<strong>--latest</strong>=<em>&lt;latest&gt;</em>]]</p>
 </div>
 </div>
 </div>
@@ -286,12 +286,26 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Show a summary of deployed arcs status (within the time range).
-Where status is one of:
-  - running: workload is in process
-  - complete: workload finished successfully
-  - partial: workload finished but some data is missing
-  - missing: no data, possibly due to error, or missing upstream data
-The --list option will output all arc instances instead of summarizing.</p>
+Where status is one of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>running: workload is in process</p>
+</li>
+<li>
+<p>complete: workload finished successfully</p>
+</li>
+<li>
+<p>partial: workload finished but some data is missing</p>
+</li>
+<li>
+<p>missing: no data, possibly due to error, or missing upstream data</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The --list option will output all arc instances instead of summarizing.</p>
 </div>
 </div>
 </div>

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Install and Run Quickstart :: Clusterless Docs</title>
-    <link rel="canonical" href="https://docs.clusterless.io/guide/1.0-wip/install-quickstart.html">
+    <title>Frequently Asked Questions (FAQ) :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/guide/1.0-wip/faq.html">
     <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../_/css/site.css">
 <script defer data-domain="docs.clusterless.io" src="https://plausible.io/js/script.js"></script>
@@ -64,13 +64,13 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="clusterless-design.html">How Clusterless Works</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="install-quickstart.html">Install and Run Quickstart</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="support.html">Getting Help</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="faq.html">Frequently Asked Questions (FAQ)</a>
   </li>
 </ul>
@@ -198,211 +198,71 @@
   <ul>
     <li><a href="index.html">Clusterless User Guide</a></li>
     <li>Overview</li>
-    <li><a href="install-quickstart.html">Install and Run Quickstart</a></li>
+    <li><a href="faq.html">Frequently Asked Questions (FAQ)</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/ROOT/pages/install-quickstart.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/ROOT/pages/faq.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Install and Run Quickstart</h1>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>Clusterless relies on the AWS CDK binary.</p>
-</div>
-<div class="paragraph">
-<p>Both Clusterless and the CDK must be independently bootstrapped. Bootstrapping initializes a cloud provider account and
-region for use with the CDK and Clusterless.</p>
-</div>
-<div class="paragraph">
-<p>The AWS CDK binary is a Node.js app, so Node.js must be installed.</p>
-</div>
-<div class="paragraph">
-<p>All three can be installed on macOS via Homebrew.</p>
-</div>
-</div>
-</div>
+<h1 class="page">Frequently Asked Questions (FAQ)</h1>
 <div class="sect1">
-<h2 id="_install_via_homebrew"><a class="anchor" href="#_install_via_homebrew"></a>Install via Homebrew</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="https://brew.sh">Homebrew</a> is the easiest way to install the AWS CDK and Clusterless on macOS:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ brew install aws-cdk
-$ cdk --version</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Be sure to <a href="#post-cdk-install">bootstrap the AWS CDK</a>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ brew tap clusterlesshq/tap
-$ brew install clusterless
-$ cls --version</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Be sure to <a href="#bootstrapping">bootstrap a cloud placement</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_other_install"><a class="anchor" href="#_other_install"></a>Other Install</h2>
+<h2 id="_aws_general_questions"><a class="anchor" href="#_aws_general_questions"></a>AWS General Questions</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_aws_cdk"><a class="anchor" href="#_aws_cdk"></a>AWS CDK</h3>
+<h3 id="_what_is_the_aws_cdk"><a class="anchor" href="#_what_is_the_aws_cdk"></a>What is the AWS CDK?</h3>
 <div class="paragraph">
-<p>If you don&#8217;t have Node.js installed, you can install it via: <a href="https://nodejs.org/en/download" class="bare">https://nodejs.org/en/download</a>.</p>
+<p>Clusterless relies on the AWS CDK to create AWS Cloudformation templates. The AWS CDK is a software development
+framework for defining cloud infrastructure in code and provisioning it through AWS CloudFormation service. It offers a
+high-level object-oriented abstraction to define AWS resources.</p>
 </div>
 <div class="paragraph">
-<p>See the guide on the AWS site to install the latest version:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html" class="bare">https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html</a></p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ npm install -g aws-cdk</code></pre>
-</div>
+<p>Unlike Hashicorp&#8217;s Terraform, the AWS CDK does not store any state locally. Instead, it uses the AWS Cloudformation
+service to manage state and resources.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_installing_clusterless"><a class="anchor" href="#_installing_clusterless"></a>Installing Clusterless</h3>
+<h3 id="_what_resources_does_clusterless_create_in_my_aws_account"><a class="anchor" href="#_what_resources_does_clusterless_create_in_my_aws_account"></a>What resources does Clusterless create in my AWS account?</h3>
 <div class="paragraph">
-<p>The Clusterless CLI app <code>cls</code> is downloadable from GitHub releases:</p>
+<p>Depending on project configuration and the components used, Clusterless will create the following resources:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/ClusterlessHQ/clusterless/releases" class="bare">https://github.com/ClusterlessHQ/clusterless/releases</a></p>
+<p>AWS S3 buckets to store all metadata.</p>
+</li>
+<li>
+<p>AWS EventBridge queue and rules to trigger Lambda functions.</p>
+</li>
+<li>
+<p>AWS Step Functions to orchestrate arc workloads.</p>
+</li>
+<li>
+<p>AWS Lambda functions to handle API requests and run arc workloads.</p>
+</li>
+<li>
+<p>AWS Fargate resources to run arc workloads.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Download and unzip. Add the <code>bin</code> folder to your <code>PATH</code>.</p>
+<p>None of these resource incur any cost when not in use, except for the S3 buckets which will incur a small cost for
+storage when there are no active workloads.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_do_i_delete_an_aws_resources_created_by_clusterless"><a class="anchor" href="#_how_do_i_delete_an_aws_resources_created_by_clusterless"></a>How do I delete an AWS resources created by Clusterless?</h3>
+<div class="paragraph">
+<p>The <code>cls destroy</code> command will remove the current project and all resources created (unless they are configured to be
+retained on destroy).</p>
 </div>
 <div class="paragraph">
-<p>The <code>bin</code> folder will have:</p>
+<p>Alternatively, you can use the AWS console to delete resources manually. The AWS resources created by Clusterless are
+deployed in CloudFormation stacks with names prefixed with the project name.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>cls</code> - the root CLI interface</p>
-</li>
-<li>
-<p><code>cls-aws</code> - the AWS interface only used as an escape hatch and testing</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="post-cdk-install"><a class="anchor" href="#post-cdk-install"></a>Post CDK Install</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>After installation, make sure to bootstrap your account and region:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html#bootstrapping-howto" class="bare">https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html#bootstrapping-howto</a></p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ...</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="bootstrapping"><a class="anchor" href="#bootstrapping"></a>Bootstrapping a Cloud Placement</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Clusterless must bootstrap a cloud provider account within a given region, called a placement.</p>
-</div>
-<div class="paragraph">
-<p>This is not the same as bootstrapping the AWS CDK (as outlined above).</p>
-</div>
-<div class="paragraph">
-<p>To perform a bootstrap, call:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls bootstrap</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Or with a specific AWS profile:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls bootstrap --profile [profile name]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This will start an interactive session that asks for the necessary <a href="concepts/placement.html" class="xref page">placement</a> data:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>provider</p>
-</li>
-<li>
-<p>account id</p>
-</li>
-<li>
-<p>region</p>
-</li>
-<li>
-<p>optional stage (the prefix to use for all resources)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Alternatively, you can call:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls bootstrap --providers aws --account [account] --region [region] --stage  [stage]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Where stage may be left blank.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_using_clusterless"><a class="anchor" href="#_using_clusterless"></a>Using Clusterless</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Next visit <a href="howtos/index.html" class="xref page">Intro</a> to see guides on using clusterless.</p>
-</div>
-<div class="paragraph">
-<p>For working code, check out these repositories:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/ClusterlessHQ/clusterless-aws-examples">clusterless-aws-examples</a></p>
-</li>
-<li>
-<p><a href="https://github.com/ClusterlessHQ/aws-s3-log-pipeline">aws-s3-log-pipeline</a></p>
-</li>
-</ul>
 </div>
 </div>
 </div>

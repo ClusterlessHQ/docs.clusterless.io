@@ -276,8 +276,8 @@
 <p><strong>cls datasets status</strong> [<strong>-v</strong>] [<strong>--list</strong>] [<strong>--stage</strong>[=<em>&lt;stage&gt;</em>]] [<strong>--account</strong>=<em>&lt;account&gt;</em>]
                     [<strong>--output</strong>=<em>&lt;format&gt;</em>] [<strong>--profile</strong>=<em>&lt;profile&gt;</em>]
                     [<strong>--region</strong>=<em>&lt;region&gt;</em>] [<strong>--name</strong>=<em>&lt;names&gt;</em>]&#8230;&#8203;
-                    [<strong>-P</strong>=<em>&lt;providerNames&gt;</em>]&#8230;&#8203; ([<strong>--earliest</strong>=<em>&lt;earliest&gt;</em>]
-                    [<strong>--latest</strong>=<em>&lt;latest&gt;</em>])</p>
+                    [<strong>-P</strong>=<em>&lt;providerNames&gt;</em>]&#8230;&#8203; [[<strong>--earliest</strong>=<em>&lt;earliest&gt;</em>]
+                    [<strong>--latest</strong>=<em>&lt;latest&gt;</em>]]</p>
 </div>
 </div>
 </div>
@@ -286,12 +286,26 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Show a summary of deployed dataset manifest status (within the time range).
-Where status is one of:
-  - complete: manifest is complete
-  - partial: manifest exists, but some data is missing
-  - empty: manifest has no data, possibly due to error, or missing upstream data
-  - removed: the manifest and its data has been removed
-The --list option will output all manifest instances instead of summarizing.</p>
+Where status is one of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>complete: manifest is complete</p>
+</li>
+<li>
+<p>partial: manifest exists, but some data is missing</p>
+</li>
+<li>
+<p>empty: manifest has no data, possibly due to error, or missing upstream data</p>
+</li>
+<li>
+<p>removed: the manifest and its data has been removed</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The --list option will output all manifest instances instead of summarizing.</p>
 </div>
 </div>
 </div>

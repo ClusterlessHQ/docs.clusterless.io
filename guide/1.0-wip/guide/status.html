@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Viewing Status :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/guide/1.0-wip/guide/status.html">
+    <meta name="generator" content="Antora 3.1.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<script defer data-domain="docs.clusterless.io" src="https://plausible.io/js/script.js"></script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.clusterless.io">Clusterless Docs</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Project</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/ClusterlessHQ/">Repositories</a>
+            <a class="navbar-item" href="https://github.com/ClusterlessHQ/clusterless/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/orgs/ClusterlessHQ/discussions">Discussions</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://chris.wensel.net">Support</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="https://github.com/ClusterlessHQ/clusterless/releases">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="guide" data-version="1.0-wip">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Clusterless User Guide</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Overview</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../clusterless-roles.html">How Clusterless Can Help</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../clusterless-design.html">How Clusterless Works</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install-quickstart.html">Install and Run Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support.html">Getting Help</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../faq.html">Frequently Asked Questions (FAQ)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/provider.html">Providers</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/project.html">Projects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/placement.html">Placements</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/dataset.html">Datasets</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/lot.html">Lots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/workload.html">Workloads</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/arc.html">Arcs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/resource.html">Resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/boundary.html">Boundaries</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/barrier.html">Barriers</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts/dag.html">Pipeline DAG</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Guide</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="status.html">Viewing Status</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">How-tos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/index.html">Intro</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/s3-bucket-resource.html">Manage an AWS S3 Bucket</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/s3-copy-files.html">Copy Files Between S3 Locations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../reference/1.0-wip/index.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../reference/1.0-wip/index.html#commands">Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../reference/1.0-wip/index.html#providers">Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../reference/1.0-wip/index.html#components">Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../reference/1.0-wip/index.html#models">Models</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Clusterless User Guide</span>
+    <span class="version">1.0-wip</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../reference/1.0-wip/index.html">Clusterless Reference</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../reference/1.0-wip/index.html">1.0-wip</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../index.html">Clusterless User Guide</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1.0-wip</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Clusterless User Guide</a></li>
+    <li>User Guide</li>
+    <li><a href="status.html">Viewing Status</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/guide/pages/status.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Viewing Status</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Clusterless maintains a rich set of metadata.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_placements"><a class="anchor" href="#_placements"></a>Placements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>cls placements</code> command will show all placements to the current profile.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">provider  stage  account       region
+========================================
+aws       dev    123456789012  us-east-2</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">provider</dt>
+<dd>
+<p>The cloud provider name.</p>
+</dd>
+<dt class="hdlist1">stage</dt>
+<dd>
+<p>The stage name.</p>
+</dd>
+<dt class="hdlist1">account</dt>
+<dd>
+<p>The account number.</p>
+</dd>
+<dt class="hdlist1">region</dt>
+<dd>
+<p>The region.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projects"><a class="anchor" href="#_projects"></a>Projects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>cls projects</code> command will show all projects deployed into which placements.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">placement  placement  placement     placement  project  project
+provider   stage      account       region     name     version
+===================================================================
+aws        dev        123456789012  us-east-2  AwsLogs  20230817-00</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">projectName</dt>
+<dd>
+<p>The project name.</p>
+</dd>
+<dt class="hdlist1">projectVersion</dt>
+<dd>
+<p>The project version.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_arcs"><a class="anchor" href="#_arcs"></a>Arcs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>cls arcs</code> command will show all arcs deployed into which projects.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">placement  placement  placement     placement  project  project
+provider   stage      account       region     name     version      name
+===================================================================================
+aws        dev        123456789012  us-east-2  AwsLogs  20230817-00  addPartitions
+aws        dev        123456789012  us-east-2  AwsLogs  20230817-00  convertParquet</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name - The arc name</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>cls arcs status</code> command will show a summary of the status of all the arcs.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>cls arcs status --list</code> command will show all instances of all arcs.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">placement  placement  placement     placement  project  project                      temporal                   earliest         earliest                   latest           latest                                       total         range
+provider   stage      account       region     name     version      name            unit      earliest         found            gap       latest           found            gap     running  partial  missing  complete  found  range  gap
+=============================================================================================================================================================================================================================================
+aws        dev        123456789012  us-east-2  AwsLogs  20230817-00  addPartitions   TWELFTHS  20231108PT5M195  20231108PT5M195  0         20231109PT5M050  20231109PT5M049  1       0        0        0        143       143    144    1
+aws        dev        123456789012  us-east-2  AwsLogs  20230817-00  convertParquet  TWELFTHS  20231108PT5M195  20231108PT5M195  0         20231109PT5M050  20231109PT5M050  0       1        0        0        143       144    144    0</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">temporalUnit</dt>
+<dd>
+<p>The temporal unit that defines the duration of at lot</p>
+</dd>
+<dt class="hdlist1">earliest</dt>
+<dd>
+<p>The earliest requested arc lot id in requested range</p>
+</dd>
+<dt class="hdlist1">earliestFound</dt>
+<dd>
+<p>The first arc instance that was found</p>
+</dd>
+<dt class="hdlist1">earliestGap</dt>
+<dd>
+<p>The number of intervals between the earliest and the earliestFound arcs</p>
+</dd>
+<dt class="hdlist1">latest</dt>
+<dd>
+<p>The latest requested arc lot id in requested range</p>
+</dd>
+<dt class="hdlist1">latestFound</dt>
+<dd>
+<p>The last arc instance that was found</p>
+</dd>
+<dt class="hdlist1">latestGap</dt>
+<dd>
+<p>The number of intervals between the latest and the latestFound arcs</p>
+</dd>
+<dt class="hdlist1">running</dt>
+<dd>
+<p>The number of arc instances that are currently running, creating data</p>
+</dd>
+<dt class="hdlist1">partial</dt>
+<dd>
+<p>The number of arc instances that ended with partially complete data</p>
+</dd>
+<dt class="hdlist1">missing</dt>
+<dd>
+<p>The number of arc instances that have missing data, may have missing source data</p>
+</dd>
+<dt class="hdlist1">complete</dt>
+<dd>
+<p>The number of arc instances that ended successfully, with complete data</p>
+</dd>
+<dt class="hdlist1">totalFound</dt>
+<dd>
+<p>The total number of arc instances that have been found</p>
+</dd>
+<dt class="hdlist1">range</dt>
+<dd>
+<p>The total number of arc instances that should have been found in the requested range</p>
+</dd>
+<dt class="hdlist1">rangeGap</dt>
+<dd>
+<p>The number of arc instances that are missing from the requested range</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_datasets"><a class="anchor" href="#_datasets"></a>Datasets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>cls datasets</code> command will show all datasets deployed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">placement  placement  placement     placement  dataset              dataset
+provider   stage      account       region     name                 version
+============================================================================
+aws        dev        123456789012  us-east-2  access-logs-parquet  20230817
+aws        dev        123456789012  us-east-2  partitions           20230817
+aws        dev        123456789012  us-east-2  s3-access-logs       20230817</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">dataset.name</dt>
+<dd>
+<p>The dataset name.</p>
+</dd>
+<dt class="hdlist1">dataset.version</dt>
+<dd>
+<p>The dataset version.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The <code>cls datasets status</code> command will show a summary of the status of all the datasets.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>cls datasets status --list</code> command will show all instances of all manifests.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">placement  placement  placement     placement  dataset              dataset   temporal                   earliest         earliest                   latest           latest                                     total         range
+provider   stage      account       region     name                 version   unit      earliest         found            gap       latest           found            gap     removed  partial  empty  complete  found  range  gap
+====================================================================================================================================================================================================================================
+aws        dev        123456789012  us-east-2  access-logs-parquet  20230817  TWELFTHS  20231108PT5M195  20231108PT5M195  0         20231109PT5M050  20231109PT5M050  0       0        0        24     120       144    144    0
+aws        dev        123456789012  us-east-2  partitions           20230817  TWELFTHS  20231108PT5M195  20231108PT5M195  0         20231109PT5M050  20231109PT5M049  1       0        0        24     119       143    144    1
+aws        dev        123456789012  us-east-2  s3-access-logs       20230817  TWELFTHS  20231108PT5M195  20231108PT5M195  0         20231109PT5M050  20231109PT5M050  0       0        0        24     120       144    144    0</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">temporalUnit</dt>
+<dd>
+<p>The temporal unit that defines the duration of at lot.</p>
+</dd>
+<dt class="hdlist1">earliest</dt>
+<dd>
+<p>The earliest requested manifest lot id in requested range.</p>
+</dd>
+<dt class="hdlist1">earliestFound</dt>
+<dd>
+<p>The first manifest that was found.</p>
+</dd>
+<dt class="hdlist1">earliestGap</dt>
+<dd>
+<p>The number of intervals between the earliest and the earliestFound manifests.</p>
+</dd>
+<dt class="hdlist1">latest</dt>
+<dd>
+<p>The latest requested manifest lot id in requested range.</p>
+</dd>
+<dt class="hdlist1">latestFound</dt>
+<dd>
+<p>The last manifest that was found.</p>
+</dd>
+<dt class="hdlist1">latestGap</dt>
+<dd>
+<p>The number of intervals between the latest and the latestFound manifests.</p>
+</dd>
+<dt class="hdlist1">removed</dt>
+<dd>
+<p>The number of manifests, and their data, that were removed.</p>
+</dd>
+<dt class="hdlist1">partial</dt>
+<dd>
+<p>The number of manifest that contain partially complete data.</p>
+</dd>
+<dt class="hdlist1">empty</dt>
+<dd>
+<p>The number of manifests that have no data, may have no source data.</p>
+</dd>
+<dt class="hdlist1">complete</dt>
+<dd>
+<p>The number of manifests that contain complete data.</p>
+</dd>
+<dt class="hdlist1">totalFound</dt>
+<dd>
+<p>The total number of manifests that have been found.</p>
+</dd>
+<dt class="hdlist1">range</dt>
+<dd>
+<p>The total number of manifests that should have been found in the requested range.</p>
+</dd>
+<dt class="hdlist1">rangeGap</dt>
+<dd>
+<p>The number of manifests that are missing from the requested range.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
