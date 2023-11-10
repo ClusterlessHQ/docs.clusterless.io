@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Manage an AWS S3 Bucket :: Clusterless Docs</title>
-    <link rel="canonical" href="https://docs.clusterless.io/guide/1.0-wip/howtos/s3-bucket-resource.html">
+    <title>Status Ranges :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/guide/1.0-wip/guide/range.html">
     <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <script defer data-domain="docs.clusterless.io" src="https://plausible.io/js/script.js"></script>
@@ -120,10 +120,10 @@
     <span class="nav-text">User Guide</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../guide/status.html">Viewing Status</a>
+    <a class="nav-link" href="status.html">Viewing Status</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../guide/range.html">Status Ranges</a>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="range.html">Status Ranges</a>
   </li>
 </ul>
   </li>
@@ -132,13 +132,13 @@
     <span class="nav-text">How-tos</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="index.html">Intro</a>
-  </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="s3-bucket-resource.html">Manage an AWS S3 Bucket</a>
+    <a class="nav-link" href="../howtos/index.html">Intro</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="s3-copy-files.html">Copy Files Between S3 Locations</a>
+    <a class="nav-link" href="../howtos/s3-bucket-resource.html">Manage an AWS S3 Bucket</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/s3-copy-files.html">Copy Files Between S3 Locations</a>
   </li>
 </ul>
   </li>
@@ -201,252 +201,235 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Clusterless User Guide</a></li>
-    <li>How-tos</li>
-    <li><a href="s3-bucket-resource.html">Manage an AWS S3 Bucket</a></li>
+    <li>User Guide</li>
+    <li><a href="range.html">Status Ranges</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/howtos/pages/s3-bucket-resource.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/docs.clusterless.io/edit/wip-1.0/docs/modules/guide/pages/range.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Manage an AWS S3 Bucket</h1>
+<h1 class="page">Status Ranges</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>The simplest project that can be deployed with clusterless is one that manages an AWS S3 bucket.</p>
+<p>The <code>cls arcs status</code> and <code>cls datasets status</code> commands accept a time range to search within.</p>
 </div>
 <div class="paragraph">
-<p>In this example, we will create and destroy a bucket by declaring it in a project file.</p>
+<p>It is expected that range option values will be pasted from other sources, so a large number of formats are supported.</p>
 </div>
-<div class="admonitionblock note">
-<table>
+<div class="paragraph">
+<p>The range options are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>--earliest</code></dt>
+<dd>
+<p>- Earliest time to include in report, inclusive. Default to <code>12h</code>.</p>
+</dd>
+<dt class="hdlist1"><code>--latest</code></dt>
+<dd>
+<p>- Latest time to include in report, exclusive. Default is <code>now</code>.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>All values are assumed to be in UTC.</p>
+</div>
+<div class="paragraph">
+<p>These options support a few different time formats.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Lot id format</dt>
+<dd>
+<p>A lot id used by Clusterless like <code>20231108PT5M197</code></p>
+</dd>
+<dt class="hdlist1">Absolute time format</dt>
+<dd>
+<p>A date and time in the format like <code>2015-02-10T02:04:30+00:00</code>.</p>
+</dd>
+<dt class="hdlist1">Adjuster time format</dt>
+<dd>
+<p>A time adjustment in the format like <code>12h@h</code></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lot_ids"><a class="anchor" href="#_lot_ids"></a>Lot Ids</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The lot id format is governed by the temporal duration unit used by the given project, see <a href="../concepts/lot.html" class="xref page">Lot</a> for
+more information.</p>
+</div>
+<div class="paragraph">
+<p>These lot ids are frequently displayed or used in urls and files created and maintained by Clusterless. They can be
+trivially pasted into the <code>cls</code> command line.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_absolute_time"><a class="anchor" href="#_absolute_time"></a>Absolute Time</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some examples of supported absolute times are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>2015-02-10T02:04:30+00:00</code></p>
+</li>
+<li>
+<p><code>2015-02-10 02:04:30</code></p>
+</li>
+<li>
+<p><code>february 10th 2015, 02:04:03</code></p>
+</li>
+<li>
+<p><code>02/10/15 02:04 AM</code></p>
+</li>
+<li>
+<p><code>Feb/10/15 02:04</code></p>
+</li>
+<li>
+<p><code>1423526400000</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Many other formats are supported as well.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adjuster_time"><a class="anchor" href="#_adjuster_time"></a>Adjuster Time</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An adjuster starts with the current moment (in UTC), and adjusts the value backwards based on a simple syntax.</p>
+</div>
+<div class="paragraph">
+<p>The adjuster format is based on the Splunk adjuster offset format.</p>
+</div>
+<div class="paragraph">
+<p>Some examples include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An hour ago - <code>60m or `-60m</code></p>
+</li>
+<li>
+<p>An hour ago, on the hour - <code>1h@h</code></p>
+</li>
+<li>
+<p>Beginning of the current day - <code>@d</code></p>
+</li>
+<li>
+<p>A week ago today - <code>7d@d</code></p>
+</li>
+<li>
+<p>Beginning of current week - <code>@w0</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_simple_adjust_format"><a class="anchor" href="#_simple_adjust_format"></a>Simple Adjust Format</h3>
+<div class="paragraph">
+<p>A simple adjuster has the value <code>now</code> or is in the format <code>&lt;time_integer&gt;&lt;time_unit&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>now</code> is shorthand for this instant in time, without any adjustment.</p>
+</div>
+<div class="paragraph">
+<p>The <code>time_unit</code> is one of the following:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Time Units</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
 <tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Prerequisites</div>
-<div class="paragraph">
-<p>It is assumed the <a href="../install-quickstart.html" class="xref page">cls</a> cli tool is installed. And that the current cloud placement has been <a href="../install-quickstart.html#bootstrapping" class="xref page">bootstrapped</a>.</p>
-</div>
-</td>
+<th class="tableblock halign-left valign-top">Range</th>
+<th class="tableblock halign-left valign-top">Values</th>
 </tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s, sec, secs, second, seconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m, min, minute, minutes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hours</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h, hr, hrs, hour, hours</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">days</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d, day, days</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">weeks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">w, week, weeks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">months</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mon, month, months</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">q, qtr, qtrs, quarter, quarters</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">years</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y, yr, yrs, year, years</p></td>
+</tr>
+</tbody>
 </table>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">AWS CLI</div>
+<div class="sect2">
+<h3 id="_snap_format"><a class="anchor" href="#_snap_format"></a>Snap Format</h3>
 <div class="paragraph">
-<p>Some tasks in this example require the AWS cli (command line interface) to be installed. It can be found here: <a href="https://aws.amazon.com/cli/" class="bare">https://aws.amazon.com/cli/</a></p>
-</div>
-</td>
-</tr>
-</table>
+<p>A time adjuster can <code>snap</code> to time, it takes the format <code>&lt;time_integer&gt;&lt;time_unit&gt;@&lt;time_unit&gt;</code>.</p>
 </div>
 <div class="paragraph">
-<p>To initialize a new <a href="../concepts/project.html" class="xref page">project</a>, in a new directory call:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls show model --model deployable &gt; project-bucket.json</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">project-bucket.json</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "project" : {
-    "name" : null,
-    "version" : null
-  },
-  "placement" : {
-    "provider" : null,
-    "stage" : null,
-    "account" : null,
-    "region" : null
-  },
-  "resources" : [ ],
-  "boundaries" : [ ],
-  "barriers" : [ ],
-  "arcs" : [ ]
-}</code></pre>
-</div>
+<p>And adjuster that starts with <code>@</code> will truncate the current time by the specified time unit</p>
 </div>
 <div class="paragraph">
-<p>A project declares what gets deployed and where it is deployed. A project has a <code>name</code> and <code>version</code>. The name should
-remain constant as the project changes between deployments. The version may change if you need to make incompatible
-changes and want to keep the previous version.</p>
+<p>Thus <code>@d</code> will reference the beginning of the current day.</p>
 </div>
 <div class="paragraph">
-<p>The name and version will be used when naming cloud resources. Keep the name short, and we suggest using a simple date
-format for the version.</p>
+<p>And <code>@h</code> will reference the beginning of the current hour.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="../concepts/placement.html" class="xref page"><code>placement</code></a> specifies where to make the deployment. In this guide, use <code>aws</code>
-as the <code>provider</code>.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Find your account information by calling <code>aws sts get-caller-identity --profile &lt;credential profile&gt;</code>.
-</td>
-</tr>
-</table>
+<p>Any adjuster before the <code>@</code> will anchor the adjuster to a past moment, before truncating the moment by the snap time
+unit.</p>
 </div>
 <div class="paragraph">
-<p><code>stage</code> is optional, but we suggest using <code>dev</code> for development, and <code>prod</code> for production when you are deploying into
-the same <code>account</code> and <code>region</code>.</p>
+<p>A week ago today is <code>7d@d</code>. <code>7d</code> adjusts back 7 days, and <code>@d</code> truncates that day to start the moment at midnight
+starting that day.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_chained_adjusters_format"><a class="anchor" href="#_chained_adjusters_format"></a>Chained Adjusters Format</h3>
+<div class="paragraph">
+<p>Chains of adjusters is also supported.</p>
 </div>
 <div class="paragraph">
-<p>Next we add a new resource to the <code>resources</code> declaration.</p>
-</div>
-<div class="paragraph">
-<p>The S3 bucket resource component <code>type</code> is <a href="../../../reference/1.0-wip/components/aws-core-s3-bucket.html" class="xref page">aws:core:s3Bucket</a>.</p>
-</div>
-<div class="paragraph">
-<p>To get the JSON model for this resource, call:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls show component --model aws:core:s3Bucket --required</code></pre>
+<p><code>@d-2h</code> will snap to the beginning of today (midnight), and then subtract two hour from that moment, resulting in 10PM
+yesterday (10PM last night).</p>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <code>--required</code> flag causes only the required JSON properties to print.
-</td>
-</tr>
-</table>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "type" : "aws:core:s3Bucket",
-  "name" : null,
-  "bucketName" : null
-}</code></pre>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<code>cls show &#8230;&#8203; | pbcopy</code> can be used on OSX to copy output to the clipboard.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Paste the results into the <code>resources</code> JSON property.</p>
-</div>
-<div class="listingblock">
-<div class="title">project-bucket.json</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "resources": [
-    {
-      "type" : "aws:core:s3Bucket",
-      "name" : null,
-      "bucketName" : null
-    }
-  ]
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Set the <code>name</code> and <code>bucketName</code> values. Ensure the <code>bucketName</code> is globally unique to prevent a deployment failure.</p>
-</div>
-<div class="paragraph">
-<p>Optionally, add and set <code>removeOnDestroy</code>
-(<a href="../../../reference/1.0-wip/components/aws-core-s3-bucket.html" class="xref page">full model</a>) to <code>true</code>, this will delete the
-bucket (and its contents) when we <code>destroy</code> the project.</p>
-</div>
-<div class="paragraph">
-<p>To verify the project is valid, call:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls verify -p project-bucket.json</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Finally, to deploy the project:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls deploy -p project-bucket.json</code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If an error states you need to bootstrap the region, call:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls bootstrap</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><a href="../install-quickstart.html#bootstrapping" class="xref page">Learn more.</a></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following commands will list all currently deployed placements and projects:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls placements
-$ cls projects</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Call the following <code>aws</code> cli command, if you have it installed, to confirm the bucket was created.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ aws s3 ls</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Otherwise, log into the AWS Console.</p>
-</div>
-<div class="paragraph">
-<p>Finally, destroy the project.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls destroy -p project-bucket.json</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The bucket should be removed if <code>removeOnDestroy</code> was set to true.</p>
 </div>
 </article>
   </div>

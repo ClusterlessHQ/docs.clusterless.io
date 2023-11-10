@@ -52,6 +52,7 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all"></button>
     <h3 class="title"><a href="../index.html">Clusterless User Guide</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
@@ -120,6 +121,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../guide/status.html">Viewing Status</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../guide/range.html">Status Ranges</a>
   </li>
 </ul>
   </li>
@@ -600,6 +604,15 @@ $ aws s3 cp hello.txt s3://mybucket/source/</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ aws s3 ls s3://mybucket/sink/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following commands will summarize the <a href="../guide/status.html" class="xref page">status</a> of all currently deployed arcs and datasets.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ cls arcs status
+$ cls datasets status</code></pre>
 </div>
 </div>
 <div class="admonitionblock tip">
