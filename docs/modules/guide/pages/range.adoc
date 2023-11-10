@@ -1,0 +1,98 @@
+= Status Ranges
+
+The `cls arcs status` and `cls datasets status` commands accept a time range to search within.
+
+It is expected that range option values will be pasted from other sources, so a large number of formats are supported.
+
+The range options are:
+
+`--earliest`:: - Earliest time to include in report, inclusive. Default to `12h`.
+`--latest`:: - Latest time to include in report, exclusive. Default is `now`.
+
+All values are assumed to be in UTC.
+
+These options support a few different time formats.
+
+Lot id format:: A lot id used by Clusterless like `20231108PT5M197`
+Absolute time format:: A date and time in the format like `2015-02-10T02:04:30+00:00`.
+Adjuster time format:: A time adjustment in the format like `12h@h`
+
+== Lot Ids
+
+The lot id format is governed by the temporal duration unit used by the given project, see xref:concepts:lot.adoc[] for
+more information.
+
+These lot ids are frequently displayed or used in urls and files created and maintained by Clusterless. They can be
+trivially pasted into the `cls` command line.
+
+== Absolute Time
+
+Some examples of supported absolute times are:
+
+- `2015-02-10T02:04:30+00:00`
+- `2015-02-10 02:04:30`
+- `february 10th 2015, 02:04:03`
+- `02/10/15 02:04 AM`
+- `Feb/10/15 02:04`
+- `1423526400000`
+
+Many other formats are supported as well.
+
+== Adjuster Time
+
+An adjuster starts with the current moment (in UTC), and adjusts the value backwards based on a simple syntax.
+
+The adjuster format is based on the Splunk adjuster offset format.
+
+Some examples include:
+
+- An hour ago - `60m or `-60m`
+- An hour ago, on the hour - `1h@h`
+- Beginning of the current day - `@d`
+- A week ago today - `7d@d`
+- Beginning of current week - `@w0`
+
+=== Simple Adjust Format
+
+A simple adjuster has the value `now` or is in the format `<time_integer><time_unit>`.
+
+`now` is shorthand for this instant in time, without any adjustment.
+
+The `time_unit` is one of the following:
+
+.Time Units
+|===
+|Range |Values
+
+|seconds |s, sec, secs, second, seconds
+|minutes |m, min, minute, minutes
+|hours |h, hr, hrs, hour, hours
+|days |d, day, days
+|weeks |w, week, weeks
+|months |mon, month, months
+|quarters |q, qtr, qtrs, quarter, quarters
+|years |y, yr, yrs, year, years
+|===
+
+=== Snap Format
+
+A time adjuster can `snap` to time, it takes the format `<time_integer><time_unit>@<time_unit>`.
+
+And adjuster that starts with `@` will truncate the current time by the specified time unit
+
+Thus `@d` will reference the beginning of the current day.
+
+And `@h` will reference the beginning of the current hour.
+
+Any adjuster before the `@` will anchor the adjuster to a past moment, before truncating the moment by the snap time
+unit.
+
+A week ago today is `7d@d`. `7d` adjusts back 7 days, and `@d` truncates that day to start the moment at midnight
+starting that day.
+
+=== Chained Adjusters Format
+
+Chains of adjusters is also supported.
+
+`@d-2h` will snap to the beginning of today (midnight), and then subtract two hour from that moment, resulting in 10PM
+yesterday (10PM last night).

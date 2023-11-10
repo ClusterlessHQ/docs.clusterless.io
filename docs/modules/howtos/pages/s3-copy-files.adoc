@@ -241,6 +241,14 @@ In a few minutes, the file will be copied to the sink location.
 $ aws s3 ls s3://mybucket/sink/
 ----
 
+The following commands will summarize the xref:guide:status.adoc[status] of all currently deployed arcs and datasets.
+
+[,console]
+----
+$ cls arcs status
+$ cls datasets status
+----
+
 TIP: It is recommended at this point to log into your AWS Console and browse the new S3 buckets created to store
 clusterless metadata, and the deployed AWS Step Functions state machines.
 

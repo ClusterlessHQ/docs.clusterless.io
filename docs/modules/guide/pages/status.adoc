@@ -1,6 +1,6 @@
 = Viewing Status
 
-Clusterless maintains a rich set of metadata.
+Clusterless maintains a rich set of metadata about the deployed assets and running workloads.
 
 == Placements
 

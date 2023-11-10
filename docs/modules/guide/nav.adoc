@@ -1,2 +1,3 @@
 .User Guide
 * xref:status.adoc[Viewing Status]
+* xref:range.adoc[Status Ranges]
