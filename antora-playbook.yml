@@ -4,6 +4,7 @@ runtime:
 site:
   title: Clusterless Docs
   url: https://docs.clusterless.io
+  robots: allow
   start_page: guide::index.adoc
   keys:
     plausible-analytics: true
