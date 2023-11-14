@@ -6,4 +6,7 @@
 <sitemap>
 <loc>https://docs.clusterless.io/sitemap-reference.xml</loc>
 </sitemap>
+<sitemap>
+<loc>https://docs.clusterless.io/sitemap-tessellate.xml</loc>
+</sitemap>
 </sitemapindex>

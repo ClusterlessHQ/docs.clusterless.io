@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Source and Sink :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/tessellate/1.0-wip/reference/source-sink.html">
+    <meta name="generator" content="Antora 3.1.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<script defer data-domain="docs.clusterless.io" src="https://plausible.io/js/script.js"></script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.clusterless.io">Clusterless Docs</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Project</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/ClusterlessHQ/">Repositories</a>
+            <a class="navbar-item" href="https://github.com/ClusterlessHQ/clusterless/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/orgs/ClusterlessHQ/discussions">Discussions</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://chris.wensel.net">Support</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="https://github.com/ClusterlessHQ/clusterless/releases">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="tessellate" data-version="1.0-wip">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Tessellate</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install.html">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support.html">Getting Help</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Reference</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pipeline.html">Pipeline</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="source-sink.html">Source and Sink</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="transforms.html">Transforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="types.html">Types</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Tessellate</span>
+    <span class="version">1.0-wip</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../reference/1.0-wip/index.html">Clusterless Reference</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../reference/1.0-wip/index.html">1.0-wip</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../guide/1.0-wip/index.html">Clusterless User Guide</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../guide/1.0-wip/index.html">1.0-wip</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../index.html">Tessellate</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1.0-wip</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../guide/1.0-wip/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Tessellate</a></li>
+    <li>Reference</li>
+    <li><a href="source-sink.html">Source and Sink</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/ClusterlessHQ/tessellate/edit/wip-1.0/tessellate-main/src/main/antora/modules/reference/pages/source-sink.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Source and Sink</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pipelines read data from sources and write data to sinks.</p>
+</div>
+<div class="paragraph">
+<p>Each source or sink has a format and protocol.</p>
+</div>
+<div class="paragraph">
+<p>And the data may be partitioned by values in the data set in order to allow interleaving of data from new data sets into
+existing data sets.</p>
+</div>
+<div class="paragraph">
+<p>This can significantly improve the performance of queries on the data.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_formats"><a class="anchor" href="#_formats"></a>Formats</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every source and sink supports its own set of formats.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">tess --show-source=formats</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">text/regex</dt>
+<dd>
+<p>Lines of text parsed by regex (like Apache or S3 log files).</p>
+</dd>
+<dt class="hdlist1">csv</dt>
+<dd>
+<p>With or without headers.</p>
+</dd>
+<dt class="hdlist1">tsv</dt>
+<dd>
+<p>With or without headers.</p>
+</dd>
+<dt class="hdlist1">parquet</dt>
+<dd>
+<p>[Apache Parquet](<a href="https://parquet.apache.org" class="bare">https://parquet.apache.org</a>)</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_protocols"><a class="anchor" href="#_protocols"></a>Protocols</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every source and sink supports its own set of protocols.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">tess --show-source=protocols</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>file://</code></dt>
+<dd>
+<p>Read/write local files.</p>
+</dd>
+<dt class="hdlist1"><code>s3://</code></dt>
+<dd>
+<p>Read/write files in AWS S3.</p>
+</dd>
+<dt class="hdlist1"><code>hdfs://</code></dt>
+<dd>
+<p>Read/write files on Apache Hadoop HDF filesystem.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_compression"><a class="anchor" href="#_compression"></a>Compression</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every source and sink supports its own set of compression formats.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">tess --show-source=compression</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Som common formats supported are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>none</p>
+</li>
+<li>
+<p>gzip</p>
+</li>
+<li>
+<p>lz4</p>
+</li>
+<li>
+<p>bzip2</p>
+</li>
+<li>
+<p>brotli</p>
+</li>
+<li>
+<p>snappy</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_partitioning"><a class="anchor" href="#_partitioning"></a>Partitioning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Partition be performed with data from on the values read or created in the pipeline.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Path partitioning</dt>
+<dd>
+<p>Data can be partitioned by intrinsic values in the data set.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">named partitions</dt>
+<dd>
+<p>e.g. <code>year=2023/month=01/day=01</code>, or</p>
+</dd>
+<dt class="hdlist1">unnamed partitions</dt>
+<dd>
+<p>e.g. <code>2023/01/01</code></p>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Partitions, when declared in the pipeline file, can be simple, or represent a transform.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Simple</dt>
+<dd>
+<p><code>&lt;field_name&gt;</code> becomes <code>/&lt;field_name&gt;=&lt;field_value&gt;/</code></p>
+</dd>
+<dt class="hdlist1">Transform</dt>
+<dd>
+<p><code>&lt;field_name&gt;+&gt;&lt;partition_name&gt;|&lt;field_type&gt;</code> becomes <code>/&lt;partition_name&gt;=&lt;transformed_value&gt;/</code></p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Note the <code>+&gt;</code> operator.</p>
+</div>
+<div class="paragraph">
+<p>Consider the following example, where <code>time</code> is either a <code>long</code> timestamp, or an <code>Instant</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>time+&gt;year|DateTime|yyyy</code></p>
+</li>
+<li>
+<p><code>time+&gt;month|DateTime|MM</code></p>
+</li>
+<li>
+<p><code>time+&gt;day|DateTime|dd</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The above produces a path like <code>/year=2023/month=01/day=01/</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_naming"><a class="anchor" href="#_file_naming"></a>File naming</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Workload processes can fail. And when they do, it is important not to overwrite existing files. It is also important to
+find the files that were created and written before the failure.</p>
+</div>
+<div class="paragraph">
+<p>The following metadata can help disambiguate files across processing runs, and also to help detect schema changes.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Filename metadata</dt>
+<dd>
+<p><code>[prefix]-[field-hash]-[guid].parquet</code></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>prefix</code></dt>
+<dd>
+<p>The value <code>part</code> by default.</p>
+</dd>
+<dt class="hdlist1"><code>field-hash</code></dt>
+<dd>
+<p>A hash of the schema: field names, and field types, so that schema changes can be detected.</p>
+</dd>
+<dt class="hdlist1"><code>guid</code></dt>
+<dd>
+<p>A random UUID or a provided value.</p>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The JSON model for this metadata is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console"> "filename" : {
+      "prefix" : null, <i class="conum" data-value="1"></i><b>(1)</b>
+      "includeGuid" : false, <i class="conum" data-value="2"></i><b>(2)</b>
+      "providedGuid" : null, <i class="conum" data-value="3"></i><b>(3)</b>
+      "includeFieldsHash" : false <i class="conum" data-value="4"></i><b>(4)</b>
+    }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The prefix to use for the filename. Defaults to <code>part</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Whether to include a random UUID in the filename. Defaults to <code>false</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>A provided UUID to use in the filename. Defaults to using a random UUID.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Whether to include a hash of the schema (field name + type) in the filename. Defaults to <code>false</code>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
