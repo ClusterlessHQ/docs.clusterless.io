@@ -12,6 +12,9 @@ content:
     - url: ../clusterless
       branches: HEAD
       start_path: .
+    - url: ../tessellate
+      branches: HEAD
+      start_path: tessellate-main/src/main/antora
 
 ui:
   bundle:

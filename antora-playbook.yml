@@ -17,7 +17,9 @@ content:
       edit_url: '{web_url}/edit/wip-1.0/{path}'
     - url: https://github.com/ClusterlessHQ/clusterless.git
       branches: wip-1.0
-#      start_path: .
+    - url: https://github.com/ClusterlessHQ/tessellate.git
+      branches: wip-1.0
+      start_path: tessellate-main/src/main/antora
 
 ui:
   bundle:
