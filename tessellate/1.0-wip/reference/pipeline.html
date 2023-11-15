@@ -140,10 +140,20 @@
 </aside>
 <article class="doc">
 <h1 class="page">Pipeline</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
 <p><code>tess</code> expects a JSON formatted "pipeline" file that declares the <a href="source-sink.html" class="xref page">sources, sinks</a>, and
 <a href="transforms.html" class="xref page">transforms</a> to be run.</p>
 </div>
+<div class="paragraph">
+<p>Some values in the pipeline file can be overridden by command line options.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pipeline_declaration_format"><a class="anchor" href="#_pipeline_declaration_format"></a>Pipeline Declaration Format</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="title">Print Pipeline Template</div>
 <div class="content">
@@ -232,6 +242,208 @@
 <td>Partitions to write out</td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>To view all pipeline options:</p>
+</div>
+<div class="listingblock">
+<div class="title">Print Complete Pipeline Template</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">tess --print-pipeline all</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pipeline_file_overrides"><a class="anchor" href="#_pipeline_file_overrides"></a>Pipeline File Overrides</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some command line options are merged at runtime with the pipeline JSON file. Command line options take precedence over
+the pipeline JSON file.</p>
+</div>
+<div class="paragraph">
+<p>Overriding command line options include</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>--inputs</code></p>
+</li>
+<li>
+<p><code>--input-manifest</code></p>
+</li>
+<li>
+<p><code>--input-manifest-lot</code></p>
+</li>
+<li>
+<p><code>--output</code></p>
+</li>
+<li>
+<p><code>--output-manifest</code></p>
+</li>
+<li>
+<p><code>--output-manifest-lot</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pipeline_template_expressions"><a class="anchor" href="#_pipeline_template_expressions"></a>Pipeline Template Expressions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to embed system properties, environment variables, or other provided intrinsic values,
+<a href="http://mvel.documentnode.com">MVEL templates</a> are supported in the pipeline JSON file.</p>
+</div>
+<div class="paragraph">
+<p>Provided intrinsic values include:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>env[&#8230;&#8203;]</code></dt>
+<dd>
+<p>Environment variables.</p>
+</dd>
+<dt class="hdlist1"><code>sys[&#8230;&#8203;]</code></dt>
+<dd>
+<p>System properties.</p>
+</dd>
+<dt class="hdlist1"><code>source.*</code></dt>
+<dd>
+<p>Pipeline source properties.</p>
+</dd>
+<dt class="hdlist1"><code>sink.*</code></dt>
+<dd>
+<p>Pipeline sink properties.</p>
+</dd>
+<dt class="hdlist1"><code>pid</code></dt>
+<dd>
+<p><code>ProcessHandle.current().pid()</code>.</p>
+</dd>
+<dt class="hdlist1"><code>rnd32</code></dt>
+<dd>
+<p><code>Math.abs(random.nextInt())</code> always returns the same value.</p>
+</dd>
+<dt class="hdlist1"><code>rnd64</code></dt>
+<dd>
+<p><code>Math.abs(random.nextLong())</code> always returns the same value.</p>
+</dd>
+<dt class="hdlist1"><code>rnd32Next</code></dt>
+<dd>
+<p><code>Math.abs(random.nextInt())</code> never returns the same value.</p>
+</dd>
+<dt class="hdlist1"><code>rnd64Next</code></dt>
+<dd>
+<p><code>Math.abs(random.nextLong)</code> never returns the same value.</p>
+</dd>
+<dt class="hdlist1"><code>hostAddress</code></dt>
+<dd>
+<p><code>localHost.getHostAddress()</code>.</p>
+</dd>
+<dt class="hdlist1"><code>hostName</code></dt>
+<dd>
+<p><code>localHost.getCanonicalHostName()</code>.</p>
+</dd>
+<dt class="hdlist1"><code>currentTimeMillis</code></dt>
+<dd>
+<p><code>now.toEpochMilli()</code>.</p>
+</dd>
+<dt class="hdlist1"><code>currentTimeISO8601</code></dt>
+<dd>
+<p><code>now.toString()</code> at millis precision.</p>
+</dd>
+<dt class="hdlist1"><code>currentTimeYear</code></dt>
+<dd>
+<p><code>utc.getYear()</code>.</p>
+</dd>
+<dt class="hdlist1"><code>currentTimeMonth</code></dt>
+<dd>
+<p><code>utc.getMonthValue()</code> zero padded.</p>
+</dd>
+<dt class="hdlist1"><code>currentTimeDay</code></dt>
+<dd>
+<p><code>utc.getDayOfMonth()</code> zero padded.</p>
+</dd>
+<dt class="hdlist1"><code>currentTimeHour</code></dt>
+<dd>
+<p><code>utc.getHour()</code> zero padded.</p>
+</dd>
+<dt class="hdlist1"><code>currentTimeMinute</code></dt>
+<dd>
+<p><code>utc.getMinute()</code> zero padded.</p>
+</dd>
+<dt class="hdlist1"><code>currentTimeSecond</code></dt>
+<dd>
+<p><code>utc.getSecond()</code> zero padded.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Random random = new Random()</code></p>
+</li>
+<li>
+<p><code>InetAddress localHost = InetAddress.getLocalHost()</code></p>
+</li>
+<li>
+<p><code>Instant now = Instant.now()</code></p>
+</li>
+<li>
+<p><code>ZonedDateTime utc = now.atZone(ZoneId.of("UTC"))</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@{env['USER']}</code> - resolve an environment variable</p>
+</li>
+<li>
+<p><code>@{sys['user.name']}</code> - resolve a system property</p>
+</li>
+<li>
+<p><code>@{sink.manifestLot}</code> - resolve a sink property from the pipeline JSON definition</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Used in a transform to embed the current <code>lot</code> value into the output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "transform": [
+    "@{source.manifestLot}=&gt;lot|string"
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or create a filename that prevents collisions but simplifies duplicate removal:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "filename": {
+    "prefix": "access",
+    "includeGuid": true,
+    "providedGuid": "@{sink.manifestLot}-@{currentTimeMillis}",
+    "includeFieldsHash": true
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Will result in a filename similar to <code>access-1717f2ea-20230717PT5M250-1689896792672-00000-00000-m-00000.gz</code>.</p>
+</div>
+</div>
 </div>
 </article>
   </div>
