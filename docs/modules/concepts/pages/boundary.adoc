@@ -21,5 +21,3 @@ An ingress boundary accepts data from an external source, creates appropriate me
 data objects, and fires events to downstream listeners.
 
 An egress boundary listens to events and adapts the data or metadata for use by an external system.
-
-

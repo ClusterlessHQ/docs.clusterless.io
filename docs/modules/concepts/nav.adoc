@@ -10,3 +10,4 @@
 * xref:boundary.adoc[Boundaries]
 * xref:barrier.adoc[Barriers]
 * xref:dag.adoc[Pipeline DAG]
+* xref:activity.adoc[Activities]

@@ -1,0 +1,23 @@
+= Activity
+
+.Activity
+....
+┏ ━ ━ ┓
+
+┃  ╔ ═┃═ ╗
+      _
+┃  ║ ╱@╲ ║
+ ━▶ ▕@@@▏
+   ║ ╲@╱ ║
+      ▔
+   ╚ ═ ═ ╝
+....
+
+include::partial$components.adoc[]
+
+Activities perform some type of work on a schedule. An Activity can be a cleanup job, or one that submits remote
+asynchronous requests to another system.
+
+Think of an Activity as a "cron job" or "scheduled task".
+
+Unlike a xref:boundary.adoc[Boundary], they don't directly create or use xref:dataset.adoc[Datasets].

@@ -18,6 +18,7 @@
 A Pipeline DAG is simply a series of chained processes that in turn produce datasets. The chaining is by subscribing to
 a source dataset and listening for new arrivals.
 
+.DAG of Projects
 ....
                              ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
                               Project A
