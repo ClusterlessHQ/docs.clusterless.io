@@ -52,7 +52,7 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all"></button>
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
     <h3 class="title"><a href="../index.html">Clusterless Reference</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
@@ -111,6 +111,9 @@
     <a class="nav-link" href="../commands/cls-show.html">cls-show(1)</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../commands/cls-show-activity.html">cls-show-activity(1)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../commands/cls-show-arc.html">cls-show-arc(1)</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -167,6 +170,15 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="aws-core-s3-put-listener-boundary.html">aws:core:s3PutListenerBoundary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Activities</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="aws-core-cloud-watch-export.html">aws:core:cloudWatchExport</a>
   </li>
 </ul>
   </li>
@@ -334,8 +346,8 @@ workloadProps.failArcOnPartialPercent: The percentage of files that can fail bef
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
   "type" : "aws:core:s3CopyArc",
-  "exclude" : false,
   "name" : null,
+  "exclude" : false,
   "sources" : { },
   "sinks" : { },
   "workload" : {

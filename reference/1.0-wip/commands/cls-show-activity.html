@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>cls(1) :: Clusterless Docs</title>
-    <link rel="canonical" href="https://docs.clusterless.io/reference/1.0-wip/commands/cls.html">
+    <title>cls-show-activity(1) :: Clusterless Docs</title>
+    <link rel="canonical" href="https://docs.clusterless.io/reference/1.0-wip/commands/cls-show-activity.html">
     <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <script defer data-domain="docs.clusterless.io" src="https://plausible.io/js/script.js"></script>
@@ -59,7 +59,7 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Commands</span>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="cls.html">cls(1)</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -110,7 +110,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="cls-show.html">cls-show(1)</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="cls-show-activity.html">cls-show-activity(1)</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -272,7 +272,7 @@
   <ul>
     <li><a href="../index.html">Clusterless Reference</a></li>
     <li>Commands</li>
-    <li><a href="cls.html">cls(1)</a></li>
+    <li><a href="cls-show-activity.html">cls-show-activity(1)</a></li>
   </ul>
 </nav>
 </div>
@@ -281,12 +281,12 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">cls(1)</h1>
+<h1 class="page">cls-show-activity(1)</h1>
 <div class="sect1">
 <h2 id="_name"><a class="anchor" href="#_name"></a>Name</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>cls -</p>
+<p>cls-show-activity - Show available provider activities.</p>
 </div>
 </div>
 </div>
@@ -294,15 +294,18 @@
 <h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>Synopsis</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>cls</strong> [<strong>-hVv</strong>] [<strong>--output</strong>=<em>&lt;format&gt;</em>] [<strong>-D</strong>=<em>&lt;String=String&gt;</em>]&#8230;&#8203; [<strong>-P</strong>=<em>&lt;providerNames&gt;</em>]&#8230;&#8203;
-    [COMMAND]</p>
+<p><strong>cls show activity</strong> [<strong>-v</strong>] [<strong>--required</strong>] [<strong>--output</strong>=<em>&lt;format&gt;</em>] [<strong>-P</strong>=<em>&lt;providerNames&gt;</em>]&#8230;&#8203;
+                  (<strong>--list</strong> | <strong>--model</strong>=<em>&lt;model&gt;</em> | <strong>--describe</strong>=<em>&lt;name&gt;</em> |
+                  <strong>--describe-all</strong> | <strong>--model-all</strong>)</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Show available provider activities.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -310,13 +313,22 @@
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>-D</strong>, <strong>--property</strong>=<em>&lt;String=String&gt;</em></dt>
+<dt class="hdlist1"><strong>--describe</strong>=<em>&lt;name&gt;</em></dt>
+<dt class="hdlist1"><strong>--describe-all</strong></dt>
 <dd>
-<p>Optional key=value properties, will be passed down.</p>
+<p>Print description of all elements.</p>
 </dd>
-<dt class="hdlist1"><strong>-h</strong>, <strong>--help</strong></dt>
+<dt class="hdlist1"><strong>--list</strong></dt>
 <dd>
-<p>Show this help message and exit.</p>
+<p>List all names.</p>
+</dd>
+<dt class="hdlist1"><strong>--model</strong>=<em>&lt;model&gt;</em></dt>
+<dd>
+<p>Print the json template of element.</p>
+</dd>
+<dt class="hdlist1"><strong>--model-all</strong></dt>
+<dd>
+<p>Print model of all elements.</p>
 </dd>
 <dt class="hdlist1"><strong>--output</strong>=<em>&lt;format&gt;</em></dt>
 <dd>
@@ -329,77 +341,16 @@
 <dd>
 <p>Provider substrates to target.</p>
 </dd>
+<dt class="hdlist1"><strong>--required</strong></dt>
+<dd>
+<p>Only show required fields in model.</p>
+</dd>
 <dt class="hdlist1"><strong>-v</strong>, <strong>--verbose</strong></dt>
 <dd>
 <p>Specify multiple -v options to increase verbosity.</p>
 <div class="paragraph">
 <p>For example, <code>-v -v -v</code> or <code>-vvv</code></p>
 </div>
-</dd>
-<dt class="hdlist1"><strong>-V</strong>, <strong>--version</strong></dt>
-<dd>
-<p>Print version information and exit.</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_commands"><a class="anchor" href="#_commands"></a>Commands</h2>
-<div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><a href="cls-help.html" class="xref page"><strong>help</strong></a></dt>
-<dd>
-<p>Display help information about the specified command.</p>
-</dd>
-<dt class="hdlist1"><a href="cls-config.html" class="xref page"><strong>config</strong></a></dt>
-<dd>
-<p>Manage local and global configuration settings.</p>
-</dd>
-<dt class="hdlist1"><a href="cls-show.html" class="xref page"><strong>show</strong></a></dt>
-<dd>
-<p>Display details about providers, components, and project models.</p>
-</dd>
-<dt class="hdlist1"><a href="cls-bootstrap.html" class="xref page"><strong>bootstrap</strong></a></dt>
-<dd>
-<p>Initialize a cloud provider placement.</p>
-</dd>
-<dt class="hdlist1"><a href="cls-deploy.html" class="xref page"><strong>deploy</strong></a></dt>
-<dd>
-<p>Deploy a project into a declared placement.</p>
-</dd>
-<dt class="hdlist1"><a href="cls-destroy.html" class="xref page"><strong>destroy</strong></a></dt>
-<dd>
-<p>Destroy a project deployed a declared placement.</p>
-</dd>
-<dt class="hdlist1"><a href="cls-diff.html" class="xref page"><strong>diff</strong></a></dt>
-<dd>
-<p>Compare local project changes with a deployed a declared placement.</p>
-</dd>
-<dt class="hdlist1"><a href="cls-local.html" class="xref page"><strong>local</strong></a></dt>
-<dd>
-<p>Support for executing workloads locally in a terminal.</p>
-</dd>
-<dt class="hdlist1"><a href="cls-verify.html" class="xref page"><strong>verify</strong></a></dt>
-<dd>
-<p>Verify project changes with a provider.</p>
-</dd>
-<dt class="hdlist1"><a href="cls-placements.html" class="xref page"><strong>placements</strong></a></dt>
-<dd>
-<p>List all placements with deployments.</p>
-</dd>
-<dt class="hdlist1"><a href="cls-projects.html" class="xref page"><strong>projects</strong></a></dt>
-<dd>
-<p>List all deployed projects.</p>
-</dd>
-<dt class="hdlist1"><a href="cls-arcs.html" class="xref page"><strong>arcs</strong></a></dt>
-<dd>
-<p>List all deployed arcs.</p>
-</dd>
-<dt class="hdlist1"><a href="cls-datasets.html" class="xref page"><strong>datasets</strong></a></dt>
-<dd>
-<p>List all deployed datasets.</p>
 </dd>
 </dl>
 </div>
